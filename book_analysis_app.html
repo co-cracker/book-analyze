@@ -25,28 +25,34 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text
 .sb-title{font-size:10.5pt;font-weight:700;color:#fff;margin-bottom:2px}
 .sb-sub{font-size:7.5pt;color:#82817a;margin-bottom:12px;line-height:1.6}
 
-.sb-guide{background:#232320;border:1px solid #34342f;border-radius:8px;padding:10px 11px;margin-bottom:14px}
-.sb-guide-t{font-size:8pt;font-weight:700;color:#FAC775;margin-bottom:6px}
-.sb-guide ol{list-style:none;counter-reset:g}
-.sb-guide li{counter-increment:g;font-size:7.5pt;color:#b5b3aa;line-height:1.6;padding-left:16px;position:relative;margin-bottom:5px}
-.sb-guide li:last-child{margin-bottom:0}
-.sb-guide li::before{content:counter(g);position:absolute;left:0;top:1px;width:12px;height:12px;border-radius:50%;background:#3a3a34;color:#d8d6cc;font-size:6.5pt;font-weight:700;display:flex;align-items:center;justify-content:center}
-.sb-guide b{color:#e2e0d6}
-.slot-row{display:flex;gap:4px;margin-top:8px;flex-wrap:wrap}
-.slot{font-size:6.5pt;font-weight:700;padding:2px 6px;border-radius:4px;background:#2e2e2a;color:#b9b7ad}
+.sb-guide{background:#232320;border:1px solid #34342f;border-radius:8px;padding:12px 12px;margin-bottom:14px}
+.sb-guide-q{font-size:9.5pt;font-weight:700;color:#FAC775;line-height:1.45;margin-bottom:6px}
+.sb-guide-n{font-size:7pt;color:#8b8981;line-height:1.6}
+.slot-row{display:flex;flex-direction:column;gap:3px;margin-top:9px}
+.slot{font-size:7pt;font-weight:700;padding:4px 8px;border-radius:5px;
+      background:#2a2a26;color:#b9b7ad;border-left:3px solid var(--sc);
+      display:flex;gap:5px;align-items:baseline;cursor:pointer;
+      text-decoration:none;transition:background .15s}
+.slot:hover{background:#33332e}
+.slot .sc-tag{color:var(--sc);font-weight:800;flex-shrink:0}
+.slot .sc-txt{color:#a09e95;font-weight:400}
 
 .fam{margin-bottom:14px;border-left:2px solid var(--fc);padding-left:9px}
 .fam-head{display:flex;align-items:center;gap:5px;margin-bottom:2px}
 .fam-tag{font-size:6.5pt;font-weight:700;padding:1px 5px;border-radius:3px;background:var(--fc);color:#fff}
 .fam-name{font-size:8.5pt;font-weight:700;color:#fff}
-.fam-slot{font-size:7pt;color:var(--fc2);margin-bottom:3px}
-.fam-note{font-size:7pt;color:#82817a;line-height:1.55;margin-bottom:8px}
+.fam-intent{font-size:7.5pt;color:var(--fc2);margin-bottom:2px;line-height:1.5}
+.fam-when{font-size:7pt;color:#82817a;line-height:1.55;margin-bottom:9px}
 
-.lie-item{margin-bottom:9px;padding-bottom:9px;border-bottom:1px solid #282826}
+.lie-item{margin-bottom:11px;padding-bottom:11px;border-bottom:1px solid #282826}
 .fam .lie-item:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0}
-.lie-badge{display:inline-block;font-size:7pt;font-weight:700;padding:1px 7px;border-radius:20px;margin-bottom:4px}
-.lie-def{font-size:7.5pt;color:#a8a69d;line-height:1.65}
-.lie-how{font-size:7pt;color:#8b8981;line-height:1.6;margin-top:4px}
+.lie-badge{display:inline-block;font-size:7.5pt;font-weight:700;padding:1px 7px;border-radius:20px;margin-bottom:5px}
+.lie-where{display:flex;flex-wrap:wrap;gap:3px;margin-bottom:5px}
+.chip{font-size:6.5pt;color:#82817a;background:#262421;border-radius:10px;padding:1px 6px}
+.lie-ask{font-size:8pt;font-weight:700;line-height:1.6}
+.lie-how{font-size:7pt;color:#a09e95;line-height:1.6;margin-top:7px}
+.lie-how b,.lie-why b{display:block;font-size:6.5pt;color:#6f6e68;font-weight:700;letter-spacing:.03em}
+.lie-why{font-size:7pt;color:#82817a;line-height:1.6;margin-top:4px}
 .lie-more{margin-top:5px}
 .lie-more summary{font-size:7pt;color:#79776f;cursor:pointer;list-style:none;user-select:none}
 .lie-more summary::-webkit-details-marker{display:none}
@@ -54,7 +60,7 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text
 .lie-more[open] summary::before{content:'▾ '}
 .lie-more summary:hover{color:#a09e95}
 .ex-row{display:flex;gap:5px;align-items:flex-start;margin-top:5px;font-size:7.5pt;line-height:1.55}
-.ex-tag{flex-shrink:0;font-size:6pt;font-weight:700;padding:1px 4px;border-radius:3px;margin-top:1px}
+.ex-tag{flex-shrink:0;width:64px;text-align:center;font-size:6pt;font-weight:700;padding:2px 3px;border-radius:3px;margin-top:1px;line-height:1.35;white-space:nowrap}
 .ex-ok{background:#22301c;color:#9ec46f}
 .ex-no{background:#33201f;color:#e39b8f}
 .ex-txt{color:#a09e95}
@@ -64,6 +70,13 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text
 .main{padding:26px 28px;overflow-y:auto}
 .page-title{font-size:19pt;font-weight:700;margin-bottom:4px}
 .page-sub{font-size:9pt;color:var(--muted);margin-bottom:20px}
+
+.setup-warn{background:#FCEBEB;border:1px solid #F09595;border-radius:var(--r);padding:15px 18px;margin-bottom:14px}
+.sw-title{font-size:10pt;font-weight:700;color:var(--red);margin-bottom:6px}
+.sw-body{font-size:9pt;color:#5a3535;line-height:1.8}
+.sw-body ol{margin:7px 0 7px 18px}
+.sw-body li{margin-bottom:3px}
+.sw-body code{background:#fff;border:1px solid #EBC4C4;border-radius:4px;padding:1px 5px;font-size:8.5pt}
 
 .input-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:18px 20px;margin-bottom:16px}
 .input-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:12px}
@@ -164,9 +177,10 @@ textarea.book-content:focus{border-color:#AFA9EC}
 .mstep-n{flex-shrink:0;width:17px;height:17px;border-radius:50%;background:#33332e;color:#d8d6cc;font-size:7pt;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:3px}
 .mstep-t{font-size:8.5pt;color:#b6b4ac;line-height:1.75}
 .mstep-t b{color:#e8e6de}
-.slot-table{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-top:9px}
-.slot-cell{background:#252522;border-radius:6px;padding:7px 8px}
-.slot-cell b{display:block;font-size:7.5pt;color:#FAC775;margin-bottom:2px}
+.mission-q{font-size:9.5pt;font-weight:700;color:#FAC775;margin:9px 0 2px;line-height:1.55}
+.slot-table{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-top:7px}
+.slot-cell{background:#252522;border-radius:6px;padding:7px 8px;border-top:2px solid var(--sc)}
+.slot-cell b{display:block;font-size:7.5pt;color:var(--sc);margin-bottom:2px}
 .slot-cell span{font-size:7pt;color:#8b8981;line-height:1.5}
 
 .summary-list{list-style:none}
@@ -209,22 +223,13 @@ textarea.book-content:focus{border-color:#AFA9EC}
 
 <!-- ── 사이드바: 거짓말 유형 도감 ── -->
 <aside class="sidebar">
-  <div class="sb-title">거짓말 10종 도감</div>
-  <div class="sb-sub">유형을 먼저 고르지 마라.<br>어느 <b>칸</b>이 바뀌었는지부터 정해라.</div>
+  <div class="sb-title">거짓말 12종 도감</div>
+  <div class="sb-sub">광고·단톡방·어른들 말에서<br>실제로 마주치는 것들.</div>
 
   <div class="sb-guide">
-    <div class="sb-guide-t">찾는 순서</div>
-    <ol>
-      <li>요약 문장 하나를 고르고, <b>본문에서 같은 내용이 나온 자리</b>를 찾아 나란히 둔다.</li>
-      <li>두 문장에서 <b>바뀐 칸</b>이 어디인지 정한다.</li>
-      <li>그 칸에 해당하는 <b>군 안에서만</b> 유형을 고른다.</li>
-    </ol>
-    <div class="slot-row">
-      <span class="slot">얼마나 → A군</span>
-      <span class="slot">왜 → B군</span>
-      <span class="slot">어디까지·누가 → C군</span>
-      <span class="slot">없던 말 → D군</span>
-    </div>
+    <div class="sb-guide-q">“이 말이 나한테<br>무엇을 하려는 거지?”</div>
+    <div class="sb-guide-n">유형을 먼저 고르지 마라. 이 질문에 먼저 답하면 12개가 3개로 줄어든다.</div>
+    <div class="slot-row" id="famJump"></div>
   </div>
 
   <div id="lieGuide"></div>
@@ -234,6 +239,20 @@ textarea.book-content:focus{border-color:#AFA9EC}
 <main class="main">
   <div class="page-title">책 분석 + 거짓말 사냥</div>
   <div class="page-sub">세포 이야기 하나를 먼저 세우고, 그 이야기로 계속 돌아오면서 책을 이해합니다</div>
+
+  <div class="setup-warn" id="setupWarn" style="display:none">
+    <div class="sw-title">아직 서버 주소가 연결되지 않았습니다</div>
+    <div class="sw-body">
+      이 파일의 <code>GAS_URL</code>이 아직 예시 주소 그대로입니다. 그래서 버튼을 눌러도 분석이 시작되지 않습니다.
+      <ol>
+        <li><b>script.google.com</b>에서 <code>Code.gs</code>를 붙여넣고 <code>GEMINI_API_KEY</code>에 키를 입력합니다.</li>
+        <li><b>배포 → 새 배포 → 웹 앱 → 액세스: 모든 사용자</b>로 배포하고 <code>/exec</code>로 끝나는 주소를 복사합니다.</li>
+        <li>이 HTML 파일을 메모장으로 열어 <code>const GAS_URL = '…'</code> 줄의 주소를 그것으로 바꿉니다.</li>
+        <li>바꾼 파일을 <b>netlify.com/drop</b>에 끌어다 놓고, 만들어진 https 주소로 접속합니다.</li>
+      </ol>
+      왼쪽 거짓말 도감은 서버 없이도 지금 그대로 볼 수 있습니다.
+    </div>
+  </div>
 
   <div class="input-card">
     <div class="input-row">
@@ -319,17 +338,13 @@ textarea.book-content:focus{border-color:#AFA9EC}
       <div class="mission-title">🎯 거짓말 사냥 미션</div>
       <div class="mission-body">
         아래 요약 문장 중 <b>3개</b>에 거짓말이 숨어 있다. 세 개는 각각 <b>다른 군</b>에서 하나씩 나온다.
-        <div class="mission-warn">경고: 문장 전체가 틀린 건 하나도 없다. 한 문장에서 바뀐 건 딱 한 칸이다. 나머지는 전부 진짜라서, 읽으면 자연스럽게 넘어간다.</div>
-        <div class="slot-table">
-          <div class="slot-cell"><b>얼마나</b><span>확신·수량·조건이 그대로인가</span></div>
-          <div class="slot-cell"><b>왜</b><span>원인과 이유가 그대로인가</span></div>
-          <div class="slot-cell"><b>어디까지·누가</b><span>대상과 비교 기준이 그대로인가</span></div>
-          <div class="slot-cell"><b>없던 말</b><span>본문에 없던 결론이 붙었나</span></div>
-        </div>
+        <div class="mission-warn">경고: 문장 전체가 틀린 건 하나도 없다. 한 문장에서 손댄 건 딱 한 군데다. 나머지는 전부 진짜라서, 읽으면 자연스럽게 넘어간다.</div>
+        <div class="mission-q">문장마다 물어라 — “이 말이 나한테 무엇을 하려는 거지?”</div>
+        <div class="slot-table" id="missionFams"></div>
         <div class="mission-steps">
-          <div class="mstep"><span class="mstep-n">1</span><span class="mstep-t">문장을 하나씩 읽으며 <b>위 네 칸을 본문과 대조</b>하라. 단어가 아니라 칸을 비교하는 것이다.</span></div>
-          <div class="mstep"><span class="mstep-n">2</span><span class="mstep-t">어긋난 칸을 찾으면, 왼쪽 도감에서 <b>그 칸의 군</b>으로 내려가 유형을 고르고 이유를 한 줄 써라.</span></div>
-          <div class="mstep"><span class="mstep-n">3</span><span class="mstep-t">진실 버전으로 직접 고쳐 써라. <b>고칠 때도 한 칸만</b> 되돌리면 된다.</span></div>
+          <div class="mstep"><span class="mstep-n">1</span><span class="mstep-t">문장을 하나씩 읽으며 <b>위 네 가지 중 무엇을 하려는 말인지</b> 정하라. 아무것도 안 하려는 문장이 대부분이다.</span></div>
+          <div class="mstep"><span class="mstep-n">2</span><span class="mstep-t">걸리는 문장이 나오면 왼쪽 도감에서 <b>그 군으로 내려가</b> 유형을 고르고, 그 유형의 <b>되받아치는 질문</b>을 문장에 던져라.</span></div>
+          <div class="mstep"><span class="mstep-n">3</span><span class="mstep-t">진실 버전으로 직접 고쳐 써라. <b>고칠 때도 한 군데만</b> 되돌리면 된다.</span></div>
         </div>
       </div>
     </div>
@@ -353,8 +368,9 @@ textarea.book-content:focus{border-color:#AFA9EC}
         <div class="table-scroll">
           <table class="answer-table">
             <thead><tr>
-              <th>번호</th><th>바뀐 칸</th><th>거짓말 유형</th>
-              <th>원래 내용 → 비튼 내용</th><th>진실 버전</th><th>본문·분석 근거</th><th>다음에도 써먹을 요령</th>
+              <th>번호</th><th>거짓말 유형</th>
+              <th>원래 내용 → 비튼 내용</th><th>진실 버전</th>
+              <th>현실에서는 이렇게 만난다</th><th>본문·분석 근거</th><th>다음에도 써먹을 요령</th>
             </tr></thead>
             <tbody id="answerTbody"></tbody>
           </table>
@@ -378,130 +394,253 @@ textarea.book-content:focus{border-color:#AFA9EC}
    3) 모든 유형은 "원문 → 비틀린 요약" 두 문장을 나란히 보여준다.
    ──────────────────────────────────────────────────────────── */
 
-const LIE_FAMILIES = [
-  {
-    id: 'A', name: '세기', slot: '얼마나',
-    sub: '얼마나 확실한가 · 얼마나 많은가',
-    note: '내용은 그대로 두고 문장의 온도만 올린다',
-    color: '#854F0B', bg: '#FAEEDA',
-    types: [
-      {
-        no: '①', name: '확신 올리기',
-        def: '저자가 "그럴 수 있다"고 조심스럽게 말한 것을 "그렇다"고 단정해 버린다.',
-        check: '원문에 「~일 수 있다 / ~로 보인다 / ~하는 경향이 있다 / 아마」가 있었는지 찾아라. 요약에서 그 꼬리가 잘렸으면 이 유형.',
-        make: '추정·가능성 표현만 지우고 단정형 어미로 바꾼다. 주어·이유·범위는 절대 건드리지 않는다.',
-        orig: '결핍감이 4번 유형의 행동을 이끄는 요인일 수 있다.',
-        lie:  '결핍감이 4번 유형의 행동을 이끄는 요인이다.',
-        vs:   '③ 단서 떼기와 헷갈리면 — 사라진 말이 "확신을 낮추는 말"이면 ①, "상황을 한정하는 말"이면 ③.'
-      },
-      {
-        no: '②', name: '수량 부풀리기',
-        def: '몇몇을 대부분으로, 가끔을 자주로. 숫자 감각만 슬쩍 키운다.',
-        check: '원문의 수량어(일부·여럿·절반쯤·때때로)와 요약의 수량어(대체로·흔히·자주·거의)를 나란히 놓고 세어 봐라.',
-        make: '수량·빈도를 나타내는 말 하나만 한 칸 위로 올린다. 「모든/항상」까지 가면 실격, 「대체로/자주/흔히」까지만.',
-        orig: '4번 유형 중 일부는 남의 관심을 부담스러워한다.',
-        lie:  '4번 유형은 대체로 남의 관심을 부담스러워한다.',
-        vs:   '① 확신 올리기와 헷갈리면 — "얼마나 확실한가"가 바뀌면 ①, "얼마나 많은가"가 바뀌면 ②.'
-      },
-      {
-        no: '③', name: '단서 떼기',
-        def: '원문에 붙어 있던 조건(~할 때만)이나 예외(다만 ~는 아니다)를 떼어내고 무조건인 것처럼 만든다.',
-        check: '원문에서 「만약 / ~하는 경우 / ~할 때 / 다만 / 하지만 / 물론 ~도 있다」를 찾아라. 그 대목이 요약에서 너무 깔끔하면 이 유형.',
-        make: '조건절이나 역접 단서 하나를 통째로 삭제한다. 남은 문장은 원문 표현 그대로 둔다.',
-        orig: '결핍감이 커질 때 4번 유형은 자기 세계로 물러난다.',
-        lie:  '4번 유형은 자기 세계로 물러난다.',
-        vs:   '⑦ 대상 넓히기와 헷갈리면 — 사라진 것이 "언제·어떤 상황"이면 ③, "누구"면 ⑦.'
-      }
-    ]
+/* __LIE_DATA_START__ */
+// 이 블록은 build.py가 lie_types.json에서 생성한다. 직접 고치지 마라.
+const LIE_DATA = {
+  "version": 2,
+  "title": "거짓말 12종 도감",
+  "subtitle": "현실에서 진짜로 마주치는 거짓말",
+  "decision": {
+    "question": "이 말이 나한테 무엇을 하려는 거지?",
+    "note": "유형을 먼저 고르지 마라. 이 질문에 먼저 답하면 12개가 3개로 줄어든다."
   },
-  {
-    id: 'B', name: '이음새', slot: '왜',
-    sub: '무엇이 무엇을 낳는가',
-    note: '문장 사이의 화살표를 건드린다. 단어는 거의 그대로라 눈으로는 안 잡힌다',
-    color: '#0F6E56', bg: '#E1F5EE',
-    types: [
-      {
-        no: '④', name: '동행을 원인으로',
-        def: '"함께 나타난다"는 말을 "그래서 생긴다"는 말로 바꾼다.',
-        check: '원문이 「관련이 있다 / 함께 나타난다 / 동반된다」인데 요약이 「때문이다 / 만든다 / 낳는다」면 이 유형.',
-        make: '원문에 없던 인과 표현을 넣는다. 등장하는 두 대상과 순서는 원문 그대로 유지한다.',
-        orig: '결핍감이 강한 사람에게서 예술적 표현 욕구가 함께 관찰된다.',
-        lie:  '결핍감이 예술적 표현 욕구를 만들어 낸다.',
-        vs:   '⑤ 화살표 뒤집기와 헷갈리면 — 원문에 화살표가 아예 없었으면 ④, 있었는데 방향만 반대면 ⑤.'
-      },
-      {
-        no: '⑤', name: '화살표 뒤집기',
-        def: 'A 때문에 B라고 한 것을 B 때문에 A로 뒤집는다. 쓰인 단어는 하나도 바뀌지 않는다.',
-        check: '「때문에 / 그래서 / ~로 이어진다」 앞뒤에 무엇이 놓였는지 원문과 요약을 나란히 두고 화살표를 직접 그려 봐라.',
-        make: '원인과 결과의 자리만 맞바꾼다. 어휘·어미·길이는 그대로 둔다.',
-        orig: '채워지지 않은 결핍감 때문에 특별함에 집착하게 된다.',
-        lie:  '특별함에 대한 집착 때문에 결핍감이 생긴다.',
-        vs:   '단어가 전부 그대로라 읽어서는 못 잡는다. 반드시 화살표를 그려 방향을 맞춰 봐야 한다.'
-      },
-      {
-        no: '⑥', name: '이유 바꿔치기',
-        def: '결론은 원문 그대로 두고 "왜냐하면" 뒤만 다른 이유로 갈아 끼운다.',
-        check: '결론이 맞아 보이면 그냥 넘어가기 쉽다. 결론에 동그라미를 치고, 그 앞의 이유만 따로 떼어 원문과 맞춰라.',
-        make: '결론 문장은 원문 표현 그대로 두고, 이유 부분만 그럴듯한 다른 이유로 교체한다.',
-        orig: '4번 유형이 평범함을 견디지 못하는 것은 자기 정체성이 흔들리기 때문이다.',
-        lie:  '4번 유형이 평범함을 견디지 못하는 것은 남보다 앞서고 싶기 때문이다.',
-        vs:   '⑩ 결론 얹기와 헷갈리면 — 결론이 원문에 있던 것이면 ⑥, 원문에 아예 없던 것이면 ⑩.'
-      }
-    ]
-  },
-  {
-    id: 'C', name: '범위', slot: '어디까지·누가',
-    sub: '누구에게 · 어디까지 해당하는가',
-    note: '주장은 그대로 두고 울타리만 옮긴다',
-    color: '#3C3489', bg: '#EEEDFE',
-    types: [
-      {
-        no: '⑦', name: '대상 넓히기',
-        def: '특정한 사람·상황에서 나온 이야기를 모두의 이야기로 넓힌다.',
-        check: '원문의 주인공이 정확히 누구였는지 짚어라. "4번 유형"이 "사람들"로, "어린 시절"이 "평생"으로 커졌으면 이 유형.',
-        make: '주어의 범위만 한 단계 넓힌다. 「모든 사람」까지 가면 실격, 「사람은 / 우리는」 정도까지만.',
-        orig: '4번 유형은 남과 다르다는 감각에서 자기를 확인한다.',
-        lie:  '사람은 남과 다르다는 감각에서 자기를 확인한다.',
-        vs:   '⑧ 주어 바꾸기와 헷갈리면 — 같은 대상이 커진 것이면 ⑦, 아예 다른 대상으로 옮겨 갔으면 ⑧.'
-      },
-      {
-        no: '⑧', name: '주어 바꾸기',
-        def: '하는 사람과 겪는 사람을 슬쩍 맞바꾼다.',
-        check: '그 행동을 "누가" 하는지 물어라. 원문에서 아이가 한 일을 요약에서 부모가 하고 있지 않은지 확인.',
-        make: '행동의 주인만 바꾼다. 행동 자체와 이유는 원문 그대로 둔다.',
-        orig: '4번 유형은 상대가 자기를 알아봐 주기를 기다린다.',
-        lie:  '4번 유형은 상대를 먼저 알아봐 주려고 한다.',
-        vs:   '⑤ 화살표 뒤집기와 헷갈리면 — 바뀐 것이 "행동의 주인"이면 ⑧, "원인과 결과의 순서"면 ⑤.'
-      },
-      {
-        no: '⑨', name: '비교 기준 지우기',
-        def: '"무엇보다 낫다"에서 비교 대상을 지워, 그냥 좋은 것으로 만든다.',
-        check: '요약에 「더 / 낫다 / 강하다 / 높다 / 세밀하다」가 있으면 반드시 물어라 — 무엇과 비교해서?',
-        make: '비교 대상(~보다)만 삭제하고 절대적인 성질처럼 서술한다.',
-        orig: '4번 유형은 3번 유형보다 감정의 결을 세밀하게 느낀다.',
-        lie:  '4번 유형은 감정의 결을 세밀하게 느끼는 유형이다.',
-        vs:   '③ 단서 떼기와 헷갈리면 — 사라진 것이 "비교 대상"이면 ⑨, "조건·예외"면 ③.'
-      }
-    ]
-  },
-  {
-    id: 'D', name: '없던 말', slot: '없던 말',
-    sub: '원문에 없는 것을 끼워 넣는가',
-    note: '앞은 전부 진짜다. 마지막 한 조각만 저자가 하지 않은 말이다',
-    color: '#993C1D', bg: '#FAECE7',
-    types: [
-      {
-        no: '⑩', name: '결론 얹기',
-        def: '저자가 내리지 않은 판단이나 처방을 저자 말인 것처럼 문장 끝에 붙인다.',
-        check: '그 결론을 원문에서 찾아봐라. 비슷한 문장조차 없으면 이 유형. 특히 「그러므로 ~해야 한다 / 결국 ~이다」를 의심하라.',
-        make: '앞부분은 원문 내용 그대로 두고, 원문에 없는 당위·처방·평가를 한 조각만 덧붙인다.',
-        orig: '4번 유형은 결핍감 때문에 자기 세계로 물러나곤 한다. (원문은 여기서 끝난다)',
-        lie:  '4번 유형은 결핍감 때문에 자기 세계로 물러나므로, 결핍감을 극복해야 성숙해진다.',
-        vs:   '⑥ 이유 바꿔치기와 헷갈리면 — 원문에 있던 결론의 이유만 바뀌었으면 ⑥, 결론 자체가 새로 생겼으면 ⑩.'
-      }
-    ]
-  }
-];
+  "families": [
+    {
+      "id": "1",
+      "name": "부풀리기",
+      "intent": "실제보다 크게 보이게 한다",
+      "trigger": "말이 실제보다 세게 들린다",
+      "color": "#8A5A12",
+      "bg": "#FAF0DC",
+      "types": [
+        {
+          "no": "①",
+          "name": "낚시 제목",
+          "where": [
+            "유튜브 썸네일",
+            "뉴스 기사 제목",
+            "커뮤니티 글 제목"
+          ],
+          "said": "충격! 매일 이것만 먹었더니 키가 쑥",
+          "actual": "본문에는 한 사람이 석 달 동안 1cm 자랐다고만 적혀 있다",
+          "why": "제목은 공짜로 읽히고 본문은 힘이 든다. 그래서 제목만 기억에 남고, 본문을 읽은 뒤에도 제목이 준 인상이 그대로 남는다.",
+          "ask": "제목이 말한 걸 본문이 정말로 말하고 있나?",
+          "intext": "요약의 첫 문장만 유독 세다. 뒤 문장들이 첫 문장을 뒷받침하지 못하고 겉돈다.",
+          "make": "요약 안의 한 문장을, 나머지 문장이 받쳐 주지 못할 만큼만 세게 만든다. 단어는 분석에 있던 것을 쓴다.",
+          "vs": "③ 숫자로 꼬시기와 헷갈리면 — 부풀리는 도구가 숫자면 ③, 표현이면 ①."
+        },
+        {
+          "no": "②",
+          "name": "최고라고 말하기",
+          "where": [
+            "학원 광고",
+            "제품 상세페이지",
+            "자기소개서"
+          ],
+          "said": "국내 유일, 1등 학습법",
+          "actual": "무엇 중에 1등인지, 누가 그렇게 정했는지는 어디에도 없다",
+          "why": "비교 대상이 없으면 반박할 대상도 없다. 따질 것이 안 보이니 그냥 넘어가게 된다.",
+          "ask": "무엇과 비교해서? 그건 누가 정했지?",
+          "intext": "「더 / 가장 / 유일한 / 뛰어난」이 있는데 정작 「~보다」가 안 보인다.",
+          "make": "비교 대상(~보다)만 지우고 절대적인 성질처럼 서술한다. 나머지는 그대로 둔다.",
+          "vs": "⑩ 권위 빌리기와 헷갈리면 — 순위를 매긴 사람이 등장하면 ⑩, 아무도 없으면 ②."
+        },
+        {
+          "no": "③",
+          "name": "숫자로 꼬시기",
+          "where": [
+            "광고 배너",
+            "건강 정보 글",
+            "통계를 인용한 뉴스"
+          ],
+          "said": "무려 90%가 효과를 봤습니다",
+          "actual": "몇 명 중 90%인지, 누가 조사했는지가 없다. 열 명 중 아홉일 수도 있다",
+          "why": "숫자는 이미 누가 확인해 둔 사실처럼 보인다. 퍼센트는 특히 그렇다.",
+          "ask": "몇 명 중에 몇 명이지? 그건 누가 세었지?",
+          "intext": "퍼센트나 「대부분 / 대다수 / 흔히」가 나오는데, 원래 몇이었는지가 없다.",
+          "make": "수량어 하나만 한 칸 위로 올린다. 「모든/항상」까지 가면 실격, 「대체로/흔히/자주」까지만.",
+          "vs": "⑥ 불리한 항목 빼기와 헷갈리면 — 분모 자체가 없으면 ③, 분모는 있는데 나쁜 쪽만 빠졌으면 ⑥."
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "골라 보여주기",
+      "intent": "있는 것 중에서 유리한 것만 꺼낸다",
+      "trigger": "말한 건 다 사실인데 뭔가 허전하다",
+      "color": "#14685A",
+      "bg": "#E4F4EF",
+      "types": [
+        {
+          "no": "④",
+          "name": "성공한 사람만 보여주기",
+          "where": [
+            "학원 벽의 합격증",
+            "쇼핑몰 후기",
+            "SNS 피드"
+          ],
+          "said": "우리 학원 다니고 이만큼 붙었습니다 (합격증 30장)",
+          "actual": "떨어진 300명의 이야기는 벽에 붙지 않는다",
+          "why": "눈에 보이는 것만으로 판단한다. 안 보이는 쪽은 아예 없는 것처럼 느껴진다.",
+          "ask": "안 된 사람은 어디 갔지?",
+          "intext": "효과를 본 사례만 이어지고, 예외나 실패가 한 번도 나오지 않는다.",
+          "make": "분석에 있던 예외·단서를 통째로 지우고 잘된 쪽만 남긴다.",
+          "vs": "⑥ 불리한 항목 빼기와 헷갈리면 — 여러 사람 중에서 고른 것이면 ④, 한 대상 안에서 항목을 고른 것이면 ⑥."
+        },
+        {
+          "no": "⑤",
+          "name": "조건 숨기기",
+          "where": [
+            "작은 글씨 약관",
+            "이벤트 배너",
+            "부모님과의 약속"
+          ],
+          "said": "지금 신청하면 무료!",
+          "actual": "별표 아래 작은 글씨에 「첫 달만, 3개월 약정 시」가 붙어 있다",
+          "why": "조건은 늘 나중에, 작게 나온다. 결정을 이미 내린 뒤에 읽게 되므로 되돌리기 어렵다.",
+          "ask": "언제까지, 누구한테, 어떤 경우에만 해당하는 거지?",
+          "intext": "원문에 있던 「~할 때 / ~인 경우 / 다만 / 하지만」이 요약에서 사라져 무조건인 문장이 됐다.",
+          "make": "조건절이나 역접 단서 하나만 통째로 삭제한다. 남은 문장은 원문 표현 그대로.",
+          "vs": "④ 성공한 사람만 보여주기와 헷갈리면 — 빠진 것이 「어떤 경우에만」이면 ⑤, 「누구」면 ④."
+        },
+        {
+          "no": "⑥",
+          "name": "불리한 항목 빼기",
+          "where": [
+            "제품 포장 앞면",
+            "성적표 설명",
+            "잘못을 설명할 때"
+          ],
+          "said": "이 과자, 설탕 0g이에요",
+          "actual": "설탕은 정말 없다. 대신 지방이 다른 과자의 두 배인데 그건 말하지 않는다",
+          "why": "말한 내용이 전부 사실이면 거짓말이라고 느끼지 못한다. 그래서 방심한다.",
+          "ask": "이 하나 말고, 같이 봐야 할 다른 항목은 뭐지?",
+          "intext": "한 측면만 반복해서 강조되고, 원문에 함께 있던 다른 측면이 요약에는 없다.",
+          "make": "분석에 함께 있던 두 측면 중 한쪽만 남기고 다른 쪽을 지운다. 남긴 쪽은 사실 그대로 둔다.",
+          "vs": "⑤ 조건 숨기기와 헷갈리면 — 빠진 것이 「조건」이면 ⑤, 「나란히 있던 다른 사실」이면 ⑥."
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "엮기",
+      "intent": "상관없는 것을 원인처럼 붙인다",
+      "trigger": "\"그래서 그렇게 됐다\"는 말이 너무 매끄럽다",
+      "color": "#3B3585",
+      "bg": "#EDECFC",
+      "types": [
+        {
+          "no": "⑦",
+          "name": "같이 일어난 걸 원인이라 하기",
+          "where": [
+            "건강 기사",
+            "공부법 조언",
+            "어른들의 훈계"
+          ],
+          "said": "아침 먹는 애들이 성적이 좋대. 그러니까 아침을 먹어야 성적이 올라",
+          "actual": "아침을 챙겨 주는 집이 공부도 챙겨 주는 것일 수 있다. 진짜 원인은 따로 있다",
+          "why": "두 가지가 같이 보이면 뇌가 알아서 화살표를 그린다. 그리는 줄도 모르고 그린다.",
+          "ask": "정말 이것 때문일까, 아니면 둘 다 다른 것 때문일까?",
+          "intext": "원문이 「함께 나타난다 / 관련이 있다」인데 요약이 「때문이다 / 만든다」로 바뀌었다.",
+          "make": "원문에 없던 인과 표현을 넣는다. 등장하는 두 대상과 순서는 그대로 유지한다.",
+          "vs": "⑧ 앞뒤 뒤집기와 헷갈리면 — 원문에 화살표가 아예 없었으면 ⑦, 있었는데 방향만 반대면 ⑧."
+        },
+        {
+          "no": "⑧",
+          "name": "앞뒤 뒤집기",
+          "where": [
+            "혼날 때",
+            "뉴스 해설",
+            "친구 사이의 다툼"
+          ],
+          "said": "게임을 많이 해서 성적이 떨어진 거야",
+          "actual": "성적이 먼저 떨어졌고, 그게 힘들어서 게임으로 도망친 것일 수도 있다",
+          "why": "쓰인 단어가 하나도 바뀌지 않아서, 읽어서는 절대 안 잡힌다.",
+          "ask": "둘 중에 어느 쪽이 먼저 일어났지?",
+          "intext": "「때문에 / 그래서」 앞뒤에 놓인 두 가지가 원문과 자리가 바뀌어 있다.",
+          "make": "원인과 결과의 자리만 맞바꾼다. 어휘·어미·길이는 그대로 둔다.",
+          "vs": "읽어서는 못 잡는다. 두 가지에 동그라미 치고 화살표를 직접 그려 방향을 맞춰 봐야 한다."
+        },
+        {
+          "no": "⑨",
+          "name": "진짜 이유 감추기",
+          "where": [
+            "약속을 어겼을 때",
+            "거절할 때",
+            "사과문"
+          ],
+          "said": "네가 늦게 말해서 못 갔어",
+          "actual": "애초에 갈 생각이 없었다. 늦게 말한 건 사실이지만 그것 때문은 아니다",
+          "why": "대는 이유가 사실이면 반박하기 어렵다. 사실이지만 진짜 이유가 아닐 뿐이다.",
+          "ask": "이 이유가 없어졌다면 결과가 달라졌을까?",
+          "intext": "결론은 원문 그대로인데 그 앞의 이유만 다른 것으로 바뀌어 있다.",
+          "make": "결론 문장은 원문 표현 그대로 두고, 이유 부분만 그럴듯한 다른 이유로 교체한다.",
+          "vs": "⑫ 없던 결론 얹기와 헷갈리면 — 결론이 원문에 있던 것이면 ⑨, 결론 자체가 새로 생겼으면 ⑫."
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "name": "빌리고 얹기",
+      "intent": "남의 입을 빌리거나, 없던 말을 얹는다",
+      "trigger": "말한 사람이 누구인지 끝까지 안 나온다",
+      "color": "#97401F",
+      "bg": "#FAEDE7",
+      "types": [
+        {
+          "no": "⑩",
+          "name": "권위 빌리기",
+          "where": [
+            "광고 문구",
+            "단톡방",
+            "설득하려는 어른의 말"
+          ],
+          "said": "전문가들이 다 그렇게 말해. 요즘은 다들 이렇게 한대",
+          "actual": "그 전문가가 누구인지, 다들이 몇 명인지는 끝까지 나오지 않는다",
+          "why": "이름 없는 다수에게는 물어볼 수가 없다. 물어볼 데가 없으면 그냥 믿게 된다.",
+          "ask": "그 전문가가 누구지? 다들이 정확히 누구지?",
+          "intext": "「연구에 따르면 / 알려져 있다 / 흔히 말한다」가 붙었는데 원문에는 그런 출처가 없다.",
+          "make": "분석에 없던 출처·권위 표현을 한 조각만 덧붙인다. 나머지 내용은 그대로.",
+          "vs": "⑫ 없던 결론 얹기와 헷갈리면 — 덧붙은 것이 「누가 말했다」면 ⑩, 「그래서 어떻다」면 ⑫."
+        },
+        {
+          "no": "⑪",
+          "name": "건너 들은 말",
+          "where": [
+            "카톡 전달",
+            "친구가 전해 준 말",
+            "소문"
+          ],
+          "said": "쟤가 너 욕했대",
+          "actual": "세 사람을 건너오는 동안 「좀 서운했나 봐」가 「욕했대」가 됐다",
+          "why": "전할 때마다 재미없는 부분은 떨어지고 자극적인 부분만 남는다. 아무도 거짓말할 마음이 없어도 그렇게 된다.",
+          "ask": "이걸 직접 들은 사람이 누구지? 원래 말은 정확히 뭐였지?",
+          "intext": "요약이 원문보다 감정적으로 세다. 원문에 없던 판단하는 낱말이 끼어 있다.",
+          "make": "원문의 표현을 한 단계만 자극적인 낱말로 바꾼다. 사실 관계는 건드리지 않는다.",
+          "vs": "① 낚시 제목과 헷갈리면 — 세진 것이 「전해지는 과정」에서면 ⑪, 「눈길을 끌려고」면 ①."
+        },
+        {
+          "no": "⑫",
+          "name": "없던 결론 얹기",
+          "where": [
+            "기사 공유하며 한 줄 덧붙일 때",
+            "훈계",
+            "독후감"
+          ],
+          "said": "라면 소비가 늘었대. 그러니까 요즘 애들이 건강을 안 챙기는 거지",
+          "actual": "기사는 소비가 늘었다는 데까지만 말했다. 뒷문장은 공유한 사람이 붙인 것이다",
+          "why": "앞이 사실이면 뒤도 사실처럼 딸려 온다. 어디까지가 원문인지 아무도 표시해 주지 않는다.",
+          "ask": "이 결론을 원래 말한 사람이 진짜로 말했나?",
+          "intext": "「그러므로 ~해야 한다 / 결국 ~이다」로 끝나는데 원문에는 비슷한 문장조차 없다.",
+          "make": "앞부분은 원문 내용 그대로 두고, 원문에 없는 당위·평가를 한 조각만 덧붙인다.",
+          "vs": "⑨ 진짜 이유 감추기와 헷갈리면 — 원문에 있던 결론의 이유만 바뀌었으면 ⑨, 결론 자체가 새로 생겼으면 ⑫."
+        }
+      ]
+    }
+  ]
+};
+const LIE_FAMILIES = LIE_DATA.families;
+/* __LIE_DATA_END__ */
 
 const LIE_TYPES = LIE_FAMILIES.flatMap(f => f.types.map(t => ({ ...t, famId: f.id, famName: f.name, color: f.color, bg: f.bg })));
 
@@ -514,13 +653,14 @@ function familyOf(typeStr) {
 /* AI 프롬프트에 그대로 들어가는 도감 텍스트 — 화면과 같은 정의를 쓴다 */
 function lieCodexText() {
   return LIE_FAMILIES.map(f =>
-    `[${f.id}군 · ${f.name}] 바뀌는 칸 = "${f.slot}" — ${f.sub}\n` +
+    `[${f.id}군 · ${f.name}] 하려는 것 = ${f.intent} / 의심 신호 = ${f.trigger}\n` +
     f.types.map(t =>
-      `${t.no} ${t.name}\n` +
-      `   정의: ${t.def}\n` +
+      `${t.no} ${t.name}  (현실에서: ${t.where.join(', ')})\n` +
+      `   현실 예 — 이렇게 말한다: ${t.said}\n` +
+      `   현실 예 — 실제로는: ${t.actual}\n` +
+      `   글에서의 신호: ${t.intext}\n` +
       `   만드는 법: ${t.make}\n` +
-      `   원문 예: ${t.orig}\n` +
-      `   비튼 예: ${t.lie}`
+      `   되받아치는 질문: ${t.ask}`
     ).join('\n')
   ).join('\n\n');
 }
@@ -538,21 +678,31 @@ function renderLieGuide() {
         <span class="fam-tag">${f.id}군</span>
         <span class="fam-name">${esc(f.name)}</span>
       </div>
-      <div class="fam-slot">바뀌는 칸 · ${esc(f.slot)} — ${esc(f.sub)}</div>
-      <div class="fam-note">${esc(f.note)}</div>
+      <div class="fam-intent">${esc(f.intent)}</div>
+      <div class="fam-when">이럴 때 — ${esc(f.trigger)}</div>
       ${f.types.map(t => `
         <div class="lie-item">
           <span class="lie-badge" style="background:${f.bg};color:${f.color}">${t.no} ${esc(t.name)}</span>
-          <div class="lie-def">${esc(t.def)}</div>
-          <div class="lie-how">🔍 ${esc(t.check)}</div>
+          <div class="lie-where">${t.where.map(w => `<span class="chip">${esc(w)}</span>`).join('')}</div>
+          <div class="lie-ask" style="color:${f.color}">“${esc(t.ask)}”</div>
           <details class="lie-more">
-            <summary>원문과 나란히 보기</summary>
-            <div class="ex-row"><span class="ex-tag ex-ok">원문</span><span class="ex-txt">${esc(t.orig)}</span></div>
-            <div class="ex-row"><span class="ex-tag ex-no">비틀림</span><span class="ex-txt">${esc(t.lie)}</span></div>
+            <summary>현실 예시 · 글에서 찾는 법</summary>
+            <div class="ex-row"><span class="ex-tag ex-no">이렇게 말한다</span><span class="ex-txt">${esc(t.said)}</span></div>
+            <div class="ex-row"><span class="ex-tag ex-ok">실제로는</span><span class="ex-txt">${esc(t.actual)}</span></div>
+            <div class="lie-how"><b>글에서는</b> ${esc(t.intext)}</div>
+            <div class="lie-why"><b>왜 속나</b> ${esc(t.why)}</div>
             <div class="lie-vs">${esc(t.vs)}</div>
           </details>
         </div>`).join('')}
     </div>`).join('');
+
+  // 판별 질문 아래의 군 바로가기 — 무엇을 하려는 말인지로 고른다
+  document.getElementById('famJump').innerHTML = LIE_FAMILIES.map((f, i) => `
+    <a class="slot" style="--sc:${f.color}" href="#fam${f.id}"
+       onclick="document.querySelectorAll('.fam')[${i}].scrollIntoView({behavior:'smooth'});return false">
+      <span class="sc-tag">${f.id}군 ${esc(f.name)}</span>
+      <span class="sc-txt">${esc(f.intent)}</span>
+    </a>`).join('');
 }
 renderLieGuide();
 
@@ -587,6 +737,20 @@ function parseProse(text) {
 
 // ★ 여기에 Google Apps Script 배포 URL을 붙여넣으세요 ★
 const GAS_URL = 'https://script.google.com/macros/s/여기에배포URL붙여넣기/exec';
+
+// 주소를 안 바꾸고 열면 버튼을 눌러도 아무 일도 안 일어난 것처럼 보인다.
+// 그래서 화면 위에 이유를 먼저 띄운다.
+function gasReady() {
+  return /^https:\/\/script\.google\.com\/macros\/s\/[A-Za-z0-9_-]{20,}\/exec$/.test(GAS_URL);
+}
+
+function checkSetup() {
+  if (gasReady()) return;
+  const box = document.getElementById('setupWarn');
+  box.style.display = 'block';
+  document.getElementById('runBtn').disabled = true;
+}
+checkSetup();
 
 async function callClaude(system, user, retries = 2) {
   for (let attempt = 0; attempt <= retries; attempt++) {
@@ -654,16 +818,18 @@ function lieHuntSystemPrompt() {
 ${lieCodexText()}
 
 [설계 규칙 — 하나라도 어기면 실격]
-1. 거짓말은 정확히 3개. 서로 다른 군에서 하나씩 고른다(A/B/C/D 중 3개 군). 같은 군 두 번 사용 금지.
-2. 한 문장에서 바꾸는 건 딱 한 칸이다. 문장 전체를 반대로 만들거나 두 군데 이상 손대지 않는다.
+1. 거짓말은 정확히 3개. 서로 다른 군에서 하나씩 고른다(1/2/3/4군 중 3개 군). 같은 군 두 번 사용 금지.
+2. 한 문장에서 손대는 건 딱 한 군데다. 문장 전체를 반대로 만들거나 두 군데 이상 고치지 않는다.
 3. 바꾸지 않은 부분은 분석에 나온 표현을 그대로 옮겨 쓴다. 새 단어·새 인물·새 개념 등장 금지.
-4. "모든/항상/절대/전혀" 같은 극단 단어 금지. ② 수량 부풀리기도 "대체로/자주/흔히"까지만 올린다.
+4. "모든/항상/절대/전혀" 같은 극단 단어 금지. ③ 숫자로 꼬시기도 "대체로/자주/흔히"까지만 올린다.
 5. 거짓 문장은 참 문장과 길이·문체·어미가 구별되지 않아야 한다. 거짓말만 유독 단정적이거나 유독 길면 실격.
 6. 미끼 장치: 참 문장 중 최소 2개에 "~일 수 있다", "~할 때", "~보다" 같은 표현을 자연스럽게 남겨 둔다.
    그래야 학생이 "조심스러운 표현이 없는 문장 = 거짓말"이라는 요령만으로 못 찍는다.
 7. 각 거짓말은 원래 내용(original)이 분석 안에 실제로 있어야 한다. 분석에 없는 내용을 지어내 비틀지 않는다.
 8. 힌트는 정답을 알려주지 않는다. hint1은 무엇을 대조할지까지만, hint2는 문장 위치 범위까지만, hint3은 스스로 던질 질문.
 9. 요약 문장 중 2~3개는 세포 이야기를 빌려 쓴 문장으로 만든다. 세포 이야기도 검증 대상이다.
+10. real 항목이 중요하다. 이 거짓말과 똑같은 수법을 학생이 현실에서 마주치는 장면 하나를
+    한 문장으로 써라. 도감의 예시를 베끼지 말고, 이 책 내용에 어울리는 새 장면을 만든다.
 
 [출력 형식]
 {
@@ -671,22 +837,22 @@ ${lieCodexText()}
   "lies": [
     {
       "idx": 0,
-      "family": "A",
-      "slot": "얼마나",
-      "type": "① 확신 올리기",
+      "family": "1",
+      "type": "① 낚시 제목",
       "original": "분석에 실제로 있던 원래 내용",
-      "twisted": "그 중 어느 칸을 어떻게 바꿨는지 한 줄",
-      "truth": "진실 버전 문장 (한 칸만 되돌린 문장)",
+      "twisted": "어디를 어떻게 손댔는지 한 줄",
+      "truth": "진실 버전 문장 (한 군데만 되돌린 문장)",
       "evidence": "분석의 어느 대목이 근거인지",
+      "real": "같은 수법을 현실에서 마주치는 장면 한 문장",
       "tip": "이 유형을 다음에 만났을 때 알아챌 요령 한 줄",
-      "hint1": "그 칸을 본문과 어떻게 대조하면 되는지 한 줄. 칸 이름과 군 이름은 화면에 이미 나오니 쓰지 마라",
+      "hint1": "무엇을 본문과 대조하면 되는지 한 줄. 유형 이름과 군 이름은 화면에 이미 나오니 쓰지 마라",
       "hint2": "몇 번째 근처인지 범위만 알려주는 힌트",
       "hint3": "학생이 스스로 던져 볼 질문"
     }
   ]
 }
-sentences는 8~10개. lies.idx는 0부터 센 sentences 위치. family는 A/B/C/D 한 글자.
-type은 도감 표기 그대로("① 확신 올리기" 형태). 거짓말 위치를 sentences 안에 표시하지 마라.`;
+sentences는 8~10개. lies.idx는 0부터 센 sentences 위치. family는 1/2/3/4 중 한 글자.
+type은 도감 표기 그대로("① 낚시 제목" 형태). 거짓말 위치를 sentences 안에 표시하지 마라.`;
 }
 
 function lieSetIsValid(r) {
@@ -702,8 +868,8 @@ function lieSetIsValid(r) {
 }
 
 function normalizeLie(lie) {
-  const fam = familyOf(lie.type) || LIE_FAMILIES.find(f => f.id === lie.family);
-  return { ...lie, _fam: fam, slot: (fam && fam.slot) || lie.slot || '—' };
+  const fam = familyOf(lie.type) || LIE_FAMILIES.find(f => f.id === String(lie.family));
+  return { ...lie, _fam: fam, intent: (fam && fam.intent) || '—' };
 }
 
 /* ── 세포 앵커 카드 렌더링 ── */
@@ -730,6 +896,11 @@ function renderAnchor(a) {
 function renderLieHunt(r4, lies) {
   ['sec5m','sec5s','sec5h','sec5a'].forEach(id => document.getElementById(id).style.display='block');
 
+  document.getElementById('missionFams').innerHTML = LIE_FAMILIES.map(f => `
+    <div class="slot-cell" style="--sc:${f.color}">
+      <b>${f.id}군 ${esc(f.name)}</b><span>${esc(f.intent)}</span>
+    </div>`).join('');
+
   const list = document.getElementById('summaryList');
   list.innerHTML = '';
   (r4.sentences || []).forEach((s,i)=>{
@@ -743,14 +914,12 @@ function renderLieHunt(r4, lies) {
   hintArea.innerHTML='';
   lies.forEach((lie,n)=>{
     const f = lie._fam;
-    // 「없던 말」처럼 칸 이름과 군 이름이 같으면 한 번만 쓴다
-    const famLabel = f ? (f.name === lie.slot ? `${f.id}군` : `${f.id}군 · ${f.name}`) : '';
-    const slotLabel = famLabel ? `${lie.slot} 칸 → ${famLabel}` : `${lie.slot} 칸`;
+    const famLabel = f ? `${f.id}군 · ${f.name}` : '—';
     const g=document.createElement('div');
     g.className='hint-group';
     g.innerHTML=`
       <div class="hint-group-title">▣ 거짓말 #${n+1} 힌트</div>
-      <div class="hint-step hg"><div class="hl">🟢 1단계 — 어느 칸이 바뀌었나</div><div><span class="slot-chip">${esc(slotLabel)}</span> ${esc(lie.hint1)}</div></div>
+      <div class="hint-step hg"><div class="hl">🟢 1단계 — 이 말이 무엇을 하려는 건가</div><div><span class="slot-chip">${esc(famLabel)} · ${esc(lie.intent)}</span> ${esc(lie.hint1)}</div></div>
       <div class="hint-step hy"><div class="hl">🟡 2단계 — 어디쯤 있나</div><div>${esc(lie.hint2)}</div></div>
       <div class="hint-step hr2"><div class="hl">🔴 3단계 — 스스로에게 물어볼 것</div><div>${esc(lie.hint3)}</div></div>`;
     hintArea.appendChild(g);
@@ -766,12 +935,13 @@ function renderLieHunt(r4, lies) {
     const tr=document.createElement('tr');
     tr.innerHTML=
       `<td><b>${lie.idx+1}번</b></td>`+
-      `<td><span class="slot-chip">${esc(lie.slot)}</span></td>`+
-      `<td>${famChip}${esc(lie.type)}</td>`+
+      `<td>${famChip}${esc(lie.type)}<div class="cmp"><span class="cmp-o">${esc(lie.intent)}</span></div></td>`+
       `<td>${esc(lie.twisted)}`+
         (lie.original ? `<div class="cmp"><span class="cmp-o">원래 → ${esc(lie.original)}</span></div>` : '')+
       `</td>`+
-      `<td>${esc(lie.truth)}</td><td>${esc(lie.evidence)}</td><td>${esc(lie.tip)}</td>`;
+      `<td>${esc(lie.truth)}</td>`+
+      `<td>${esc(lie.real || '')}</td>`+
+      `<td>${esc(lie.evidence)}</td><td>${esc(lie.tip)}</td>`;
     tbody.appendChild(tr);
   });
 }

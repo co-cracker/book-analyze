@@ -1,0 +1,360 @@
+<title>거짓말 12종 도감</title>
+<style>
+:root{
+  --paper:#FBFAF7; --surface:#FFFFFF; --line:#E6E2D8; --line-soft:#F1EDE4;
+  --ink:#1B1A17; --ink-2:#4A4740; --ink-3:#7A766C;
+  --said:#B5372B; --said-bg:#FBEDEA; --real:#2F6B4F; --real-bg:#EAF3EC;
+  --fam1:#8A5A12; --fam1-bg:#FAF0DC;
+  --fam2:#14685A; --fam2-bg:#E4F4EF;
+  --fam3:#3B3585; --fam3-bg:#EDECFC;
+  --fam4:#97401F; --fam4-bg:#FAEDE7;
+  --sans:'Pretendard','Pretendard Variable',-apple-system,'Apple SD Gothic Neo',
+         'Malgun Gothic','맑은 고딕','Noto Sans KR',system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#141311; --surface:#1C1B18; --line:#302E29; --line-soft:#242220;
+    --ink:#F0EDE5; --ink-2:#C4C0B6; --ink-3:#8E8A80;
+    --said:#E98A7C; --said-bg:#31201D; --real:#8FC5A5; --real-bg:#1A2A21;
+    --fam1:#CAB494; --fam1-bg:#2F2D29;
+    --fam2:#95BBB4; --fam2-bg:#2B2E2D;
+    --fam3:#A6A4C8; --fam3-bg:#2D2C2F;
+    --fam4:#D0A99A; --fam4-bg:#2F2D2B;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#141311; --surface:#1C1B18; --line:#302E29; --line-soft:#242220;
+  --ink:#F0EDE5; --ink-2:#C4C0B6; --ink-3:#8E8A80;
+  --said:#E98A7C; --said-bg:#31201D; --real:#8FC5A5; --real-bg:#1A2A21;
+    --fam1:#CAB494; --fam1-bg:#2F2D29;
+    --fam2:#95BBB4; --fam2-bg:#2B2E2D;
+    --fam3:#A6A4C8; --fam3-bg:#2D2C2F;
+    --fam4:#D0A99A; --fam4-bg:#2F2D2B;
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+     font-size:17px;line-height:1.75;word-break:keep-all;-webkit-text-size-adjust:100%}
+.wrap{max-width:34rem;margin:0 auto;padding:2.5rem 1.25rem 5rem;
+       display:flex;flex-direction:column;gap:2.75rem}
+
+.masthead{display:flex;flex-direction:column;gap:.5rem}
+.eyebrow{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;
+         color:var(--ink-3);font-weight:700}
+h1{margin:0;font-size:2.1rem;line-height:1.2;letter-spacing:-.02em;font-weight:800;text-wrap:balance}
+.standfirst{margin:0;color:var(--ink-2);font-size:1rem}
+
+section{display:flex;flex-direction:column;gap:1rem}
+h2{margin:0;font-size:1.3rem;line-height:1.35;font-weight:800;text-wrap:balance}
+p{margin:0}
+.lede{color:var(--ink-2)}
+
+.qbox{background:var(--ink);color:var(--paper);border-radius:.85rem;
+      padding:1.35rem 1.3rem;display:flex;flex-direction:column;gap:.45rem}
+.qbox .qk{font-size:.72rem;letter-spacing:.1em;font-weight:700;opacity:.65}
+.qbox .qq{font-size:1.25rem;font-weight:800;line-height:1.45;text-wrap:balance}
+.qbox .qn{font-size:.85rem;opacity:.72;line-height:1.6}
+
+.triage{display:flex;flex-direction:column;gap:.55rem}
+.tri{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--fc);
+     border-radius:.55rem;padding:.8rem .9rem;display:grid;
+     grid-template-columns:auto 1fr;gap:.15rem .55rem;align-items:baseline}
+.tri-tag{font-size:.68rem;font-weight:800;letter-spacing:.05em;color:var(--fc);
+         background:var(--fc-bg);padding:.1rem .4rem;border-radius:.25rem}
+.tri-name{font-size:1.05rem;font-weight:800}
+.tri-intent{grid-column:2;font-size:.92rem;color:var(--ink-2)}
+.tri-when{grid-column:2;font-size:.82rem;color:var(--ink-3);margin-top:.15rem}
+.tri-when::before{content:"이럴 때 — ";font-weight:700}
+
+.fam-head{display:flex;flex-direction:column;gap:.35rem;
+          border-top:3px solid var(--fc);padding-top:.85rem}
+.fam-title{display:flex;align-items:baseline;gap:.5rem;flex-wrap:wrap}
+.fam-tag{font-size:.72rem;font-weight:800;letter-spacing:.06em;color:var(--fc);
+         background:var(--fc-bg);padding:.15rem .5rem;border-radius:.3rem}
+.fam-name{font-size:1.4rem;font-weight:800;letter-spacing:-.01em}
+.fam-intent{color:var(--ink-2);font-size:.98rem}
+.fam-when{font-size:.88rem;color:var(--ink-3)}
+.fam-when b{color:var(--ink-2)}
+
+.type{background:var(--surface);border:1px solid var(--line);border-radius:.75rem;
+      padding:1.15rem 1.2rem;display:flex;flex-direction:column;gap:.8rem}
+.t-head{display:flex;align-items:baseline;gap:.5rem}
+.t-no{font-size:1.15rem;font-weight:800;color:var(--fc)}
+.t-name{font-size:1.1rem;font-weight:800;letter-spacing:-.01em}
+.chips{display:flex;flex-wrap:wrap;gap:.3rem}
+.chip{font-size:.74rem;color:var(--ink-3);background:var(--line-soft);
+      border-radius:1rem;padding:.15rem .55rem}
+
+.scene{border:1px solid var(--line);border-radius:.6rem;overflow:hidden}
+.s-row{display:flex;gap:.7rem;padding:.75rem .85rem;align-items:flex-start}
+.s-row + .s-row{border-top:1px solid var(--line)}
+.s-tag{flex:0 0 auto;font-size:.66rem;font-weight:800;letter-spacing:.04em;
+       padding:.15rem .45rem;border-radius:.25rem;margin-top:.3rem;white-space:nowrap}
+.s-said{background:var(--said-bg)}
+.s-said .s-tag{background:var(--said);color:var(--paper)}
+.s-said .s-txt{font-weight:700}
+.s-real .s-tag{background:var(--real-bg);color:var(--real)}
+.s-txt{font-size:.95rem;line-height:1.7}
+
+.ask{background:var(--fc-bg);border-radius:.6rem;padding:.75rem .85rem;
+     font-size:1rem;font-weight:700;color:var(--fc);line-height:1.6}
+.ask-k{display:block;font-size:.68rem;letter-spacing:.08em;font-weight:800;
+       opacity:.75;margin-bottom:.15rem}
+
+.detail{display:flex;flex-direction:column;gap:.5rem;font-size:.9rem;
+        color:var(--ink-2);line-height:1.7}
+.detail b{color:var(--ink);display:block;font-size:.75rem;letter-spacing:.04em}
+.detail .vs{background:var(--line-soft);border-radius:.5rem;padding:.6rem .75rem;
+            color:var(--ink-3);font-size:.86rem}
+
+footer{border-top:1px solid var(--line);padding-top:1.25rem;
+       color:var(--ink-3);font-size:.85rem;line-height:1.7}
+@media (max-width:400px){h1{font-size:1.8rem}}
+</style>
+
+<div class="wrap">
+  <header class="masthead">
+    <div class="eyebrow">책 분석 + 거짓말 사냥</div>
+    <h1>거짓말 12종 도감</h1>
+    <p class="standfirst">현실에서 진짜로 마주치는 거짓말. 광고에서, 단톡방에서, 어른들 말에서 실제로 마주치는 것들입니다.</p>
+  </header>
+
+  <section>
+    <div class="qbox">
+      <span class="qk">유형을 고르기 전에</span>
+      <span class="qq">이 말이 나한테 무엇을 하려는 거지?</span>
+      <span class="qn">유형을 먼저 고르지 마라. 이 질문에 먼저 답하면 12개가 3개로 줄어든다.</span>
+    </div>
+    <div class="triage">
+      <div class="tri" style="--fc:var(--fam1);--fc-bg:var(--fam1-bg)">
+        <span class="tri-tag">1군</span>
+        <span class="tri-name">부풀리기</span>
+        <span class="tri-intent">실제보다 크게 보이게 한다</span>
+        <span class="tri-when">말이 실제보다 세게 들린다</span>
+      </div>
+      <div class="tri" style="--fc:var(--fam2);--fc-bg:var(--fam2-bg)">
+        <span class="tri-tag">2군</span>
+        <span class="tri-name">골라 보여주기</span>
+        <span class="tri-intent">있는 것 중에서 유리한 것만 꺼낸다</span>
+        <span class="tri-when">말한 건 다 사실인데 뭔가 허전하다</span>
+      </div>
+      <div class="tri" style="--fc:var(--fam3);--fc-bg:var(--fam3-bg)">
+        <span class="tri-tag">3군</span>
+        <span class="tri-name">엮기</span>
+        <span class="tri-intent">상관없는 것을 원인처럼 붙인다</span>
+        <span class="tri-when">"그래서 그렇게 됐다"는 말이 너무 매끄럽다</span>
+      </div>
+      <div class="tri" style="--fc:var(--fam4);--fc-bg:var(--fam4-bg)">
+        <span class="tri-tag">4군</span>
+        <span class="tri-name">빌리고 얹기</span>
+        <span class="tri-intent">남의 입을 빌리거나, 없던 말을 얹는다</span>
+        <span class="tri-when">말한 사람이 누구인지 끝까지 안 나온다</span>
+      </div>
+    </div>
+  </section>
+
+  <section style="--fc:var(--fam1);--fc-bg:var(--fam1-bg)">
+    <div class="fam-head">
+      <div class="fam-title"><span class="fam-tag">1군</span><span class="fam-name">부풀리기</span></div>
+      <p class="fam-intent">실제보다 크게 보이게 한다</p>
+      <p class="fam-when"><b>이럴 때 의심한다</b> 말이 실제보다 세게 들린다</p>
+    </div>
+    <article class="type">
+      <div class="t-head"><span class="t-no">①</span><span class="t-name">낚시 제목</span></div>
+      <div class="chips"><span class="chip">유튜브 썸네일</span><span class="chip">뉴스 기사 제목</span><span class="chip">커뮤니티 글 제목</span></div>
+      <div class="scene">
+        <div class="s-row s-said"><span class="s-tag">이렇게 말한다</span><span class="s-txt">충격! 매일 이것만 먹었더니 키가 쑥</span></div>
+        <div class="s-row s-real"><span class="s-tag">실제로는</span><span class="s-txt">본문에는 한 사람이 석 달 동안 1cm 자랐다고만 적혀 있다</span></div>
+      </div>
+      <p class="ask"><span class="ask-k">되받아치는 질문</span>제목이 말한 걸 본문이 정말로 말하고 있나?</p>
+      <div class="detail">
+        <p><b>왜 속나</b> 제목은 공짜로 읽히고 본문은 힘이 든다. 그래서 제목만 기억에 남고, 본문을 읽은 뒤에도 제목이 준 인상이 그대로 남는다.</p>
+        <p><b>글에서는 이렇게 보인다</b> 요약의 첫 문장만 유독 세다. 뒤 문장들이 첫 문장을 뒷받침하지 못하고 겉돈다.</p>
+        <p class="vs">③ 숫자로 꼬시기와 헷갈리면 — 부풀리는 도구가 숫자면 ③, 표현이면 ①.</p>
+      </div>
+    </article>
+    <article class="type">
+      <div class="t-head"><span class="t-no">②</span><span class="t-name">최고라고 말하기</span></div>
+      <div class="chips"><span class="chip">학원 광고</span><span class="chip">제품 상세페이지</span><span class="chip">자기소개서</span></div>
+      <div class="scene">
+        <div class="s-row s-said"><span class="s-tag">이렇게 말한다</span><span class="s-txt">국내 유일, 1등 학습법</span></div>
+        <div class="s-row s-real"><span class="s-tag">실제로는</span><span class="s-txt">무엇 중에 1등인지, 누가 그렇게 정했는지는 어디에도 없다</span></div>
+      </div>
+      <p class="ask"><span class="ask-k">되받아치는 질문</span>무엇과 비교해서? 그건 누가 정했지?</p>
+      <div class="detail">
+        <p><b>왜 속나</b> 비교 대상이 없으면 반박할 대상도 없다. 따질 것이 안 보이니 그냥 넘어가게 된다.</p>
+        <p><b>글에서는 이렇게 보인다</b> 「더 / 가장 / 유일한 / 뛰어난」이 있는데 정작 「~보다」가 안 보인다.</p>
+        <p class="vs">⑩ 권위 빌리기와 헷갈리면 — 순위를 매긴 사람이 등장하면 ⑩, 아무도 없으면 ②.</p>
+      </div>
+    </article>
+    <article class="type">
+      <div class="t-head"><span class="t-no">③</span><span class="t-name">숫자로 꼬시기</span></div>
+      <div class="chips"><span class="chip">광고 배너</span><span class="chip">건강 정보 글</span><span class="chip">통계를 인용한 뉴스</span></div>
+      <div class="scene">
+        <div class="s-row s-said"><span class="s-tag">이렇게 말한다</span><span class="s-txt">무려 90%가 효과를 봤습니다</span></div>
+        <div class="s-row s-real"><span class="s-tag">실제로는</span><span class="s-txt">몇 명 중 90%인지, 누가 조사했는지가 없다. 열 명 중 아홉일 수도 있다</span></div>
+      </div>
+      <p class="ask"><span class="ask-k">되받아치는 질문</span>몇 명 중에 몇 명이지? 그건 누가 세었지?</p>
+      <div class="detail">
+        <p><b>왜 속나</b> 숫자는 이미 누가 확인해 둔 사실처럼 보인다. 퍼센트는 특히 그렇다.</p>
+        <p><b>글에서는 이렇게 보인다</b> 퍼센트나 「대부분 / 대다수 / 흔히」가 나오는데, 원래 몇이었는지가 없다.</p>
+        <p class="vs">⑥ 불리한 항목 빼기와 헷갈리면 — 분모 자체가 없으면 ③, 분모는 있는데 나쁜 쪽만 빠졌으면 ⑥.</p>
+      </div>
+    </article>
+  </section>
+
+  <section style="--fc:var(--fam2);--fc-bg:var(--fam2-bg)">
+    <div class="fam-head">
+      <div class="fam-title"><span class="fam-tag">2군</span><span class="fam-name">골라 보여주기</span></div>
+      <p class="fam-intent">있는 것 중에서 유리한 것만 꺼낸다</p>
+      <p class="fam-when"><b>이럴 때 의심한다</b> 말한 건 다 사실인데 뭔가 허전하다</p>
+    </div>
+    <article class="type">
+      <div class="t-head"><span class="t-no">④</span><span class="t-name">성공한 사람만 보여주기</span></div>
+      <div class="chips"><span class="chip">학원 벽의 합격증</span><span class="chip">쇼핑몰 후기</span><span class="chip">SNS 피드</span></div>
+      <div class="scene">
+        <div class="s-row s-said"><span class="s-tag">이렇게 말한다</span><span class="s-txt">우리 학원 다니고 이만큼 붙었습니다 (합격증 30장)</span></div>
+        <div class="s-row s-real"><span class="s-tag">실제로는</span><span class="s-txt">떨어진 300명의 이야기는 벽에 붙지 않는다</span></div>
+      </div>
+      <p class="ask"><span class="ask-k">되받아치는 질문</span>안 된 사람은 어디 갔지?</p>
+      <div class="detail">
+        <p><b>왜 속나</b> 눈에 보이는 것만으로 판단한다. 안 보이는 쪽은 아예 없는 것처럼 느껴진다.</p>
+        <p><b>글에서는 이렇게 보인다</b> 효과를 본 사례만 이어지고, 예외나 실패가 한 번도 나오지 않는다.</p>
+        <p class="vs">⑥ 불리한 항목 빼기와 헷갈리면 — 여러 사람 중에서 고른 것이면 ④, 한 대상 안에서 항목을 고른 것이면 ⑥.</p>
+      </div>
+    </article>
+    <article class="type">
+      <div class="t-head"><span class="t-no">⑤</span><span class="t-name">조건 숨기기</span></div>
+      <div class="chips"><span class="chip">작은 글씨 약관</span><span class="chip">이벤트 배너</span><span class="chip">부모님과의 약속</span></div>
+      <div class="scene">
+        <div class="s-row s-said"><span class="s-tag">이렇게 말한다</span><span class="s-txt">지금 신청하면 무료!</span></div>
+        <div class="s-row s-real"><span class="s-tag">실제로는</span><span class="s-txt">별표 아래 작은 글씨에 「첫 달만, 3개월 약정 시」가 붙어 있다</span></div>
+      </div>
+      <p class="ask"><span class="ask-k">되받아치는 질문</span>언제까지, 누구한테, 어떤 경우에만 해당하는 거지?</p>
+      <div class="detail">
+        <p><b>왜 속나</b> 조건은 늘 나중에, 작게 나온다. 결정을 이미 내린 뒤에 읽게 되므로 되돌리기 어렵다.</p>
+        <p><b>글에서는 이렇게 보인다</b> 원문에 있던 「~할 때 / ~인 경우 / 다만 / 하지만」이 요약에서 사라져 무조건인 문장이 됐다.</p>
+        <p class="vs">④ 성공한 사람만 보여주기와 헷갈리면 — 빠진 것이 「어떤 경우에만」이면 ⑤, 「누구」면 ④.</p>
+      </div>
+    </article>
+    <article class="type">
+      <div class="t-head"><span class="t-no">⑥</span><span class="t-name">불리한 항목 빼기</span></div>
+      <div class="chips"><span class="chip">제품 포장 앞면</span><span class="chip">성적표 설명</span><span class="chip">잘못을 설명할 때</span></div>
+      <div class="scene">
+        <div class="s-row s-said"><span class="s-tag">이렇게 말한다</span><span class="s-txt">이 과자, 설탕 0g이에요</span></div>
+        <div class="s-row s-real"><span class="s-tag">실제로는</span><span class="s-txt">설탕은 정말 없다. 대신 지방이 다른 과자의 두 배인데 그건 말하지 않는다</span></div>
+      </div>
+      <p class="ask"><span class="ask-k">되받아치는 질문</span>이 하나 말고, 같이 봐야 할 다른 항목은 뭐지?</p>
+      <div class="detail">
+        <p><b>왜 속나</b> 말한 내용이 전부 사실이면 거짓말이라고 느끼지 못한다. 그래서 방심한다.</p>
+        <p><b>글에서는 이렇게 보인다</b> 한 측면만 반복해서 강조되고, 원문에 함께 있던 다른 측면이 요약에는 없다.</p>
+        <p class="vs">⑤ 조건 숨기기와 헷갈리면 — 빠진 것이 「조건」이면 ⑤, 「나란히 있던 다른 사실」이면 ⑥.</p>
+      </div>
+    </article>
+  </section>
+
+  <section style="--fc:var(--fam3);--fc-bg:var(--fam3-bg)">
+    <div class="fam-head">
+      <div class="fam-title"><span class="fam-tag">3군</span><span class="fam-name">엮기</span></div>
+      <p class="fam-intent">상관없는 것을 원인처럼 붙인다</p>
+      <p class="fam-when"><b>이럴 때 의심한다</b> "그래서 그렇게 됐다"는 말이 너무 매끄럽다</p>
+    </div>
+    <article class="type">
+      <div class="t-head"><span class="t-no">⑦</span><span class="t-name">같이 일어난 걸 원인이라 하기</span></div>
+      <div class="chips"><span class="chip">건강 기사</span><span class="chip">공부법 조언</span><span class="chip">어른들의 훈계</span></div>
+      <div class="scene">
+        <div class="s-row s-said"><span class="s-tag">이렇게 말한다</span><span class="s-txt">아침 먹는 애들이 성적이 좋대. 그러니까 아침을 먹어야 성적이 올라</span></div>
+        <div class="s-row s-real"><span class="s-tag">실제로는</span><span class="s-txt">아침을 챙겨 주는 집이 공부도 챙겨 주는 것일 수 있다. 진짜 원인은 따로 있다</span></div>
+      </div>
+      <p class="ask"><span class="ask-k">되받아치는 질문</span>정말 이것 때문일까, 아니면 둘 다 다른 것 때문일까?</p>
+      <div class="detail">
+        <p><b>왜 속나</b> 두 가지가 같이 보이면 뇌가 알아서 화살표를 그린다. 그리는 줄도 모르고 그린다.</p>
+        <p><b>글에서는 이렇게 보인다</b> 원문이 「함께 나타난다 / 관련이 있다」인데 요약이 「때문이다 / 만든다」로 바뀌었다.</p>
+        <p class="vs">⑧ 앞뒤 뒤집기와 헷갈리면 — 원문에 화살표가 아예 없었으면 ⑦, 있었는데 방향만 반대면 ⑧.</p>
+      </div>
+    </article>
+    <article class="type">
+      <div class="t-head"><span class="t-no">⑧</span><span class="t-name">앞뒤 뒤집기</span></div>
+      <div class="chips"><span class="chip">혼날 때</span><span class="chip">뉴스 해설</span><span class="chip">친구 사이의 다툼</span></div>
+      <div class="scene">
+        <div class="s-row s-said"><span class="s-tag">이렇게 말한다</span><span class="s-txt">게임을 많이 해서 성적이 떨어진 거야</span></div>
+        <div class="s-row s-real"><span class="s-tag">실제로는</span><span class="s-txt">성적이 먼저 떨어졌고, 그게 힘들어서 게임으로 도망친 것일 수도 있다</span></div>
+      </div>
+      <p class="ask"><span class="ask-k">되받아치는 질문</span>둘 중에 어느 쪽이 먼저 일어났지?</p>
+      <div class="detail">
+        <p><b>왜 속나</b> 쓰인 단어가 하나도 바뀌지 않아서, 읽어서는 절대 안 잡힌다.</p>
+        <p><b>글에서는 이렇게 보인다</b> 「때문에 / 그래서」 앞뒤에 놓인 두 가지가 원문과 자리가 바뀌어 있다.</p>
+        <p class="vs">읽어서는 못 잡는다. 두 가지에 동그라미 치고 화살표를 직접 그려 방향을 맞춰 봐야 한다.</p>
+      </div>
+    </article>
+    <article class="type">
+      <div class="t-head"><span class="t-no">⑨</span><span class="t-name">진짜 이유 감추기</span></div>
+      <div class="chips"><span class="chip">약속을 어겼을 때</span><span class="chip">거절할 때</span><span class="chip">사과문</span></div>
+      <div class="scene">
+        <div class="s-row s-said"><span class="s-tag">이렇게 말한다</span><span class="s-txt">네가 늦게 말해서 못 갔어</span></div>
+        <div class="s-row s-real"><span class="s-tag">실제로는</span><span class="s-txt">애초에 갈 생각이 없었다. 늦게 말한 건 사실이지만 그것 때문은 아니다</span></div>
+      </div>
+      <p class="ask"><span class="ask-k">되받아치는 질문</span>이 이유가 없어졌다면 결과가 달라졌을까?</p>
+      <div class="detail">
+        <p><b>왜 속나</b> 대는 이유가 사실이면 반박하기 어렵다. 사실이지만 진짜 이유가 아닐 뿐이다.</p>
+        <p><b>글에서는 이렇게 보인다</b> 결론은 원문 그대로인데 그 앞의 이유만 다른 것으로 바뀌어 있다.</p>
+        <p class="vs">⑫ 없던 결론 얹기와 헷갈리면 — 결론이 원문에 있던 것이면 ⑨, 결론 자체가 새로 생겼으면 ⑫.</p>
+      </div>
+    </article>
+  </section>
+
+  <section style="--fc:var(--fam4);--fc-bg:var(--fam4-bg)">
+    <div class="fam-head">
+      <div class="fam-title"><span class="fam-tag">4군</span><span class="fam-name">빌리고 얹기</span></div>
+      <p class="fam-intent">남의 입을 빌리거나, 없던 말을 얹는다</p>
+      <p class="fam-when"><b>이럴 때 의심한다</b> 말한 사람이 누구인지 끝까지 안 나온다</p>
+    </div>
+    <article class="type">
+      <div class="t-head"><span class="t-no">⑩</span><span class="t-name">권위 빌리기</span></div>
+      <div class="chips"><span class="chip">광고 문구</span><span class="chip">단톡방</span><span class="chip">설득하려는 어른의 말</span></div>
+      <div class="scene">
+        <div class="s-row s-said"><span class="s-tag">이렇게 말한다</span><span class="s-txt">전문가들이 다 그렇게 말해. 요즘은 다들 이렇게 한대</span></div>
+        <div class="s-row s-real"><span class="s-tag">실제로는</span><span class="s-txt">그 전문가가 누구인지, 다들이 몇 명인지는 끝까지 나오지 않는다</span></div>
+      </div>
+      <p class="ask"><span class="ask-k">되받아치는 질문</span>그 전문가가 누구지? 다들이 정확히 누구지?</p>
+      <div class="detail">
+        <p><b>왜 속나</b> 이름 없는 다수에게는 물어볼 수가 없다. 물어볼 데가 없으면 그냥 믿게 된다.</p>
+        <p><b>글에서는 이렇게 보인다</b> 「연구에 따르면 / 알려져 있다 / 흔히 말한다」가 붙었는데 원문에는 그런 출처가 없다.</p>
+        <p class="vs">⑫ 없던 결론 얹기와 헷갈리면 — 덧붙은 것이 「누가 말했다」면 ⑩, 「그래서 어떻다」면 ⑫.</p>
+      </div>
+    </article>
+    <article class="type">
+      <div class="t-head"><span class="t-no">⑪</span><span class="t-name">건너 들은 말</span></div>
+      <div class="chips"><span class="chip">카톡 전달</span><span class="chip">친구가 전해 준 말</span><span class="chip">소문</span></div>
+      <div class="scene">
+        <div class="s-row s-said"><span class="s-tag">이렇게 말한다</span><span class="s-txt">쟤가 너 욕했대</span></div>
+        <div class="s-row s-real"><span class="s-tag">실제로는</span><span class="s-txt">세 사람을 건너오는 동안 「좀 서운했나 봐」가 「욕했대」가 됐다</span></div>
+      </div>
+      <p class="ask"><span class="ask-k">되받아치는 질문</span>이걸 직접 들은 사람이 누구지? 원래 말은 정확히 뭐였지?</p>
+      <div class="detail">
+        <p><b>왜 속나</b> 전할 때마다 재미없는 부분은 떨어지고 자극적인 부분만 남는다. 아무도 거짓말할 마음이 없어도 그렇게 된다.</p>
+        <p><b>글에서는 이렇게 보인다</b> 요약이 원문보다 감정적으로 세다. 원문에 없던 판단하는 낱말이 끼어 있다.</p>
+        <p class="vs">① 낚시 제목과 헷갈리면 — 세진 것이 「전해지는 과정」에서면 ⑪, 「눈길을 끌려고」면 ①.</p>
+      </div>
+    </article>
+    <article class="type">
+      <div class="t-head"><span class="t-no">⑫</span><span class="t-name">없던 결론 얹기</span></div>
+      <div class="chips"><span class="chip">기사 공유하며 한 줄 덧붙일 때</span><span class="chip">훈계</span><span class="chip">독후감</span></div>
+      <div class="scene">
+        <div class="s-row s-said"><span class="s-tag">이렇게 말한다</span><span class="s-txt">라면 소비가 늘었대. 그러니까 요즘 애들이 건강을 안 챙기는 거지</span></div>
+        <div class="s-row s-real"><span class="s-tag">실제로는</span><span class="s-txt">기사는 소비가 늘었다는 데까지만 말했다. 뒷문장은 공유한 사람이 붙인 것이다</span></div>
+      </div>
+      <p class="ask"><span class="ask-k">되받아치는 질문</span>이 결론을 원래 말한 사람이 진짜로 말했나?</p>
+      <div class="detail">
+        <p><b>왜 속나</b> 앞이 사실이면 뒤도 사실처럼 딸려 온다. 어디까지가 원문인지 아무도 표시해 주지 않는다.</p>
+        <p><b>글에서는 이렇게 보인다</b> 「그러므로 ~해야 한다 / 결국 ~이다」로 끝나는데 원문에는 비슷한 문장조차 없다.</p>
+        <p class="vs">⑨ 진짜 이유 감추기와 헷갈리면 — 원문에 있던 결론의 이유만 바뀌었으면 ⑨, 결론 자체가 새로 생겼으면 ⑫.</p>
+      </div>
+    </article>
+  </section>
+
+  <footer>
+    책 분석 + 거짓말 사냥 · 비판적 독해 훈련 자료<br>
+    12종. 인쇄용 워드 파일, 앱 화면 왼쪽 도감과 같은 내용입니다.
+  </footer>
+</div>
