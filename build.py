@@ -95,23 +95,32 @@ def web_page(d):
         cards = []
         for t in f['types']:
             where = ''.join('<span class="chip">%s</span>' % esc(w) for w in t['where'])
-            cards.append('''    <article class="type">
+            cards.append("""    <article class="type">
       <div class="t-head"><span class="t-no">{no}</span><span class="t-name">{name}</span></div>
-      <div class="chips">{where}</div>
+      <dl class="spec">
+        <dt>정의</dt><dd>{deff}</dd>
+        <dt>알아보는 법</dt><dd>{spot}</dd>
+        <dt>왜 거짓인가</dt><dd>{why}</dd>
+      </dl>
       <div class="scene">
-        <div class="s-row s-said"><span class="s-tag">이렇게 말한다</span><span class="s-txt">{said}</span></div>
-        <div class="s-row s-real"><span class="s-tag">실제로는</span><span class="s-txt">{actual}</span></div>
+        <div class="s-row s-real"><span class="s-tag">작가</span><span class="s-txt">{ba}</span></div>
+        <div class="s-row s-said"><span class="s-tag">정리</span><span class="s-txt">{bs}</span></div>
+      </div>
+      <div class="real">
+        <div class="real-k">현실에서 같은 수법</div>
+        <div class="chips">{where}</div>
+        <div class="scene">
+          <div class="s-row s-said"><span class="s-tag">이렇게 말한다</span><span class="s-txt">{said}</span></div>
+          <div class="s-row s-real"><span class="s-tag">실제로는</span><span class="s-txt">{actual}</span></div>
+        </div>
       </div>
       <p class="ask"><span class="ask-k">되받아치는 질문</span>{ask}</p>
-      <div class="detail">
-        <p><b>왜 속나</b> {why}</p>
-        <p><b>글에서는 이렇게 보인다</b> {intext}</p>
-        <p class="vs">{vs}</p>
-      </div>
-    </article>'''.format(no=t['no'], name=esc(t['name']), where=where,
-                         said=esc(t['said']), actual=esc(t['actual']),
-                         ask=esc(t['ask']), why=esc(t['why']),
-                         intext=esc(t['intext']), vs=esc(t['vs'])))
+      <p class="vs">{vs}</p>
+    </article>""".format(no=t['no'], name=esc(t['name']),
+                         deff=esc(t['def']), spot=esc(t['spot']), why=esc(t['whyLie']),
+                         ba=esc(t['bookAuthor']), bs=esc(t['bookSummary']),
+                         where=where, said=esc(t['realSaid']), actual=esc(t['realActual']),
+                         ask=esc(t['ask']), vs=esc(t['vs'])))
 
         sections.append('''  <section style="--fc:var(--fam{id});--fc-bg:var(--fam{id}-bg)">
     <div class="fam-head">
@@ -238,11 +247,16 @@ p{{margin:0}}
 .ask-k{{display:block;font-size:.68rem;letter-spacing:.08em;font-weight:800;
        opacity:.75;margin-bottom:.15rem}}
 
-.detail{{display:flex;flex-direction:column;gap:.5rem;font-size:.9rem;
-        color:var(--ink-2);line-height:1.7}}
-.detail b{{color:var(--ink);display:block;font-size:.75rem;letter-spacing:.04em}}
-.detail .vs{{background:var(--line-soft);border-radius:.5rem;padding:.6rem .75rem;
-            color:var(--ink-3);font-size:.86rem}}
+.spec{{display:grid;grid-template-columns:auto 1fr;gap:.35rem .75rem;margin:0;
+      font-size:.92rem;line-height:1.7}}
+.spec dt{{font-size:.72rem;font-weight:800;letter-spacing:.03em;color:var(--ink-3);
+        white-space:nowrap;padding-top:.28rem}}
+.spec dd{{margin:0;color:var(--ink-2)}}
+.real{{border-top:1px dashed var(--line);padding-top:.85rem;
+     display:flex;flex-direction:column;gap:.5rem}}
+.real-k{{font-size:.72rem;font-weight:800;letter-spacing:.03em;color:var(--ink-3)}}
+.vs{{background:var(--line-soft);border-radius:.5rem;padding:.6rem .75rem;
+   color:var(--ink-3);font-size:.86rem;line-height:1.65}}
 
 footer{{border-top:1px solid var(--line);padding-top:1.25rem;
        color:var(--ink-3);font-size:.85rem;line-height:1.7}}

@@ -22,19 +22,29 @@
 | `docs/거짓말-유형-체계.md` | 분류 체계, 12종 목록, 출제 규칙 |
 | `docs/세포-중심-구조.md` | 세포 비유를 뼈대로 삼는 설명 구조 |
 
-## 설치
+## 시작하기
+
+연결 방법이 두 가지다. 화면 맨 위 연결 패널에서 고른다.
+
+### 방법 A — 혼자 쓸 때 (설치할 게 없다)
 
 1. [aistudio.google.com/apikey](https://aistudio.google.com/apikey)에서 Gemini API 키 발급 (무료)
-2. [script.google.com](https://script.google.com)에서 새 프로젝트를 만들고 `Code.gs` 내용을 붙여넣기
-3. `GEMINI_API_KEY`에 발급받은 키 입력
-4. **배포 → 새 배포 → 웹 앱 → 액세스: 모든 사용자** → 배포 URL 복사
-5. `book_analysis_app.html`의 `GAS_URL`에 그 URL 붙여넣기
-6. [netlify.com/drop](https://app.netlify.com/drop)에 HTML 파일을 끌어다 놓고, 생성된 `https://` 주소를 공유
+2. `book_analysis_app.html`을 브라우저로 연다
+3. 연결 패널에 키를 붙여넣고 **연결 테스트**를 누른다
 
-> 로컬에서 HTML을 직접 열면 브라우저 CORS 정책 때문에 외부 호출이 막힌다.
-> 반드시 5~6단계처럼 HTTPS로 호스팅해서 써야 한다.
+키는 그 브라우저에만 저장되고 다른 곳으로 나가지 않는다. 파일을 남에게 줘도
+키는 따라가지 않으므로, 공유하려면 방법 B를 쓴다.
 
-한 번 설정해 두면 이후에는 HTML 파일만 공유하면 된다. 받는 사람에게는 API 키가 필요 없다.
+### 방법 B — 남에게 나눠 줄 때
+
+1. [script.google.com](https://script.google.com)에서 새 프로젝트를 만들고 `Code.gs`를 붙여넣기
+2. `GEMINI_API_KEY`에 키 입력
+3. **배포 → 새 배포 → 웹 앱 → 액세스: 모든 사용자** → `/exec`로 끝나는 URL 복사
+4. 연결 패널에서 "중계 서버 쓰기"를 고르고 그 URL을 붙여넣기
+5. [netlify.com/drop](https://app.netlify.com/drop)에 HTML 파일을 끌어다 놓고, 생성된 `https://` 주소를 공유
+
+받는 사람은 키가 필요 없다. 다만 로컬 파일을 그냥 열면 브라우저가 외부 호출을
+막으므로, 5단계처럼 HTTPS로 호스팅해야 한다. (방법 A는 로컬에서도 작동한다.)
 
 ## 구조
 

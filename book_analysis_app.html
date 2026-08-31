@@ -44,39 +44,59 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text
 .fam-intent{font-size:7.5pt;color:var(--fc2);margin-bottom:2px;line-height:1.5}
 .fam-when{font-size:7pt;color:#82817a;line-height:1.55;margin-bottom:9px}
 
-.lie-item{margin-bottom:11px;padding-bottom:11px;border-bottom:1px solid #282826}
+.lie-item{margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid #282826}
 .fam .lie-item:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0}
-.lie-badge{display:inline-block;font-size:7.5pt;font-weight:700;padding:1px 7px;border-radius:20px;margin-bottom:5px}
-.lie-where{display:flex;flex-wrap:wrap;gap:3px;margin-bottom:5px}
+.lie-badge{display:inline-block;font-size:7.5pt;font-weight:700;padding:1px 7px;border-radius:20px;margin-bottom:6px}
+.lie-row{display:grid;grid-template-columns:52px 1fr;gap:6px;margin-bottom:4px;align-items:start}
+.lie-k{font-size:6.5pt;font-weight:700;color:#6f6e68;line-height:1.7;letter-spacing:.02em}
+.lie-v{font-size:7.5pt;color:#a8a69d;line-height:1.65}
+.lie-ex{margin-top:6px}
+.ex-line{display:block;font-size:7pt;line-height:1.6;color:#a09e95;margin-bottom:3px}
+.ex-tag{display:inline-block;font-size:6pt;font-weight:700;padding:1px 5px;border-radius:3px;margin-right:5px;white-space:nowrap}
+.ex-ok{background:#22301c;color:#9ec46f}
+.ex-no{background:#33201f;color:#e39b8f}
+.lie-where{display:flex;flex-wrap:wrap;gap:3px;margin:6px 0 7px}
 .chip{font-size:6.5pt;color:#82817a;background:#262421;border-radius:10px;padding:1px 6px}
-.lie-ask{font-size:8pt;font-weight:700;line-height:1.6}
-.lie-how{font-size:7pt;color:#a09e95;line-height:1.6;margin-top:7px}
-.lie-how b,.lie-why b{display:block;font-size:6.5pt;color:#6f6e68;font-weight:700;letter-spacing:.03em}
-.lie-why{font-size:7pt;color:#82817a;line-height:1.6;margin-top:4px}
-.lie-more{margin-top:5px}
+.lie-ask{font-size:8pt;font-weight:700;line-height:1.6;margin-top:7px}
+.lie-more{margin-top:7px}
 .lie-more summary{font-size:7pt;color:#79776f;cursor:pointer;list-style:none;user-select:none}
 .lie-more summary::-webkit-details-marker{display:none}
 .lie-more summary::before{content:'▸ ';color:#4d4c47}
 .lie-more[open] summary::before{content:'▾ '}
 .lie-more summary:hover{color:#a09e95}
-.ex-row{display:flex;gap:5px;align-items:flex-start;margin-top:5px;font-size:7.5pt;line-height:1.55}
-.ex-tag{flex-shrink:0;width:64px;text-align:center;font-size:6pt;font-weight:700;padding:2px 3px;border-radius:3px;margin-top:1px;line-height:1.35;white-space:nowrap}
-.ex-ok{background:#22301c;color:#9ec46f}
-.ex-no{background:#33201f;color:#e39b8f}
-.ex-txt{color:#a09e95}
-.lie-vs{font-size:7pt;color:#8b8981;line-height:1.6;margin-top:6px;padding:5px 7px;background:#232320;border-radius:5px}
+.lie-vs{font-size:7pt;color:#8b8981;line-height:1.6;margin-top:7px;padding:6px 8px;background:#232320;border-radius:5px}
 
 /* ── 메인 ── */
 .main{padding:26px 28px;overflow-y:auto}
 .page-title{font-size:19pt;font-weight:700;margin-bottom:4px}
 .page-sub{font-size:9pt;color:var(--muted);margin-bottom:20px}
 
-.setup-warn{background:#FCEBEB;border:1px solid #F09595;border-radius:var(--r);padding:15px 18px;margin-bottom:14px}
-.sw-title{font-size:10pt;font-weight:700;color:var(--red);margin-bottom:6px}
-.sw-body{font-size:9pt;color:#5a3535;line-height:1.8}
-.sw-body ol{margin:7px 0 7px 18px}
-.sw-body li{margin-bottom:3px}
-.sw-body code{background:#fff;border:1px solid #EBC4C4;border-radius:4px;padding:1px 5px;font-size:8.5pt}
+.conn-panel{background:var(--card);border:1px solid var(--border);border-radius:var(--r);margin-bottom:14px;overflow:hidden}
+.conn-summary{list-style:none;cursor:pointer;padding:12px 18px;display:flex;align-items:center;gap:9px;font-size:9pt;font-weight:700;color:var(--text);user-select:none}
+.conn-summary::-webkit-details-marker{display:none}
+.conn-summary:hover{background:var(--bg)}
+.conn-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.conn-dot.on{background:#67A62F;box-shadow:0 0 0 3px #EAF3DE}
+.conn-dot.off{background:#C9553F;box-shadow:0 0 0 3px #FCEBEB}
+.conn-body{padding:4px 18px 16px;border-top:1px solid var(--border)}
+.conn-choose{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.conn-opt{display:flex;gap:8px;align-items:flex-start;padding:10px 12px;border:1px solid var(--border);border-radius:8px;cursor:pointer;background:var(--bg);transition:border-color .15s}
+.conn-opt:hover{border-color:#AFA9EC}
+.conn-opt input{margin-top:3px;flex-shrink:0;accent-color:var(--purple)}
+.conn-opt b{display:block;font-size:8.5pt}
+.conn-opt em{display:block;font-style:normal;font-size:7.5pt;color:var(--muted);line-height:1.5;margin-top:2px}
+.conn-label{display:block;font-size:8pt;font-weight:700;color:var(--muted);margin-bottom:4px}
+.conn-input{width:100%;padding:9px 11px;border:1px solid var(--border);border-radius:7px;font-family:'Noto Sans KR',sans-serif;font-size:9pt;background:var(--bg);color:var(--text);outline:none}
+.conn-input:focus{border-color:#AFA9EC}
+.conn-help{font-size:8pt;color:var(--muted);line-height:1.75;margin-top:7px}
+.conn-help code{background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:1px 5px;font-size:7.5pt}
+.conn-help a{color:var(--purple);font-weight:700}
+.conn-btn{margin-top:12px;padding:9px 16px;background:var(--dark);color:#fff;border:none;border-radius:7px;font-family:'Noto Sans KR',sans-serif;font-size:8.5pt;font-weight:700;cursor:pointer}
+.conn-btn:hover{opacity:.85}
+.conn-test{font-size:8.5pt;line-height:1.7;margin-top:9px;color:var(--muted)}
+.conn-test.good{color:var(--green);font-weight:700}
+.conn-test.bad{color:var(--red);font-weight:700}
+@media(max-width:860px){.conn-choose{grid-template-columns:1fr}}
 
 .input-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:18px 20px;margin-bottom:16px}
 .input-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:12px}
@@ -223,12 +243,12 @@ textarea.book-content:focus{border-color:#AFA9EC}
 
 <!-- ── 사이드바: 거짓말 유형 도감 ── -->
 <aside class="sidebar">
-  <div class="sb-title">거짓말 12종 도감</div>
-  <div class="sb-sub">광고·단톡방·어른들 말에서<br>실제로 마주치는 것들.</div>
+  <div class="sb-title" id="sbTitle"></div>
+  <div class="sb-sub" id="sbSub"></div>
 
   <div class="sb-guide">
-    <div class="sb-guide-q">“이 말이 나한테<br>무엇을 하려는 거지?”</div>
-    <div class="sb-guide-n">유형을 먼저 고르지 마라. 이 질문에 먼저 답하면 12개가 3개로 줄어든다.</div>
+    <div class="sb-guide-q" id="sbQ"></div>
+    <div class="sb-guide-n" id="sbNote"></div>
     <div class="slot-row" id="famJump"></div>
   </div>
 
@@ -240,19 +260,47 @@ textarea.book-content:focus{border-color:#AFA9EC}
   <div class="page-title">책 분석 + 거짓말 사냥</div>
   <div class="page-sub">세포 이야기 하나를 먼저 세우고, 그 이야기로 계속 돌아오면서 책을 이해합니다</div>
 
-  <div class="setup-warn" id="setupWarn" style="display:none">
-    <div class="sw-title">아직 서버 주소가 연결되지 않았습니다</div>
-    <div class="sw-body">
-      이 파일의 <code>GAS_URL</code>이 아직 예시 주소 그대로입니다. 그래서 버튼을 눌러도 분석이 시작되지 않습니다.
-      <ol>
-        <li><b>script.google.com</b>에서 <code>Code.gs</code>를 붙여넣고 <code>GEMINI_API_KEY</code>에 키를 입력합니다.</li>
-        <li><b>배포 → 새 배포 → 웹 앱 → 액세스: 모든 사용자</b>로 배포하고 <code>/exec</code>로 끝나는 주소를 복사합니다.</li>
-        <li>이 HTML 파일을 메모장으로 열어 <code>const GAS_URL = '…'</code> 줄의 주소를 그것으로 바꿉니다.</li>
-        <li>바꾼 파일을 <b>netlify.com/drop</b>에 끌어다 놓고, 만들어진 https 주소로 접속합니다.</li>
-      </ol>
-      왼쪽 거짓말 도감은 서버 없이도 지금 그대로 볼 수 있습니다.
+  <details class="conn-panel" id="connPanel">
+    <summary class="conn-summary">
+      <span class="conn-dot off" id="connDot"></span>
+      <span id="connLabel">연결 확인 중...</span>
+    </summary>
+    <div class="conn-body">
+      <div class="conn-choose">
+        <label class="conn-opt">
+          <input type="radio" name="connMode" value="key" onchange="setMode('key')">
+          <span><b>API 키를 직접 넣기</b><em>설치할 게 없습니다. 혼자 쓸 때.</em></span>
+        </label>
+        <label class="conn-opt">
+          <input type="radio" name="connMode" value="gas" onchange="setMode('gas')">
+          <span><b>중계 서버 쓰기</b><em>남에게 파일을 줄 때. 받는 사람은 키가 필요 없습니다.</em></span>
+        </label>
+      </div>
+
+      <div id="keyPane">
+        <label class="conn-label" for="apiKey">Gemini API 키</label>
+        <input class="conn-input" id="apiKey" type="password" placeholder="AIzaSy..." oninput="saveConn()">
+        <p class="conn-help">
+          <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">aistudio.google.com/apikey</a>에서
+          무료로 발급받아 붙여넣으세요. 키는 이 브라우저에만 저장되고 다른 곳으로 보내지 않습니다.
+          다만 <b>파일을 남에게 주면 키는 따라가지 않으므로</b>, 공유하려면 아래 중계 서버 방식을 쓰세요.
+        </p>
+      </div>
+
+      <div id="gasPane" style="display:none">
+        <label class="conn-label" for="gasUrl">Apps Script 배포 URL</label>
+        <input class="conn-input" id="gasUrl" type="text" placeholder="https://script.google.com/macros/s/.../exec" oninput="saveConn()">
+        <p class="conn-help">
+          script.google.com에서 <code>Code.gs</code>를 붙여넣고 키를 입력한 뒤
+          <b>배포 → 새 배포 → 웹 앱 → 액세스: 모든 사용자</b>로 배포하면 나오는,
+          <code>/exec</code>로 끝나는 주소입니다.
+        </p>
+      </div>
+
+      <button class="conn-btn" onclick="testConn()">연결 테스트</button>
+      <div class="conn-test" id="connTest"></div>
     </div>
-  </div>
+  </details>
 
   <div class="input-card">
     <div class="input-row">
@@ -397,111 +445,135 @@ textarea.book-content:focus{border-color:#AFA9EC}
 /* __LIE_DATA_START__ */
 // 이 블록은 build.py가 lie_types.json에서 생성한다. 직접 고치지 마라.
 const LIE_DATA = {
-  "version": 2,
+  "version": 3,
   "title": "거짓말 12종 도감",
-  "subtitle": "현실에서 진짜로 마주치는 거짓말",
+  "subtitle": "책 요약문에 숨은 거짓말, 그리고 현실에서 만나는 같은 수법",
   "decision": {
-    "question": "이 말이 나한테 무엇을 하려는 거지?",
-    "note": "유형을 먼저 고르지 마라. 이 질문에 먼저 답하면 12개가 3개로 줄어든다."
+    "question": "이 문장이 본문의 무엇을 건드렸나?",
+    "note": "유형을 먼저 고르지 마라. 네 가지 중 무엇을 건드렸는지 정하면 12개가 3개로 줄어든다."
   },
+  "fieldOrder": [
+    "def",
+    "spot",
+    "whyLie",
+    "bookEx",
+    "realEx",
+    "ask",
+    "vs"
+  ],
   "families": [
     {
       "id": "1",
       "name": "부풀리기",
-      "intent": "실제보다 크게 보이게 한다",
-      "trigger": "말이 실제보다 세게 들린다",
+      "intent": "말의 세기를 한 단계 올린다",
+      "trigger": "정리가 본문보다 세게 들린다",
       "color": "#8A5A12",
       "bg": "#FAF0DC",
       "types": [
         {
           "no": "①",
-          "name": "낚시 제목",
+          "name": "확신 올리기",
           "where": [
             "유튜브 썸네일",
-            "뉴스 기사 제목",
-            "커뮤니티 글 제목"
+            "뉴스 제목",
+            "건강 정보 글"
           ],
-          "said": "충격! 매일 이것만 먹었더니 키가 쑥",
-          "actual": "본문에는 한 사람이 석 달 동안 1cm 자랐다고만 적혀 있다",
-          "why": "제목은 공짜로 읽히고 본문은 힘이 든다. 그래서 제목만 기억에 남고, 본문을 읽은 뒤에도 제목이 준 인상이 그대로 남는다.",
-          "ask": "제목이 말한 걸 본문이 정말로 말하고 있나?",
-          "intext": "요약의 첫 문장만 유독 세다. 뒤 문장들이 첫 문장을 뒷받침하지 못하고 겉돈다.",
-          "make": "요약 안의 한 문장을, 나머지 문장이 받쳐 주지 못할 만큼만 세게 만든다. 단어는 분석에 있던 것을 쓴다.",
-          "vs": "③ 숫자로 꼬시기와 헷갈리면 — 부풀리는 도구가 숫자면 ③, 표현이면 ①."
+          "def": "주장의 확신 정도를 한 단계만 올린다. 정반대가 아니라 살짝만.",
+          "spot": "본문은 「~일 수 있다 / ~로 보인다 / ~라고 추정된다」인데 정리는 「~이다 / ~임이 밝혀졌다」로 단정할 때. 단어 하나가 아니라 문장의 확신 온도를 비교해야 보인다.",
+          "whyLie": "작가의 조심스러운 추측이 확정된 사실로 둔갑한다.",
+          "bookAuthor": "결핍감이 4번 유형의 행동을 이끄는 요인일 수 있다",
+          "bookSummary": "결핍감이 4번 유형의 행동을 이끄는 요인이다",
+          "realSaid": "충격! 매일 이것만 먹었더니 키가 쑥",
+          "realActual": "본문에는 한 사람이 석 달 동안 1cm 자랐다고만 적혀 있다",
+          "ask": "본문이 정말 그렇게까지 말했나?",
+          "make": "추정·가능성 표현만 지우고 단정형 어미로 바꾼다. 주어·이유·범위는 절대 건드리지 않는다.",
+          "vs": "④ 조건 제거와 헷갈리면 — 사라진 말이 「확신을 낮추는 말」이면 ①, 「상황을 한정하는 말」이면 ④."
         },
         {
           "no": "②",
-          "name": "최고라고 말하기",
+          "name": "수량 부풀리기",
           "where": [
-            "학원 광고",
-            "제품 상세페이지",
-            "자기소개서"
+            "광고 배너",
+            "통계 인용 기사",
+            "친구가 전하는 말"
           ],
-          "said": "국내 유일, 1등 학습법",
-          "actual": "무엇 중에 1등인지, 누가 그렇게 정했는지는 어디에도 없다",
-          "why": "비교 대상이 없으면 반박할 대상도 없다. 따질 것이 안 보이니 그냥 넘어가게 된다.",
-          "ask": "무엇과 비교해서? 그건 누가 정했지?",
-          "intext": "「더 / 가장 / 유일한 / 뛰어난」이 있는데 정작 「~보다」가 안 보인다.",
-          "make": "비교 대상(~보다)만 지우고 절대적인 성질처럼 서술한다. 나머지는 그대로 둔다.",
-          "vs": "⑩ 권위 빌리기와 헷갈리면 — 순위를 매긴 사람이 등장하면 ⑩, 아무도 없으면 ②."
+          "def": "얼마나 많은지를 나타내는 말을 한 단계 위로 올린다.",
+          "spot": "본문의 수량어(일부·여럿·절반쯤·때때로)와 정리의 수량어(대체로·흔히·자주·거의)를 나란히 놓고 센다. 퍼센트가 나오면 분모가 본문에 있는지 찾는다.",
+          "whyLie": "몇몇의 이야기가 대다수의 이야기로 바뀌면, 읽는 사람이 자기도 거기 속한다고 느낀다.",
+          "bookAuthor": "4번 유형 중 일부는 남의 관심을 부담스러워한다",
+          "bookSummary": "4번 유형은 대체로 남의 관심을 부담스러워한다",
+          "realSaid": "무려 90%가 효과를 봤습니다",
+          "realActual": "몇 명 중 90%인지 없다. 열 명 중 아홉일 수도 있다",
+          "ask": "몇 명 중에 몇 명이지? 그건 누가 세었지?",
+          "make": "수량·빈도를 나타내는 말 하나만 한 칸 위로 올린다. 「모든/항상」까지 가면 실격, 「대체로/흔히/자주」까지만.",
+          "vs": "① 확신 올리기와 헷갈리면 — 「얼마나 확실한가」가 바뀌면 ①, 「얼마나 많은가」가 바뀌면 ②."
         },
         {
           "no": "③",
-          "name": "숫자로 꼬시기",
+          "name": "비교 대상 지우기",
           "where": [
-            "광고 배너",
-            "건강 정보 글",
-            "통계를 인용한 뉴스"
+            "학원 광고",
+            "제품 상세페이지",
+            "자기소개"
           ],
-          "said": "무려 90%가 효과를 봤습니다",
-          "actual": "몇 명 중 90%인지, 누가 조사했는지가 없다. 열 명 중 아홉일 수도 있다",
-          "why": "숫자는 이미 누가 확인해 둔 사실처럼 보인다. 퍼센트는 특히 그렇다.",
-          "ask": "몇 명 중에 몇 명이지? 그건 누가 세었지?",
-          "intext": "퍼센트나 「대부분 / 대다수 / 흔히」가 나오는데, 원래 몇이었는지가 없다.",
-          "make": "수량어 하나만 한 칸 위로 올린다. 「모든/항상」까지 가면 실격, 「대체로/흔히/자주」까지만.",
-          "vs": "⑥ 불리한 항목 빼기와 헷갈리면 — 분모 자체가 없으면 ③, 분모는 있는데 나쁜 쪽만 빠졌으면 ⑥."
+          "def": "「B보다 A가 낫다」는 비교 주장에서 비교 대상 B를 빼고 「A가 좋다」는 절대 주장으로 만든다.",
+          "spot": "정리에 「좋다 / 낫다 / 더 / 가장 / 유일한」 같은 평가가 있으면, 본문에서 「무엇과 비교해서」인지를 찾는다. 비교 대상이 본문에만 있고 정리에 없으면 이 유형.",
+          "whyLie": "'둘 중 나은 것'이 '그냥 좋은 것'으로 둔갑한다.",
+          "bookAuthor": "4번 유형은 3번 유형보다 감정의 결을 세밀하게 느낀다",
+          "bookSummary": "4번 유형은 감정의 결을 세밀하게 느낀다",
+          "realSaid": "국내 유일, 1등 학습법",
+          "realActual": "무엇 중에 1등인지, 누가 그렇게 정했는지가 없다",
+          "ask": "무엇과 비교해서? 그건 누가 정했지?",
+          "make": "비교 대상(~보다)만 삭제하고 절대적인 성질처럼 서술한다. 나머지는 그대로 둔다.",
+          "vs": "⑥ 불리한 항목 빼기와 헷갈리면 — 사라진 것이 「비교 대상」이면 ③, 「나란히 있던 다른 사실」이면 ⑥."
         }
       ]
     },
     {
       "id": "2",
       "name": "골라 보여주기",
-      "intent": "있는 것 중에서 유리한 것만 꺼낸다",
+      "intent": "있는 것 중 유리한 것만 남긴다",
       "trigger": "말한 건 다 사실인데 뭔가 허전하다",
       "color": "#14685A",
       "bg": "#E4F4EF",
       "types": [
         {
           "no": "④",
-          "name": "성공한 사람만 보여주기",
-          "where": [
-            "학원 벽의 합격증",
-            "쇼핑몰 후기",
-            "SNS 피드"
-          ],
-          "said": "우리 학원 다니고 이만큼 붙었습니다 (합격증 30장)",
-          "actual": "떨어진 300명의 이야기는 벽에 붙지 않는다",
-          "why": "눈에 보이는 것만으로 판단한다. 안 보이는 쪽은 아예 없는 것처럼 느껴진다.",
-          "ask": "안 된 사람은 어디 갔지?",
-          "intext": "효과를 본 사례만 이어지고, 예외나 실패가 한 번도 나오지 않는다.",
-          "make": "분석에 있던 예외·단서를 통째로 지우고 잘된 쪽만 남긴다.",
-          "vs": "⑥ 불리한 항목 빼기와 헷갈리면 — 여러 사람 중에서 고른 것이면 ④, 한 대상 안에서 항목을 고른 것이면 ⑥."
-        },
-        {
-          "no": "⑤",
-          "name": "조건 숨기기",
+          "name": "조건 제거",
           "where": [
             "작은 글씨 약관",
             "이벤트 배너",
             "부모님과의 약속"
           ],
-          "said": "지금 신청하면 무료!",
-          "actual": "별표 아래 작은 글씨에 「첫 달만, 3개월 약정 시」가 붙어 있다",
-          "why": "조건은 늘 나중에, 작게 나온다. 결정을 이미 내린 뒤에 읽게 되므로 되돌리기 어렵다.",
-          "ask": "언제까지, 누구한테, 어떤 경우에만 해당하는 거지?",
-          "intext": "원문에 있던 「~할 때 / ~인 경우 / 다만 / 하지만」이 요약에서 사라져 무조건인 문장이 됐다.",
-          "make": "조건절이나 역접 단서 하나만 통째로 삭제한다. 남은 문장은 원문 표현 그대로.",
-          "vs": "④ 성공한 사람만 보여주기와 헷갈리면 — 빠진 것이 「어떤 경우에만」이면 ⑤, 「누구」면 ④."
+          "def": "「X 상황에서는 Y이다」에서 조건 X를 빼서 무조건 주장으로 만든다.",
+          "spot": "정리가 매끈하게 단정적인데 본문에는 「만약 / ~하는 경우 / ~할 때 / ~에 한해」가 붙어 있을 때.",
+          "whyLie": "특정 상황에서만 맞는 말이 항상 맞는 진리로 둔갑한다.",
+          "bookAuthor": "결핍감이 커질 때 4번 유형은 자기 세계로 물러난다",
+          "bookSummary": "4번 유형은 자기 세계로 물러난다",
+          "realSaid": "지금 신청하면 무료!",
+          "realActual": "별표 아래 작은 글씨에 「첫 달만, 3개월 약정 시」가 붙어 있다",
+          "ask": "언제, 누구한테, 어떤 경우에만 해당하지?",
+          "make": "조건절 하나만 통째로 삭제한다. 남은 문장은 원문 표현 그대로 둔다.",
+          "vs": "⑤ 반례 무시와 헷갈리면 — 빠진 것이 「성립하는 상황」이면 ④, 「반대 사례」면 ⑤."
+        },
+        {
+          "no": "⑤",
+          "name": "반례 무시",
+          "where": [
+            "학원 벽의 합격증",
+            "쇼핑몰 후기",
+            "성공 사례 모음"
+          ],
+          "def": "작가가 강조한 예외·반례·단서를 정리에서 빼버린다.",
+          "spot": "정리는 깔끔한데 본문에 「다만 / 하지만 / 예외적으로 / 물론 ~한 경우도 있다」가 있을 때. 빠진 것을 찾는 일이라 가장 안 보인다.",
+          "whyLie": "작가가 균형을 위해 넣은 반쪽이 사라져 그림이 한쪽으로 기운다.",
+          "bookAuthor": "이 물러남은 대체로 회복으로 이어지지만, 길어지면 고립이 되기도 한다",
+          "bookSummary": "이 물러남은 회복으로 이어진다",
+          "realSaid": "우리 학원 다니고 이만큼 붙었습니다 (합격증 30장)",
+          "realActual": "떨어진 300명의 이야기는 벽에 붙지 않는다",
+          "ask": "안 된 쪽, 반대쪽 이야기는 어디 갔지?",
+          "make": "역접 단서(다만·하지만)로 이어진 뒷부분을 통째로 지운다. 앞부분은 그대로 둔다.",
+          "vs": "④ 조건 제거와 헷갈리면 — 빠진 것이 「반대 사례」면 ⑤, 「성립 조건」이면 ④."
         },
         {
           "no": "⑥",
@@ -511,129 +583,150 @@ const LIE_DATA = {
             "성적표 설명",
             "잘못을 설명할 때"
           ],
-          "said": "이 과자, 설탕 0g이에요",
-          "actual": "설탕은 정말 없다. 대신 지방이 다른 과자의 두 배인데 그건 말하지 않는다",
-          "why": "말한 내용이 전부 사실이면 거짓말이라고 느끼지 못한다. 그래서 방심한다.",
-          "ask": "이 하나 말고, 같이 봐야 할 다른 항목은 뭐지?",
-          "intext": "한 측면만 반복해서 강조되고, 원문에 함께 있던 다른 측면이 요약에는 없다.",
-          "make": "분석에 함께 있던 두 측면 중 한쪽만 남기고 다른 쪽을 지운다. 남긴 쪽은 사실 그대로 둔다.",
-          "vs": "⑤ 조건 숨기기와 헷갈리면 — 빠진 것이 「조건」이면 ⑤, 「나란히 있던 다른 사실」이면 ⑥."
+          "def": "한 대상에 대해 나란히 있던 여러 사실 중, 유리한 항목만 남기고 불리한 항목을 뺀다.",
+          "spot": "말한 내용은 전부 사실이라 반박할 데가 없다. 본문에서 같은 대상을 설명한 문장을 모두 모은 다음, 정리에 빠진 항목이 있는지 센다.",
+          "whyLie": "거짓말한 문장이 하나도 없는데 전체 인상은 사실과 다르다. 그래서 방심하게 된다.",
+          "bookAuthor": "이 성향은 창의성을 높이지만, 관계에서는 오해를 자주 부른다",
+          "bookSummary": "이 성향은 창의성을 높인다",
+          "realSaid": "이 과자, 설탕 0g이에요",
+          "realActual": "설탕은 정말 없다. 대신 지방이 두 배인데 그건 말하지 않는다",
+          "ask": "이것 말고 같이 봐야 할 항목은 뭐지?",
+          "make": "나란히 있던 두 측면 중 한쪽만 남기고 다른 쪽을 지운다. 남긴 쪽은 사실 그대로 둔다.",
+          "vs": "⑤ 반례 무시와 헷갈리면 — 지운 것이 「예외 사례」면 ⑤, 「같은 대상의 다른 성질」이면 ⑥."
         }
       ]
     },
     {
       "id": "3",
       "name": "엮기",
-      "intent": "상관없는 것을 원인처럼 붙인다",
-      "trigger": "\"그래서 그렇게 됐다\"는 말이 너무 매끄럽다",
+      "intent": "원인과 이유를 손댄다",
+      "trigger": "「그래서 그렇게 됐다」가 너무 매끄럽다",
       "color": "#3B3585",
       "bg": "#EDECFC",
       "types": [
         {
           "no": "⑦",
-          "name": "같이 일어난 걸 원인이라 하기",
+          "name": "상관-인과 둔갑",
           "where": [
             "건강 기사",
             "공부법 조언",
             "어른들의 훈계"
           ],
-          "said": "아침 먹는 애들이 성적이 좋대. 그러니까 아침을 먹어야 성적이 올라",
-          "actual": "아침을 챙겨 주는 집이 공부도 챙겨 주는 것일 수 있다. 진짜 원인은 따로 있다",
-          "why": "두 가지가 같이 보이면 뇌가 알아서 화살표를 그린다. 그리는 줄도 모르고 그린다.",
-          "ask": "정말 이것 때문일까, 아니면 둘 다 다른 것 때문일까?",
-          "intext": "원문이 「함께 나타난다 / 관련이 있다」인데 요약이 「때문이다 / 만든다」로 바뀌었다.",
+          "def": "작가가 「같이 나타난다」고만 한 것을 「하나가 다른 하나를 일으킨다」로 바꾼다.",
+          "spot": "본문이 「~와 관련이 있다 / 함께 나타난다 / 동시에 증가했다」인데 정리가 「~때문에 / ~가 ~를 만든다」일 때.",
+          "whyLie": "함께 나타나는 것과 원인인 것은 완전히 다른 주장이다. 작가가 일부러 피한 단정을 작가 입에 욱여넣는 셈이다.",
+          "bookAuthor": "결핍감이 강한 사람에게서 예술적 표현 욕구가 함께 관찰된다",
+          "bookSummary": "결핍감이 예술적 표현 욕구를 만들어 낸다",
+          "realSaid": "아침 먹는 애들이 성적이 좋대. 그러니까 아침을 먹어야 성적이 올라",
+          "realActual": "아침을 챙겨 주는 집이 공부도 챙겨 주는 것일 수 있다. 진짜 원인은 따로 있다",
+          "ask": "정말 이것 때문일까, 둘 다 다른 것 때문일까?",
           "make": "원문에 없던 인과 표현을 넣는다. 등장하는 두 대상과 순서는 그대로 유지한다.",
-          "vs": "⑧ 앞뒤 뒤집기와 헷갈리면 — 원문에 화살표가 아예 없었으면 ⑦, 있었는데 방향만 반대면 ⑧."
+          "vs": "⑧ 인과 뒤집기와 헷갈리면 — 본문에 화살표가 아예 없었으면 ⑦, 있었는데 방향만 반대면 ⑧."
         },
         {
           "no": "⑧",
-          "name": "앞뒤 뒤집기",
+          "name": "인과 뒤집기",
           "where": [
             "혼날 때",
             "뉴스 해설",
             "친구 사이의 다툼"
           ],
-          "said": "게임을 많이 해서 성적이 떨어진 거야",
-          "actual": "성적이 먼저 떨어졌고, 그게 힘들어서 게임으로 도망친 것일 수도 있다",
-          "why": "쓰인 단어가 하나도 바뀌지 않아서, 읽어서는 절대 안 잡힌다.",
+          "def": "A가 B를 일으킨다는 걸 B가 A를 일으킨다로 뒤집는다. 쓰인 단어는 하나도 바뀌지 않는다.",
+          "spot": "「~때문에 / ~로 인해 / 그래서」 앞뒤에 놓인 두 가지에 동그라미를 치고, 본문과 순서를 대조한다. 화살표를 직접 그려야 잡힌다.",
+          "whyLie": "원인이 바뀌면 해결책도 정반대가 된다.",
+          "bookAuthor": "채워지지 않은 결핍감 때문에 특별함에 집착하게 된다",
+          "bookSummary": "특별함에 대한 집착 때문에 결핍감이 생긴다",
+          "realSaid": "게임을 많이 해서 성적이 떨어진 거야",
+          "realActual": "성적이 먼저 떨어졌고, 그게 힘들어서 게임으로 도망친 것일 수도 있다",
           "ask": "둘 중에 어느 쪽이 먼저 일어났지?",
-          "intext": "「때문에 / 그래서」 앞뒤에 놓인 두 가지가 원문과 자리가 바뀌어 있다.",
           "make": "원인과 결과의 자리만 맞바꾼다. 어휘·어미·길이는 그대로 둔다.",
-          "vs": "읽어서는 못 잡는다. 두 가지에 동그라미 치고 화살표를 직접 그려 방향을 맞춰 봐야 한다."
+          "vs": "⑩ 주체 바꾸기와 헷갈리면 — 바뀐 것이 「원인과 결과의 순서」면 ⑧, 「행동의 주인」이면 ⑩."
         },
         {
           "no": "⑨",
-          "name": "진짜 이유 감추기",
+          "name": "근거 바꿔치기",
           "where": [
             "약속을 어겼을 때",
             "거절할 때",
             "사과문"
           ],
-          "said": "네가 늦게 말해서 못 갔어",
-          "actual": "애초에 갈 생각이 없었다. 늦게 말한 건 사실이지만 그것 때문은 아니다",
-          "why": "대는 이유가 사실이면 반박하기 어렵다. 사실이지만 진짜 이유가 아닐 뿐이다.",
+          "def": "주장은 그대로 두고, 그 주장을 받치는 근거나 이유를 다른 것으로 갈아끼운다.",
+          "spot": "결론만 보면 맞다. 결론에 동그라미를 치고, 「왜냐하면」 뒤만 따로 떼어 본문과 대조해야 잡힌다. 주장이 맞으니 그냥 통과시키기 쉽다.",
+          "whyLie": "틀린 이유로 맞는 결론을 믿으면, 다음 판단에서 반드시 틀리게 된다.",
+          "bookAuthor": "4번 유형이 평범함을 견디지 못하는 것은 자기 정체성이 흔들리기 때문이다",
+          "bookSummary": "4번 유형이 평범함을 견디지 못하는 것은 남보다 앞서고 싶기 때문이다",
+          "realSaid": "네가 늦게 말해서 못 갔어",
+          "realActual": "애초에 갈 생각이 없었다. 늦게 말한 건 사실이지만 그것 때문은 아니다",
           "ask": "이 이유가 없어졌다면 결과가 달라졌을까?",
-          "intext": "결론은 원문 그대로인데 그 앞의 이유만 다른 것으로 바뀌어 있다.",
           "make": "결론 문장은 원문 표현 그대로 두고, 이유 부분만 그럴듯한 다른 이유로 교체한다.",
-          "vs": "⑫ 없던 결론 얹기와 헷갈리면 — 결론이 원문에 있던 것이면 ⑨, 결론 자체가 새로 생겼으면 ⑫."
+          "vs": "⑫ 결론 비약과 헷갈리면 — 결론이 본문에 있던 것이면 ⑨, 결론 자체가 새로 생겼으면 ⑫."
         }
       ]
     },
     {
       "id": "4",
-      "name": "빌리고 얹기",
-      "intent": "남의 입을 빌리거나, 없던 말을 얹는다",
-      "trigger": "말한 사람이 누구인지 끝까지 안 나온다",
+      "name": "옮기고 얹기",
+      "intent": "주인을 바꾸거나 없던 말을 붙인다",
+      "trigger": "누구 이야기인지, 누가 한 말인지가 흐릿하다",
       "color": "#97401F",
       "bg": "#FAEDE7",
       "types": [
         {
           "no": "⑩",
-          "name": "권위 빌리기",
+          "name": "주체 바꾸기",
           "where": [
-            "광고 문구",
-            "단톡방",
-            "설득하려는 어른의 말"
+            "책임을 따질 때",
+            "뉴스 논평",
+            "사과문"
           ],
-          "said": "전문가들이 다 그렇게 말해. 요즘은 다들 이렇게 한대",
-          "actual": "그 전문가가 누구인지, 다들이 몇 명인지는 끝까지 나오지 않는다",
-          "why": "이름 없는 다수에게는 물어볼 수가 없다. 물어볼 데가 없으면 그냥 믿게 된다.",
-          "ask": "그 전문가가 누구지? 다들이 정확히 누구지?",
-          "intext": "「연구에 따르면 / 알려져 있다 / 흔히 말한다」가 붙었는데 원문에는 그런 출처가 없다.",
-          "make": "분석에 없던 출처·권위 표현을 한 조각만 덧붙인다. 나머지 내용은 그대로.",
-          "vs": "⑫ 없던 결론 얹기와 헷갈리면 — 덧붙은 것이 「누가 말했다」면 ⑩, 「그래서 어떻다」면 ⑫."
+          "def": "행위자나 책임의 주인을 슬쩍 다른 대상으로 옮긴다.",
+          "spot": "「누가」 하는 일인지를 본문과 대조한다. 내용은 같아 보여도 주어가 다르면 완전히 다른 주장이다.",
+          "whyLie": "책임 소재가 바뀌면 해결의 방향이 통째로 달라진다.",
+          "bookAuthor": "4번 유형은 상대가 자기를 알아봐 주기를 기다린다",
+          "bookSummary": "4번 유형은 상대를 먼저 알아봐 주려고 한다",
+          "realSaid": "소비자가 정보를 꼼꼼히 확인해야 합니다",
+          "realActual": "원래 기사는 기업이 정보를 투명하게 공개해야 한다고 했다",
+          "ask": "이 일을 하는 사람이 누구지? 책임은 누구한테 있지?",
+          "make": "행동의 주인만 바꾼다. 행동 자체와 이유는 원문 그대로 둔다.",
+          "vs": "⑪ 범위 이동과 헷갈리면 — 아예 다른 대상으로 옮겨 갔으면 ⑩, 같은 대상의 범위가 커졌으면 ⑪."
         },
         {
           "no": "⑪",
-          "name": "건너 들은 말",
+          "name": "범위 이동",
           "where": [
-            "카톡 전달",
-            "친구가 전해 준 말",
-            "소문"
+            "연구 인용 기사",
+            "일반화하는 말",
+            "단톡방 소문"
           ],
-          "said": "쟤가 너 욕했대",
-          "actual": "세 사람을 건너오는 동안 「좀 서운했나 봐」가 「욕했대」가 됐다",
-          "why": "전할 때마다 재미없는 부분은 떨어지고 자극적인 부분만 남는다. 아무도 거짓말할 마음이 없어도 그렇게 된다.",
-          "ask": "이걸 직접 들은 사람이 누구지? 원래 말은 정확히 뭐였지?",
-          "intext": "요약이 원문보다 감정적으로 세다. 원문에 없던 판단하는 낱말이 끼어 있다.",
-          "make": "원문의 표현을 한 단계만 자극적인 낱말로 바꾼다. 사실 관계는 건드리지 않는다.",
-          "vs": "① 낚시 제목과 헷갈리면 — 세진 것이 「전해지는 과정」에서면 ⑪, 「눈길을 끌려고」면 ①."
+          "def": "주장이 적용되는 대상의 범위를 옆으로 살짝 옮긴다. 넓히는 게 아니라 슬쩍 이동.",
+          "spot": "「누구에 대한 / 무엇에 대한」 이야기인지를 본문과 대조한다. 본문은 '4번 유형'인데 정리는 '사람들', 본문은 '어린 시절'인데 정리는 '평생'.",
+          "whyLie": "검증된 범위 밖으로 주장이 슬그머니 확장된다.",
+          "bookAuthor": "4번 유형은 남과 다르다는 감각에서 자기를 확인한다",
+          "bookSummary": "사람은 남과 다르다는 감각에서 자기를 확인한다",
+          "realSaid": "이 방법은 효과가 확인되었습니다",
+          "realActual": "원래 논문은 쥐에게서 효과를 확인했다고 적었다",
+          "ask": "이건 원래 누구에 대한 이야기였지?",
+          "make": "주어의 범위만 한 단계 넓힌다. 「모든 사람」까지 가면 실격, 「사람은 / 우리는」 정도까지만.",
+          "vs": "⑩ 주체 바꾸기와 헷갈리면 — 같은 대상이 커진 것이면 ⑪, 다른 대상으로 옮겨 갔으면 ⑩."
         },
         {
           "no": "⑫",
-          "name": "없던 결론 얹기",
+          "name": "결론 비약",
           "where": [
-            "기사 공유하며 한 줄 덧붙일 때",
+            "기사 공유하며 덧붙일 때",
             "훈계",
             "독후감"
           ],
-          "said": "라면 소비가 늘었대. 그러니까 요즘 애들이 건강을 안 챙기는 거지",
-          "actual": "기사는 소비가 늘었다는 데까지만 말했다. 뒷문장은 공유한 사람이 붙인 것이다",
-          "why": "앞이 사실이면 뒤도 사실처럼 딸려 온다. 어디까지가 원문인지 아무도 표시해 주지 않는다.",
+          "def": "작가가 직접 내리지 않은 결론을 작가의 결론처럼 정리에 넣는다.",
+          "spot": "정리의 결론 문장이 본문 어디에 명시돼 있는지 찾아본다. 못 찾으면 비약이다. 「그러므로 ~해야 한다 / 결국 ~이다」를 특히 의심한다.",
+          "whyLie": "작가가 신중하게 멈춘 지점을 넘어가서, 작가에게 하지 않은 말을 시킨다. 그럴듯할수록 위험하다.",
+          "bookAuthor": "작가는 물러남을 도피가 아니라 회복의 과정으로 설명했을 뿐이다",
+          "bookSummary": "그러므로 4번 유형은 결핍감을 극복해야 성숙해진다",
+          "realSaid": "라면 소비가 늘었대. 그러니까 요즘 애들이 건강을 안 챙기는 거지",
+          "realActual": "기사는 소비가 늘었다는 데까지만 말했다. 뒷문장은 공유한 사람이 붙였다",
           "ask": "이 결론을 원래 말한 사람이 진짜로 말했나?",
-          "intext": "「그러므로 ~해야 한다 / 결국 ~이다」로 끝나는데 원문에는 비슷한 문장조차 없다.",
-          "make": "앞부분은 원문 내용 그대로 두고, 원문에 없는 당위·평가를 한 조각만 덧붙인다.",
-          "vs": "⑨ 진짜 이유 감추기와 헷갈리면 — 원문에 있던 결론의 이유만 바뀌었으면 ⑨, 결론 자체가 새로 생겼으면 ⑫."
+          "make": "앞부분은 원문 내용 그대로 두고, 본문에 없는 당위·평가를 한 조각만 덧붙인다.",
+          "vs": "⑨ 근거 바꿔치기와 헷갈리면 — 본문에 있던 결론의 이유만 바뀌었으면 ⑨, 결론 자체가 새로 생겼으면 ⑫."
         }
       ]
     }
@@ -653,14 +746,20 @@ function familyOf(typeStr) {
 /* AI 프롬프트에 그대로 들어가는 도감 텍스트 — 화면과 같은 정의를 쓴다 */
 function lieCodexText() {
   return LIE_FAMILIES.map(f =>
-    `[${f.id}군 · ${f.name}] 하려는 것 = ${f.intent} / 의심 신호 = ${f.trigger}\n` +
+    `[${f.id}군 · ${f.name}] 건드리는 것 = ${f.intent} / 의심 신호 = ${f.trigger}
+` +
     f.types.map(t =>
-      `${t.no} ${t.name}  (현실에서: ${t.where.join(', ')})\n` +
-      `   현실 예 — 이렇게 말한다: ${t.said}\n` +
-      `   현실 예 — 실제로는: ${t.actual}\n` +
-      `   글에서의 신호: ${t.intext}\n` +
-      `   만드는 법: ${t.make}\n` +
-      `   되받아치는 질문: ${t.ask}`
+      `${t.no} ${t.name}
+` +
+      `   정의: ${t.def}
+` +
+      `   알아보는 법: ${t.spot}
+` +
+      `   왜 거짓인가: ${t.whyLie}
+` +
+      `   책 예시: 작가 "${t.bookAuthor}" → 정리 "${t.bookSummary}"
+` +
+      `   만드는 법: ${t.make}`
     ).join('\n')
   ).join('\n\n');
 }
@@ -683,20 +782,33 @@ function renderLieGuide() {
       ${f.types.map(t => `
         <div class="lie-item">
           <span class="lie-badge" style="background:${f.bg};color:${f.color}">${t.no} ${esc(t.name)}</span>
-          <div class="lie-where">${t.where.map(w => `<span class="chip">${esc(w)}</span>`).join('')}</div>
-          <div class="lie-ask" style="color:${f.color}">“${esc(t.ask)}”</div>
+          <div class="lie-row"><span class="lie-k">정의</span><span class="lie-v">${esc(t.def)}</span></div>
+          <div class="lie-row"><span class="lie-k">알아보는 법</span><span class="lie-v">${esc(t.spot)}</span></div>
+          <div class="lie-row"><span class="lie-k">왜 거짓인가</span><span class="lie-v">${esc(t.whyLie)}</span></div>
+          <div class="lie-row lie-ex">
+            <span class="lie-k">책 예시</span>
+            <span class="lie-v">
+              <span class="ex-line"><span class="ex-tag ex-ok">작가</span>${esc(t.bookAuthor)}</span>
+              <span class="ex-line"><span class="ex-tag ex-no">정리</span>${esc(t.bookSummary)}</span>
+            </span>
+          </div>
           <details class="lie-more">
-            <summary>현실 예시 · 글에서 찾는 법</summary>
-            <div class="ex-row"><span class="ex-tag ex-no">이렇게 말한다</span><span class="ex-txt">${esc(t.said)}</span></div>
-            <div class="ex-row"><span class="ex-tag ex-ok">실제로는</span><span class="ex-txt">${esc(t.actual)}</span></div>
-            <div class="lie-how"><b>글에서는</b> ${esc(t.intext)}</div>
-            <div class="lie-why"><b>왜 속나</b> ${esc(t.why)}</div>
+            <summary>현실에서는 · 헷갈리지 않기</summary>
+            <div class="lie-where">${t.where.map(w => `<span class="chip">${esc(w)}</span>`).join('')}</div>
+            <div class="ex-line"><span class="ex-tag ex-no">이렇게 말한다</span>${esc(t.realSaid)}</div>
+            <div class="ex-line"><span class="ex-tag ex-ok">실제로는</span>${esc(t.realActual)}</div>
+            <div class="lie-ask" style="color:${f.color}">“${esc(t.ask)}”</div>
             <div class="lie-vs">${esc(t.vs)}</div>
           </details>
         </div>`).join('')}
     </div>`).join('');
 
-  // 판별 질문 아래의 군 바로가기 — 무엇을 하려는 말인지로 고른다
+  document.getElementById('sbTitle').textContent = LIE_DATA.title;
+  document.getElementById('sbSub').textContent = LIE_DATA.subtitle;
+  document.getElementById('sbQ').textContent = '“' + LIE_DATA.decision.question + '”';
+  document.getElementById('sbNote').textContent = LIE_DATA.decision.note;
+
+  // 판별 질문 아래의 군 바로가기 — 무엇을 건드린 말인지로 고른다
   document.getElementById('famJump').innerHTML = LIE_FAMILIES.map((f, i) => `
     <a class="slot" style="--sc:${f.color}" href="#fam${f.id}"
        onclick="document.querySelectorAll('.fam')[${i}].scrollIntoView({behavior:'smooth'});return false">
@@ -735,42 +847,182 @@ function parseProse(text) {
   }).join('');
 }
 
-// ★ 여기에 Google Apps Script 배포 URL을 붙여넣으세요 ★
-const GAS_URL = 'https://script.google.com/macros/s/여기에배포URL붙여넣기/exec';
+/* ────────────────────────────────────────────────────────────
+   AI 연결 — 두 가지 방법 중 하나를 고른다
 
-// 주소를 안 바꾸고 열면 버튼을 눌러도 아무 일도 안 일어난 것처럼 보인다.
-// 그래서 화면 위에 이유를 먼저 띄운다.
-function gasReady() {
-  return /^https:\/\/script\.google\.com\/macros\/s\/[A-Za-z0-9_-]{20,}\/exec$/.test(GAS_URL);
+   1) 키 직접 넣기 : 브라우저가 Gemini를 바로 부른다. 설치할 게 없다.
+                     혼자 쓸 때. 키는 이 브라우저에만 저장된다.
+   2) 중계 서버    : Google Apps Script가 키를 들고 대신 부른다.
+                     남에게 파일을 줄 때. 받는 사람은 키가 필요 없다.
+
+   설정은 localStorage에 저장되므로 다음에 열면 그대로 이어진다.
+   ──────────────────────────────────────────────────────────── */
+const STORE = 'bookAnalyze.conn';
+const MODELS = ['gemini-2.0-flash', 'gemini-1.5-flash', 'gemini-1.5-flash-latest'];
+const GAS_PATTERN = /^https:\/\/script\.google\.com\/macros\/s\/[A-Za-z0-9_-]{20,}\/exec$/;
+
+let conn = { mode: 'key', key: '', gas: '' };
+
+function loadConn() {
+  try {
+    conn = Object.assign(conn, JSON.parse(localStorage.getItem(STORE) || '{}'));
+  } catch (e) { /* 저장된 값이 깨졌으면 기본값으로 간다 */ }
 }
 
-function checkSetup() {
-  if (gasReady()) return;
-  const box = document.getElementById('setupWarn');
-  box.style.display = 'block';
-  document.getElementById('runBtn').disabled = true;
+function saveConn() {
+  const picked = document.querySelector('input[name="connMode"]:checked');
+  if (picked) conn.mode = picked.value;
+  conn.key = document.getElementById('apiKey').value.trim();
+  conn.gas = document.getElementById('gasUrl').value.trim();
+  try { localStorage.setItem(STORE, JSON.stringify(conn)); } catch (e) {}
+  paintConn();
 }
-checkSetup();
 
-async function callClaude(system, user, retries = 2) {
+function connReady() {
+  return conn.mode === 'key' ? conn.key.length > 20 : GAS_PATTERN.test(conn.gas);
+}
+
+/* 설정 상태를 화면에 반영한다 */
+function paintConn() {
+  document.querySelectorAll('input[name="connMode"]').forEach(r => {
+    r.checked = (r.value === conn.mode);
+  });
+  document.getElementById('keyPane').style.display = conn.mode === 'key' ? 'block' : 'none';
+  document.getElementById('gasPane').style.display = conn.mode === 'gas' ? 'block' : 'none';
+  document.getElementById('apiKey').value = conn.key;
+  document.getElementById('gasUrl').value = conn.gas;
+
+  const ok = connReady();
+  document.getElementById('connDot').className = 'conn-dot ' + (ok ? 'on' : 'off');
+  document.getElementById('connLabel').textContent = ok
+    ? (conn.mode === 'key' ? 'API 키로 연결됨' : '중계 서버로 연결됨')
+    : '연결 안 됨 — 여기를 눌러 설정하세요';
+  document.getElementById('runBtn').disabled = !ok;
+  if (!ok) document.getElementById('connPanel').open = true;
+}
+
+function setMode(mode) { conn.mode = mode; saveConn(); }
+
+/* 연결 테스트 — 짧은 요청 하나를 실제로 보내 본다 */
+async function testConn() {
+  saveConn();
+  const out = document.getElementById('connTest');
+  if (!connReady()) {
+    out.className = 'conn-test bad';
+    out.textContent = conn.mode === 'key'
+      ? 'API 키를 먼저 붙여넣으세요.'
+      : '배포 URL이 형식에 맞지 않습니다. /exec로 끝나야 합니다.';
+    return;
+  }
+  out.className = 'conn-test';
+  out.textContent = '확인하는 중...';
+  try {
+    const r = await askAI('너는 연결 확인용이야. 반드시 {"ok":true}만 반환해.', '확인', 0);
+    out.className = 'conn-test good';
+    out.textContent = (r && r.ok)
+      ? '연결됐습니다. 이제 분석을 시작할 수 있어요.'
+      : '응답은 왔습니다. 형식이 조금 다르지만 분석에는 문제없습니다.';
+  } catch (e) {
+    out.className = 'conn-test bad';
+    out.textContent = '실패: ' + e.message;
+  }
+}
+
+/* Gemini 직접 호출 (키 방식) */
+async function callGeminiDirect(system, user) {
+  let lastErr = '알 수 없는 오류';
+  for (const model of MODELS) {
+    const url = 'https://generativelanguage.googleapis.com/v1beta/models/'
+              + model + ':generateContent?key=' + encodeURIComponent(conn.key);
+    let res;
+    try {
+      res = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          systemInstruction: { parts: [{ text: system }] },
+          contents: [{ role: 'user', parts: [{ text: user }] }],
+          generationConfig: { maxOutputTokens: 8192, temperature: 0.5 }
+        })
+      });
+    } catch (e) {
+      throw new Error('인터넷 연결이 끊겼거나 브라우저가 요청을 막았습니다. (' + e.message + ')');
+    }
+
+    const data = await res.json().catch(() => ({}));
+
+    if (res.ok) {
+      const cand = data.candidates && data.candidates[0];
+      const part = cand && cand.content && cand.content.parts && cand.content.parts[0];
+      if (part && part.text) return part.text;
+      // 200인데 내용이 없으면 안전 필터에 걸린 경우가 많다. 모델을 바꿔도 같다.
+      lastErr = '응답이 비어 있습니다 (' + ((cand && cand.finishReason) || '이유 없음') + ')';
+      break;
+    }
+
+    const msg = (data.error && data.error.message) || ('HTTP ' + res.status);
+    lastErr = msg;
+    if (res.status === 400 && /API key|api_key/i.test(msg)) {
+      throw new Error('API 키가 올바르지 않습니다. 다시 확인해 주세요.');
+    }
+    if (res.status === 403) {
+      throw new Error('이 키로는 Gemini API를 쓸 수 없습니다. aistudio.google.com/apikey에서 새로 발급받으세요.');
+    }
+    // 과부하(503)·한도초과(429)일 때만 다음 모델로 넘어간다
+    if (res.status !== 503 && res.status !== 429) break;
+  }
+  throw new Error(lastErr);
+}
+
+/* Apps Script 중계 호출 (공유 방식) */
+async function callViaGas(system, user) {
+  const r = await fetch(conn.gas, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    redirect: 'follow',
+    body: JSON.stringify({ system, user })
+  });
+  const d = await r.json();
+  if (d.error) throw new Error(d.error);
+  return d.text;
+}
+
+/* JSON 응답을 받아 오는 공통 창구. 과부하일 때만 재시도한다. */
+async function askAI(system, user, retries = 2) {
+  let lastErr;
   for (let attempt = 0; attempt <= retries; attempt++) {
     try {
-      const r = await fetch(GAS_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        redirect: 'follow',
-        body: JSON.stringify({ system, user })
-      });
-      const d = await r.json();
-      if (d.error) {
-        if (attempt < retries) { await new Promise(res => setTimeout(res, 3000)); continue; }
-        throw new Error('서버 오류: ' + d.error);
+      const raw = conn.mode === 'key'
+        ? await callGeminiDirect(system, user)
+        : await callViaGas(system, user);
+      return parseJsonReply(raw);
+    } catch (e) {
+      lastErr = e;
+      const retryable = /과부하|503|429|overload|high demand|UNAVAILABLE|비어 있습니다/i.test(e.message);
+      if (attempt < retries && retryable) {
+        await new Promise(res => setTimeout(res, 3000));
+        continue;
       }
-      return JSON.parse(d.text.replace(/```json|```/g, '').trim());
-    } catch(e) {
-      if (attempt < retries) { await new Promise(res => setTimeout(res, 3000)); continue; }
       throw e;
     }
+  }
+  throw lastErr;
+}
+
+/* 모델이 ```json 울타리나 앞뒤 설명을 붙여 보내는 경우가 잦다 */
+loadConn();
+paintConn();
+
+function parseJsonReply(raw) {
+  const t = String(raw || '').replace(/```json|```/g, '').trim();
+  try {
+    return JSON.parse(t);
+  } catch (e) {
+    const s = t.indexOf('{'), n = t.lastIndexOf('}');
+    if (s !== -1 && n > s) {
+      try { return JSON.parse(t.slice(s, n + 1)); } catch (e2) {}
+    }
+    throw new Error('AI 응답을 읽지 못했습니다. 다시 시도해 주세요.');
   }
 }
 
@@ -966,7 +1218,7 @@ async function runAll() {
   try {
     /* ── 1: 세포 앵커 세우기 + 배경지식 (세포 회귀 1) ── */
     setProgress(1, '이 챕터를 담을 세포 장면을 고르는 중...');
-    const r1 = await callClaude(
+    const r1 = await askAI(
 `너는 비문학 책을 세포·면역 이야기로 가르치는 전문가야. JSON만 반환해.
 
 할 일은 두 가지다.
@@ -1008,7 +1260,7 @@ bg_prose 는 위 뼈대(세포 → 책 인용 → 다시 세포)를 지켜 2~3�
 
     /* ── 2: 욕구와 행동 (세포 회귀 2) ── */
     setProgress(3, '세포가 왜 신호를 보내는지 욕구로 풀어내는 중...');
-    const r2 = await callClaude(
+    const r2 = await askAI(
 `너는 욕구·행동 유형 분석 전문가야. JSON만 반환해.
 
 ${anchor}
@@ -1037,7 +1289,7 @@ ${PROSE_RULES}
 
     /* ── 3: 챕터 연결 (세포 회귀 3) + 마무리 회귀 ── */
     setProgress(4, '도우미 세포가 도착하듯 다음 챕터가 필요한 이유를 쓰는 중...');
-    const r3 = await callClaude(
+    const r3 = await askAI(
 `너는 책 구조 분석 전문가야. JSON만 반환해.
 
 ${anchor}
@@ -1078,12 +1330,12 @@ ${PROSE_RULES}
     const analysisSum = `${r1.cell_prose}\n${r1.bg_prose}\n${r2.prose}\n${r3.conn_prose}\n${r3.recap_prose}`;
     const lieUser = `${info}\n\n${anchor}\n\n[분석 요약]\n${analysisSum.slice(0,2400)}`;
 
-    let r4 = await callClaude(lieHuntSystemPrompt(), lieUser);
+    let r4 = await askAI(lieHuntSystemPrompt(), lieUser);
 
     // 군이 겹치거나 개수가 안 맞으면 한 번만 다시 요청한다
     if (!lieSetIsValid(r4)) {
       setProgress(5, '거짓말 3개가 서로 다른 군에서 나오도록 다시 설계하는 중...');
-      const retry = await callClaude(
+      const retry = await askAI(
         lieHuntSystemPrompt() +
         '\n\n[재작성 지시] 앞선 결과가 규칙을 어겼다. 거짓말은 정확히 3개이고, 세 개의 family가 모두 달라야 한다. idx는 sentences 범위 안이어야 한다.',
         lieUser);
