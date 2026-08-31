@@ -1,0 +1,394 @@
+<title>거짓말 10종 도감</title>
+<style>
+/* ── 팔레트: 교정지(校正紙) — 따뜻한 종이, 잉크, 그리고 빨간 교정 표시 ──
+   군별 색은 앱 화면과 동일하게 맞춰, 멘토가 두 화면을 오가도 같은 색을 본다. */
+:root{
+  --paper:#FBFAF7;
+  --surface:#FFFFFF;
+  --line:#E6E2D8;
+  --line-soft:#F0ECE3;
+  --ink:#1B1A17;
+  --ink-2:#4A4740;
+  --ink-3:#7A766C;
+  --mark:#B5372B;
+  --mark-bg:#FBEDEA;
+  --keep:#3F6B18;
+  --keep-bg:#EFF4E6;
+
+  --famA:#8A5A12; --famA-bg:#FAF0DC;
+  --famB:#14685A; --famB-bg:#E4F4EF;
+  --famC:#3B3585; --famC-bg:#EDECFC;
+  --famD:#97401F; --famD-bg:#FAEDE7;
+
+  --sans:'Pretendard','Pretendard Variable',-apple-system,'Apple SD Gothic Neo',
+         'Malgun Gothic','맑은 고딕','Noto Sans KR',system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#141311;
+    --surface:#1C1B18;
+    --line:#302E29;
+    --line-soft:#262421;
+    --ink:#F0EDE5;
+    --ink-2:#C4C0B6;
+    --ink-3:#8E8A80;
+    --mark:#E98A7C;
+    --mark-bg:#33211E;
+    --keep:#A7CB7A;
+    --keep-bg:#212A18;
+
+    --famA:#E0AE5E; --famA-bg:#2E2517;
+    --famB:#6FC4AE; --famB-bg:#152A25;
+    --famC:#A9A3F0; --famC-bg:#1F1D33;
+    --famD:#E29472; --famD-bg:#2E1E17;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#141311;
+  --surface:#1C1B18;
+  --line:#302E29;
+  --line-soft:#262421;
+  --ink:#F0EDE5;
+  --ink-2:#C4C0B6;
+  --ink-3:#8E8A80;
+  --mark:#E98A7C;
+  --mark-bg:#33211E;
+  --keep:#A7CB7A;
+  --keep-bg:#212A18;
+
+  --famA:#E0AE5E; --famA-bg:#2E2517;
+  --famB:#6FC4AE; --famB-bg:#152A25;
+  --famC:#A9A3F0; --famC-bg:#1F1D33;
+  --famD:#E29472; --famD-bg:#2E1E17;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:17px;
+  line-height:1.75;
+  word-break:keep-all;
+  -webkit-text-size-adjust:100%;
+}
+.wrap{max-width:34rem;margin:0 auto;padding:2.5rem 1.25rem 5rem;
+      display:flex;flex-direction:column;gap:2.75rem}
+
+/* ── 표제 ── */
+.masthead{display:flex;flex-direction:column;gap:.5rem}
+.eyebrow{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;
+         color:var(--ink-3);font-weight:700}
+h1{margin:0;font-size:2.1rem;line-height:1.2;letter-spacing:-.02em;
+   font-weight:800;text-wrap:balance}
+.standfirst{margin:0;color:var(--ink-2);font-size:1rem}
+
+/* ── 공통 블록 ── */
+section{display:flex;flex-direction:column;gap:1rem}
+h2{margin:0;font-size:1.3rem;line-height:1.35;letter-spacing:-.01em;
+   font-weight:800;text-wrap:balance}
+h2 .num{color:var(--ink-3);font-weight:700;margin-right:.4rem}
+p{margin:0}
+.lede{color:var(--ink-2)}
+
+.callout{
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:.75rem;padding:1.15rem 1.25rem;
+  display:flex;flex-direction:column;gap:.7rem;
+}
+.callout .k{font-size:.8rem;font-weight:700;letter-spacing:.06em;color:var(--ink-3)}
+
+/* 찾는 순서 — 실제 순서이므로 번호를 쓴다 */
+ol.steps{margin:0;padding:0;list-style:none;counter-reset:s;
+         display:flex;flex-direction:column;gap:.85rem}
+ol.steps li{counter-increment:s;position:relative;padding-left:2.1rem;color:var(--ink-2)}
+ol.steps li::before{
+  content:counter(s);position:absolute;left:0;top:.15rem;
+  width:1.5rem;height:1.5rem;border-radius:50%;
+  background:var(--ink);color:var(--paper);
+  font-size:.8rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+}
+ol.steps b{color:var(--ink)}
+
+/* 네 칸 */
+.slots{display:grid;grid-template-columns:repeat(2,1fr);gap:.5rem}
+.slot{border:1px solid var(--line);border-radius:.6rem;padding:.7rem .8rem;
+      background:var(--surface);display:flex;flex-direction:column;gap:.15rem}
+.slot .s-name{font-weight:800;font-size:.95rem}
+.slot .s-fam{font-size:.75rem;font-weight:700;letter-spacing:.04em}
+.slot .s-q{font-size:.8rem;color:var(--ink-3);line-height:1.5}
+
+/* ── 군 헤더 ── */
+.fam-head{display:flex;flex-direction:column;gap:.35rem;
+          border-top:3px solid var(--fc);padding-top:.85rem}
+.fam-title{display:flex;align-items:baseline;gap:.5rem;flex-wrap:wrap}
+.fam-tag{font-size:.72rem;font-weight:800;letter-spacing:.06em;
+         color:var(--fc);background:var(--fc-bg);
+         padding:.15rem .5rem;border-radius:.3rem}
+.fam-name{font-size:1.4rem;font-weight:800;letter-spacing:-.01em}
+.fam-slot{font-size:.85rem;color:var(--ink-3)}
+.fam-slot b{color:var(--fc)}
+.fam-note{color:var(--ink-2);font-size:.95rem}
+
+/* ── 유형 카드 ── */
+.type{background:var(--surface);border:1px solid var(--line);
+      border-radius:.75rem;padding:1.15rem 1.2rem;
+      display:flex;flex-direction:column;gap:.85rem}
+.t-head{display:flex;align-items:baseline;gap:.5rem}
+.t-no{font-size:1.15rem;font-weight:800;color:var(--fc);line-height:1.3}
+.t-name{font-size:1.1rem;font-weight:800;letter-spacing:-.01em}
+.t-def{color:var(--ink-2)}
+
+.t-find{border-left:2px solid var(--line);padding-left:.85rem;
+        display:flex;flex-direction:column;gap:.2rem}
+.t-find .k{font-size:.75rem;font-weight:800;letter-spacing:.06em;color:var(--ink-3)}
+.t-find p{font-size:.92rem;color:var(--ink-2);line-height:1.65}
+
+/* ── 대조 쌍: 이 페이지의 핵심 ── */
+.pair{display:flex;flex-direction:column;gap:0;
+      border:1px solid var(--line);border-radius:.6rem;overflow:hidden}
+.pair-row{display:flex;gap:.7rem;padding:.75rem .85rem;align-items:flex-start}
+.pair-row + .pair-row{border-top:1px solid var(--line)}
+.pair-tag{flex:0 0 auto;font-size:.68rem;font-weight:800;letter-spacing:.05em;
+          padding:.15rem .45rem;border-radius:.25rem;margin-top:.28rem;white-space:nowrap}
+.row-o .pair-tag{background:var(--keep-bg);color:var(--keep)}
+.row-x .pair-tag{background:var(--mark-bg);color:var(--mark)}
+.row-x{background:var(--mark-bg)}
+.pair-txt{font-size:.95rem;line-height:1.7}
+
+/* 지워진 자리 / 새로 들어온 자리 */
+del{text-decoration:none;color:var(--keep);font-weight:700;
+    background:var(--keep-bg);border-radius:.2rem;padding:0 .18rem;
+    box-shadow:inset 0 -.55em 0 -.05em var(--keep-bg)}
+ins{text-decoration:none;color:var(--mark);font-weight:700;
+    border-bottom:2px solid var(--mark);padding-bottom:.05rem}
+.gap{display:inline-block;width:1.6rem;border-bottom:2px dotted var(--mark);
+     margin:0 .15rem;vertical-align:.15em}
+
+.t-vs{font-size:.88rem;color:var(--ink-3);line-height:1.65;
+      background:var(--line-soft);border-radius:.5rem;padding:.7rem .8rem}
+.t-vs b{color:var(--ink-2)}
+
+/* ── 규칙 목록 ── */
+ol.rules{margin:0;padding:0;list-style:none;counter-reset:r;
+         display:flex;flex-direction:column;gap:.8rem}
+ol.rules li{counter-increment:r;position:relative;padding-left:1.9rem;color:var(--ink-2)}
+ol.rules li::before{content:counter(r) ".";position:absolute;left:0;top:0;
+                    color:var(--ink-3);font-weight:800;font-variant-numeric:tabular-nums}
+ol.rules b{color:var(--ink)}
+
+footer{border-top:1px solid var(--line);padding-top:1.25rem;
+       color:var(--ink-3);font-size:.85rem;line-height:1.7}
+
+@media (max-width:400px){
+  .slots{grid-template-columns:1fr}
+  h1{font-size:1.8rem}
+}
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="eyebrow">책 분석 + 거짓말 사냥</div>
+    <h1>거짓말 10종 도감</h1>
+    <p class="standfirst">요약문에 숨은 거짓말은 문장을 통째로 뒤집지 않는다. 네 칸 중 딱 한 칸만 바꾼다.</p>
+  </header>
+
+  <section>
+    <h2>먼저 읽을 것</h2>
+    <p class="lede">유형을 먼저 고르지 마세요. 요약 문장은 네 칸으로 이루어져 있고, 거짓말은 그중 한 칸만 바꾼 것입니다. 그래서 <b>바뀐 칸부터 정하고</b>, 그 칸에 해당하는 군 안에서만 유형을 고릅니다. 10개 중에서 고르던 문제가 3개 중에서 고르는 문제로 줄어듭니다.</p>
+
+    <div class="callout">
+      <span class="k">찾는 순서</span>
+      <ol class="steps">
+        <li>요약 문장 하나를 고르고, <b>본문에서 같은 내용이 나온 자리</b>를 찾아 나란히 둔다.</li>
+        <li>두 문장에서 <b>바뀐 칸</b>이 어디인지 정한다.</li>
+        <li>그 칸에 해당하는 <b>군 안에서만</b> 유형을 고른다.</li>
+      </ol>
+    </div>
+
+    <div class="slots">
+      <div class="slot"><span class="s-name">얼마나</span><span class="s-fam" style="color:var(--famA)">A군 · 세기</span><span class="s-q">확신·수량·조건이 그대로인가</span></div>
+      <div class="slot"><span class="s-name">왜</span><span class="s-fam" style="color:var(--famB)">B군 · 이음새</span><span class="s-q">원인과 이유가 그대로인가</span></div>
+      <div class="slot"><span class="s-name">어디까지·누가</span><span class="s-fam" style="color:var(--famC)">C군 · 범위</span><span class="s-q">대상과 비교 기준이 그대로인가</span></div>
+      <div class="slot"><span class="s-name">없던 말</span><span class="s-fam" style="color:var(--famD)">D군</span><span class="s-q">본문에 없던 결론이 붙었나</span></div>
+    </div>
+
+    <div class="callout">
+      <span class="k">표시 읽는 법</span>
+      <p style="font-size:.92rem;color:var(--ink-2)">아래 모든 유형은 두 문장을 위아래로 붙여 놓았습니다. <del>초록으로 칠한 곳</del>이 원문에 있던 부분, <ins>빨간 밑줄</ins>이 그 자리에 들어온 거짓말입니다. 점선 <span class="gap"></span>은 원문에 있던 말이 통째로 사라진 자리입니다.</p>
+    </div>
+  </section>
+
+  <!-- ══ A군 ══ -->
+  <section style="--fc:var(--famA);--fc-bg:var(--famA-bg)">
+    <div class="fam-head">
+      <div class="fam-title"><span class="fam-tag">A군</span><span class="fam-name">세기</span></div>
+      <div class="fam-slot">바뀌는 칸 — <b>얼마나</b> · 얼마나 확실한가, 얼마나 많은가</div>
+      <p class="fam-note">내용은 그대로 두고 문장의 온도만 올린다.</p>
+    </div>
+
+    <article class="type">
+      <div class="t-head"><span class="t-no">①</span><span class="t-name">확신 올리기</span></div>
+      <p class="t-def">저자가 “그럴 수 있다”고 조심스럽게 말한 것을 “그렇다”고 단정해 버린다.</p>
+      <div class="pair">
+        <div class="pair-row row-o"><span class="pair-tag">원문</span><span class="pair-txt">결핍감이 4번 유형의 행동을 이끄는 요인<del>일 수 있다</del>.</span></div>
+        <div class="pair-row row-x"><span class="pair-tag">비틀림</span><span class="pair-txt">결핍감이 4번 유형의 행동을 이끄는 요인<ins>이다</ins>.</span></div>
+      </div>
+      <div class="t-find"><span class="k">찾는 법</span><p>원문에 「~일 수 있다 / ~로 보인다 / ~하는 경향이 있다 / 아마」가 있었는지 찾는다. 요약에서 그 꼬리가 잘렸으면 이 유형.</p></div>
+      <p class="t-vs"><b>③ 단서 떼기와 헷갈리면</b> — 사라진 말이 “확신을 낮추는 말”이면 ①, “상황을 한정하는 말”이면 ③.</p>
+    </article>
+
+    <article class="type">
+      <div class="t-head"><span class="t-no">②</span><span class="t-name">수량 부풀리기</span></div>
+      <p class="t-def">몇몇을 대부분으로, 가끔을 자주로. 숫자 감각만 슬쩍 키운다.</p>
+      <div class="pair">
+        <div class="pair-row row-o"><span class="pair-tag">원문</span><span class="pair-txt">4번 유형 <del>중 일부는</del> 남의 관심을 부담스러워한다.</span></div>
+        <div class="pair-row row-x"><span class="pair-tag">비틀림</span><span class="pair-txt">4번 유형은 <ins>대체로</ins> 남의 관심을 부담스러워한다.</span></div>
+      </div>
+      <div class="t-find"><span class="k">찾는 법</span><p>원문의 수량어(일부·여럿·절반쯤·때때로)와 요약의 수량어(대체로·흔히·자주·거의)를 나란히 놓고 세어 본다.</p></div>
+      <p class="t-vs"><b>① 확신 올리기와 헷갈리면</b> — “얼마나 확실한가”가 바뀌면 ①, “얼마나 많은가”가 바뀌면 ②.</p>
+    </article>
+
+    <article class="type">
+      <div class="t-head"><span class="t-no">③</span><span class="t-name">단서 떼기</span></div>
+      <p class="t-def">원문에 붙어 있던 조건(~할 때만)이나 예외(다만 ~는 아니다)를 떼어내고 무조건인 것처럼 만든다.</p>
+      <div class="pair">
+        <div class="pair-row row-o"><span class="pair-tag">원문</span><span class="pair-txt"><del>결핍감이 커질 때</del> 4번 유형은 자기 세계로 물러난다.</span></div>
+        <div class="pair-row row-x"><span class="pair-tag">비틀림</span><span class="pair-txt"><span class="gap"></span> 4번 유형은 자기 세계로 물러난다.</span></div>
+      </div>
+      <div class="t-find"><span class="k">찾는 법</span><p>원문에서 「만약 / ~하는 경우 / ~할 때 / 다만 / 하지만 / 물론 ~도 있다」를 찾는다. 그 대목이 요약에서 너무 깔끔하면 이 유형.</p></div>
+      <p class="t-vs"><b>⑦ 대상 넓히기와 헷갈리면</b> — 사라진 것이 “언제·어떤 상황”이면 ③, “누구”면 ⑦.</p>
+    </article>
+  </section>
+
+  <!-- ══ B군 ══ -->
+  <section style="--fc:var(--famB);--fc-bg:var(--famB-bg)">
+    <div class="fam-head">
+      <div class="fam-title"><span class="fam-tag">B군</span><span class="fam-name">이음새</span></div>
+      <div class="fam-slot">바뀌는 칸 — <b>왜</b> · 무엇이 무엇을 낳는가</div>
+      <p class="fam-note">문장 사이의 화살표를 건드린다. 단어는 거의 그대로라 눈으로는 안 잡힌다.</p>
+    </div>
+
+    <article class="type">
+      <div class="t-head"><span class="t-no">④</span><span class="t-name">동행을 원인으로</span></div>
+      <p class="t-def">“함께 나타난다”는 말을 “그래서 생긴다”는 말로 바꾼다.</p>
+      <div class="pair">
+        <div class="pair-row row-o"><span class="pair-tag">원문</span><span class="pair-txt">결핍감이 강한 사람에게서 예술적 표현 욕구가 <del>함께 관찰된다</del>.</span></div>
+        <div class="pair-row row-x"><span class="pair-tag">비틀림</span><span class="pair-txt">결핍감이 예술적 표현 욕구를 <ins>만들어 낸다</ins>.</span></div>
+      </div>
+      <div class="t-find"><span class="k">찾는 법</span><p>원문이 「관련이 있다 / 함께 나타난다 / 동반된다」인데 요약이 「때문이다 / 만든다 / 낳는다」면 이 유형.</p></div>
+      <p class="t-vs"><b>⑤ 화살표 뒤집기와 헷갈리면</b> — 원문에 화살표가 아예 없었으면 ④, 있었는데 방향만 반대면 ⑤.</p>
+    </article>
+
+    <article class="type">
+      <div class="t-head"><span class="t-no">⑤</span><span class="t-name">화살표 뒤집기</span></div>
+      <p class="t-def">A 때문에 B라고 한 것을 B 때문에 A로 뒤집는다. 쓰인 단어는 하나도 바뀌지 않는다.</p>
+      <div class="pair">
+        <div class="pair-row row-o"><span class="pair-tag">원문</span><span class="pair-txt"><del>채워지지 않은 결핍감</del> 때문에 <del>특별함에 집착</del>하게 된다.</span></div>
+        <div class="pair-row row-x"><span class="pair-tag">비틀림</span><span class="pair-txt"><ins>특별함에 대한 집착</ins> 때문에 <ins>결핍감이 생긴다</ins>.</span></div>
+      </div>
+      <div class="t-find"><span class="k">찾는 법</span><p>「때문에 / 그래서 / ~로 이어진다」 앞뒤에 무엇이 놓였는지 원문과 요약을 나란히 두고 화살표를 직접 그려 본다.</p></div>
+      <p class="t-vs"><b>이건 읽어서는 못 잡는다</b> — 단어가 전부 그대로다. 반드시 화살표를 그려 방향을 맞춰 봐야 한다.</p>
+    </article>
+
+    <article class="type">
+      <div class="t-head"><span class="t-no">⑥</span><span class="t-name">이유 바꿔치기</span></div>
+      <p class="t-def">결론은 원문 그대로 두고 “왜냐하면” 뒤만 다른 이유로 갈아 끼운다.</p>
+      <div class="pair">
+        <div class="pair-row row-o"><span class="pair-tag">원문</span><span class="pair-txt">4번 유형이 평범함을 견디지 못하는 것은 <del>자기 정체성이 흔들리기</del> 때문이다.</span></div>
+        <div class="pair-row row-x"><span class="pair-tag">비틀림</span><span class="pair-txt">4번 유형이 평범함을 견디지 못하는 것은 <ins>남보다 앞서고 싶기</ins> 때문이다.</span></div>
+      </div>
+      <div class="t-find"><span class="k">찾는 법</span><p>결론이 맞아 보이면 그냥 넘어가기 쉽다. 결론에 동그라미를 치고, 그 앞의 이유만 따로 떼어 원문과 맞춘다.</p></div>
+      <p class="t-vs"><b>⑩ 결론 얹기와 헷갈리면</b> — 결론이 원문에 있던 것이면 ⑥, 원문에 아예 없던 것이면 ⑩.</p>
+    </article>
+  </section>
+
+  <!-- ══ C군 ══ -->
+  <section style="--fc:var(--famC);--fc-bg:var(--famC-bg)">
+    <div class="fam-head">
+      <div class="fam-title"><span class="fam-tag">C군</span><span class="fam-name">범위</span></div>
+      <div class="fam-slot">바뀌는 칸 — <b>어디까지·누가</b> · 누구에게, 어디까지 해당하는가</div>
+      <p class="fam-note">주장은 그대로 두고 울타리만 옮긴다.</p>
+    </div>
+
+    <article class="type">
+      <div class="t-head"><span class="t-no">⑦</span><span class="t-name">대상 넓히기</span></div>
+      <p class="t-def">특정한 사람·상황에서 나온 이야기를 모두의 이야기로 넓힌다.</p>
+      <div class="pair">
+        <div class="pair-row row-o"><span class="pair-tag">원문</span><span class="pair-txt"><del>4번 유형은</del> 남과 다르다는 감각에서 자기를 확인한다.</span></div>
+        <div class="pair-row row-x"><span class="pair-tag">비틀림</span><span class="pair-txt"><ins>사람은</ins> 남과 다르다는 감각에서 자기를 확인한다.</span></div>
+      </div>
+      <div class="t-find"><span class="k">찾는 법</span><p>원문의 주인공이 정확히 누구였는지 짚는다. “4번 유형”이 “사람들”로, “어린 시절”이 “평생”으로 커졌으면 이 유형.</p></div>
+      <p class="t-vs"><b>⑧ 주어 바꾸기와 헷갈리면</b> — 같은 대상이 커진 것이면 ⑦, 아예 다른 대상으로 옮겨 갔으면 ⑧.</p>
+    </article>
+
+    <article class="type">
+      <div class="t-head"><span class="t-no">⑧</span><span class="t-name">주어 바꾸기</span></div>
+      <p class="t-def">하는 사람과 겪는 사람을 슬쩍 맞바꾼다.</p>
+      <div class="pair">
+        <div class="pair-row row-o"><span class="pair-tag">원문</span><span class="pair-txt">4번 유형은 <del>상대가 자기를 알아봐 주기를 기다린다</del>.</span></div>
+        <div class="pair-row row-x"><span class="pair-tag">비틀림</span><span class="pair-txt">4번 유형은 <ins>상대를 먼저 알아봐 주려고 한다</ins>.</span></div>
+      </div>
+      <div class="t-find"><span class="k">찾는 법</span><p>그 행동을 “누가” 하는지 묻는다. 원문에서 아이가 한 일을 요약에서 부모가 하고 있지 않은지 확인.</p></div>
+      <p class="t-vs"><b>⑤ 화살표 뒤집기와 헷갈리면</b> — 바뀐 것이 “행동의 주인”이면 ⑧, “원인과 결과의 순서”면 ⑤.</p>
+    </article>
+
+    <article class="type">
+      <div class="t-head"><span class="t-no">⑨</span><span class="t-name">비교 기준 지우기</span></div>
+      <p class="t-def">“무엇보다 낫다”에서 비교 대상을 지워, 그냥 좋은 것으로 만든다.</p>
+      <div class="pair">
+        <div class="pair-row row-o"><span class="pair-tag">원문</span><span class="pair-txt">4번 유형은 <del>3번 유형보다</del> 감정의 결을 세밀하게 느낀다.</span></div>
+        <div class="pair-row row-x"><span class="pair-tag">비틀림</span><span class="pair-txt">4번 유형은 <span class="gap"></span> 감정의 결을 <ins>세밀하게 느끼는 유형이다</ins>.</span></div>
+      </div>
+      <div class="t-find"><span class="k">찾는 법</span><p>요약에 「더 / 낫다 / 강하다 / 높다 / 세밀하다」가 있으면 반드시 묻는다 — 무엇과 비교해서?</p></div>
+      <p class="t-vs"><b>③ 단서 떼기와 헷갈리면</b> — 사라진 것이 “비교 대상”이면 ⑨, “조건·예외”면 ③.</p>
+    </article>
+  </section>
+
+  <!-- ══ D군 ══ -->
+  <section style="--fc:var(--famD);--fc-bg:var(--famD-bg)">
+    <div class="fam-head">
+      <div class="fam-title"><span class="fam-tag">D군</span><span class="fam-name">없던 말</span></div>
+      <div class="fam-slot">바뀌는 칸 — <b>없던 말</b> · 원문에 없는 것을 끼워 넣는가</div>
+      <p class="fam-note">앞은 전부 진짜다. 마지막 한 조각만 저자가 하지 않은 말이다.</p>
+    </div>
+
+    <article class="type">
+      <div class="t-head"><span class="t-no">⑩</span><span class="t-name">결론 얹기</span></div>
+      <p class="t-def">저자가 내리지 않은 판단이나 처방을 저자 말인 것처럼 문장 끝에 붙인다.</p>
+      <div class="pair">
+        <div class="pair-row row-o"><span class="pair-tag">원문</span><span class="pair-txt">4번 유형은 결핍감 때문에 자기 세계로 물러나곤 한다. <span style="color:var(--ink-3)">(원문은 여기서 끝난다)</span></span></div>
+        <div class="pair-row row-x"><span class="pair-tag">비틀림</span><span class="pair-txt">4번 유형은 결핍감 때문에 자기 세계로 물러나므로, <ins>결핍감을 극복해야 성숙해진다</ins>.</span></div>
+      </div>
+      <div class="t-find"><span class="k">찾는 법</span><p>그 결론을 원문에서 찾아본다. 비슷한 문장조차 없으면 이 유형. 특히 「그러므로 ~해야 한다 / 결국 ~이다」를 의심한다.</p></div>
+      <p class="t-vs"><b>⑥ 이유 바꿔치기와 헷갈리면</b> — 원문에 있던 결론의 이유만 바뀌었으면 ⑥, 결론 자체가 새로 생겼으면 ⑩.</p>
+    </article>
+
+    <p class="lede" style="font-size:.92rem">D군이 한 종류뿐인 건 의도한 것입니다. 없는 말을 넣는 방식은 결국 하나뿐이라, 나머지 아홉이 “있던 것을 바꾼” 유형이라는 점이 대비로 드러납니다.</p>
+  </section>
+
+  <!-- ══ 출제 규칙 ══ -->
+  <section>
+    <h2>거짓말을 만들 때의 규칙</h2>
+    <p class="lede">AI가 거짓말 문장을 만들 때 지키는 규칙입니다. 사람이 직접 문제를 낼 때도 같습니다.</p>
+    <ol class="rules">
+      <li>거짓말은 정확히 3개, <b>서로 다른 군에서 하나씩</b>. 같은 군 중복 금지.</li>
+      <li>한 문장에서 바꾸는 건 <b>딱 한 칸</b>. 문장 전체를 반대로 만들지 않는다.</li>
+      <li>바꾸지 않은 부분은 본문에 나온 표현 그대로. 새 단어·새 개념 등장 금지.</li>
+      <li>극단 단어(모든/항상/절대/전혀) 금지. ② 수량 부풀리기도 “대체로/자주/흔히”까지만.</li>
+      <li>거짓 문장은 참 문장과 길이·문체·어미가 구별되지 않아야 한다.</li>
+      <li>참 문장 최소 2개에 “~일 수 있다”, “~할 때”, “~보다”를 <b>미끼로 남긴다</b>. 이게 없으면 학생이 “조심스러운 표현이 없는 문장이 거짓말”이라는 요령만으로 다 찍는다.</li>
+      <li>거짓말의 원래 내용은 본문 안에 실제로 있어야 한다. 없는 내용을 지어내 비틀지 않는다.</li>
+      <li>힌트는 정답을 알려주지 않는다. 1단계는 무엇을 대조할지, 2단계는 위치 범위, 3단계는 스스로 던질 질문.</li>
+    </ol>
+  </section>
+
+  <footer>
+    책 분석 + 거짓말 사냥 · 비판적 독해 훈련 자료<br>
+    인쇄용 워드 파일과 같은 내용입니다. 앱 화면 왼쪽 도감의 색·번호도 이 문서와 같습니다.
+  </footer>
+
+</div>

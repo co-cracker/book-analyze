@@ -1,7 +1,5 @@
 node_modules/
 package.json
 package-lock.json
-_*.js
-_*.py
 _*.png
 _*.pdf
