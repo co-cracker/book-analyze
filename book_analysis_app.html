@@ -126,6 +126,7 @@ textarea.book-content:focus{border-color:#AFA9EC}
 .ps.active{background:var(--pl);border-color:#AFA9EC;color:var(--purple);font-weight:700}
 .ps.done{background:var(--gl);border-color:#97C459;color:var(--green)}
 .prog-msg{font-size:8.5pt;color:var(--muted);text-align:center}
+.prog-note{font-size:7.5pt;color:var(--muted);text-align:center;margin-top:5px;opacity:.75}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 .dot{animation:pulse 1.2s ease-in-out infinite;display:inline}
 .dot:nth-child(2){animation-delay:.2s}
@@ -328,6 +329,7 @@ textarea.book-content:focus{border-color:#AFA9EC}
       <div class="ps" id="ps5">⑤ 거짓말 사냥</div>
     </div>
     <div class="prog-msg"><span class="dot">●</span><span class="dot"> ●</span><span class="dot"> ●</span> <span id="progText">분석 중...</span></div>
+    <div class="prog-note">한 단계에 20~30초쯤 걸립니다. 전체는 2분 안팎이에요. 창을 닫지 마세요.</div>
   </div>
 
   <div class="result" id="result">
@@ -858,7 +860,13 @@ function parseProse(text) {
    설정은 localStorage에 저장되므로 다음에 열면 그대로 이어진다.
    ──────────────────────────────────────────────────────────── */
 const STORE = 'bookAnalyze.conn';
-const MODELS = ['gemini-2.0-flash', 'gemini-1.5-flash', 'gemini-1.5-flash-latest'];
+// 2026-08 기준 실측. gemini-1.5/2.0은 폐기됐고, gemini-flash-latest는 응답이
+// 45초를 넘겨 쓸 수 없다. 아래 셋은 1~2초에 JSON을 정확히 돌려준다.
+const MODELS = ['gemini-3.6-flash', 'gemini-3.5-flash', 'gemini-2.5-flash'];
+// 새 모델들은 답하기 전에 '생각'에 토큰을 쓴다. 그 몫까지 얹어 넉넉히 잡는다.
+const MAX_TOKENS = 16384;
+// 한 모델이 응답하지 않고 매달리면 다음 모델로 넘어간다.
+const CALL_TIMEOUT_MS = 60000;
 const GAS_PATTERN = /^https:\/\/script\.google\.com\/macros\/s\/[A-Za-z0-9_-]{20,}\/exec$/;
 
 let conn = { mode: 'key', key: '', gas: '' };
@@ -915,7 +923,7 @@ async function testConn() {
     return;
   }
   out.className = 'conn-test';
-  out.textContent = '확인하는 중...';
+  out.textContent = '확인하는 중... 20초쯤 걸립니다.';
   try {
     const r = await askAI('너는 연결 확인용이야. 반드시 {"ok":true}만 반환해.', '확인', 0);
     out.className = 'conn-test good';
@@ -935,18 +943,27 @@ async function callGeminiDirect(system, user) {
     const url = 'https://generativelanguage.googleapis.com/v1beta/models/'
               + model + ':generateContent?key=' + encodeURIComponent(conn.key);
     let res;
+    const ctl = new AbortController();
+    const timer = setTimeout(() => ctl.abort(), CALL_TIMEOUT_MS);
     try {
       res = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        signal: ctl.signal,
         body: JSON.stringify({
           systemInstruction: { parts: [{ text: system }] },
           contents: [{ role: 'user', parts: [{ text: user }] }],
-          generationConfig: { maxOutputTokens: 8192, temperature: 0.5 }
+          generationConfig: { maxOutputTokens: MAX_TOKENS, temperature: 0.5 }
         })
       });
     } catch (e) {
+      if (e.name === 'AbortError') {
+        lastErr = model + ' 응답이 너무 늦습니다';
+        continue; // 다음 모델로
+      }
       throw new Error('인터넷 연결이 끊겼거나 브라우저가 요청을 막았습니다. (' + e.message + ')');
+    } finally {
+      clearTimeout(timer);
     }
 
     const data = await res.json().catch(() => ({}));

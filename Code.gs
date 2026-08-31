@@ -7,16 +7,20 @@
 //   2. Deploy > New deployment > Web app > Access: Anyone
 //   3. Copy the /exec URL into the page's connection panel
 //
-// Output limit is 8192 because the analysis returns a cell anchor plus
-// multi paragraph prose, and the lie hunt returns 8-10 sentences with
-// 3 fully described lies. 2000 tokens truncated the JSON mid object.
+// Output limit is 16384. The analysis returns a cell anchor plus multi
+// paragraph prose, and the lie hunt returns 8-10 sentences with 3 fully
+// described lies. The current models also spend tokens thinking before they
+// answer, and that comes out of the same budget.
 
 var GEMINI_API_KEY = 'YOUR_GEMINI_API_KEY_HERE';
 
+// Measured 2026-08. The 1.5 and 2.0 families were retired and now return an
+// error telling you to upgrade. gemini-flash-latest took over 45s and timed out.
+// These three answer in 1-2 seconds with valid JSON.
 var MODELS = [
-  'gemini-2.0-flash',
-  'gemini-1.5-flash',
-  'gemini-1.5-flash-latest'
+  'gemini-3.6-flash',
+  'gemini-3.5-flash',
+  'gemini-2.5-flash'
 ];
 
 function callGemini(systemText, userText) {
@@ -29,7 +33,7 @@ function callGemini(systemText, userText) {
     var requestBody = {
       systemInstruction: { parts: [{ text: systemText }] },
       contents: [{ role: 'user', parts: [{ text: userText }] }],
-      generationConfig: { maxOutputTokens: 8192, temperature: 0.5 }
+      generationConfig: { maxOutputTokens: 16384, temperature: 0.5 }
     };
 
     var options = {
