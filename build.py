@@ -494,6 +494,22 @@ def cell_page(d):
     return page(d['title'], pv, pd, body)
 
 
+# ── 5. 아티팩트용 앱 (감싸는 태그를 벗긴 버전) ──────────────
+def app_artifact():
+    """아티팩트는 doctype/html/head/body를 발행 시점에 직접 씌운다.
+    그래서 <title>+<style>과 body 안쪽만 남긴 파일을 따로 만든다."""
+    with open(APP, encoding='utf-8') as f:
+        s = f.read()
+
+    head = re.search(r'<head>(.*?)</head>', s, re.S).group(1)
+    body = re.search(r'<body>(.*?)</body>', s, re.S).group(1)
+
+    # head에서 meta는 발행 스켈레톤이 이미 넣어 준다. title/style만 가져온다.
+    keep = ''.join(m.group(0) for m in
+                   re.finditer(r'<title>.*?</title>|<style>.*?</style>', head, re.S))
+    return keep.strip() + '\n\n' + body.strip() + '\n'
+
+
 def write(name, content):
     os.makedirs(WEB, exist_ok=True)
     p = os.path.join(WEB, name)
@@ -507,10 +523,11 @@ def main():
     n = patch_app(lies, cells)
     a = write('거짓말-도감.html', lie_page(lies))
     b = write('세포-비유-사전.html', cell_page(cells))
+    c = write('책분석-앱.html', app_artifact())
     total = sum(len(f['types']) for f in lies['families'])
     print('거짓말 %d종 / %d군, 욕구 %d개' % (total, len(lies['families']), len(cells['needs'])))
     print('앱 데이터 블록 %d자' % n)
-    for p in (a, b):
+    for p in (a, b, c):
         print('  ', os.path.relpath(p, HERE), os.path.getsize(p), 'bytes')
 
 

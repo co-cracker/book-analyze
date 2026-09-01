@@ -18,15 +18,29 @@
 | `lie_types.json` | **거짓말 유형 원본.** 여기만 고치고 build.py·make_docx.py를 돌리면 앱·웹·워드가 함께 바뀐다 |
 | `build.py` / `make_docx.py` | 원본에서 앱·웹페이지·워드를 생성 |
 | `거짓말 12종 도감.docx` | 학생·멘토에게 나눠 줄 인쇄용 도감 |
-| `web/거짓말-도감.html` | 폰으로 읽는 웹 도감 |
+| `web/책분석-앱.html` | **아티팩트 발행용 앱** (build.py가 생성) |
+| `web/거짓말-도감.html` | 폰으로 읽는 거짓말 도감 |
+| `web/세포-비유-사전.html` | 폰으로 읽는 세포 비유 사전 |
+| `cell_metaphors.json` | 15가지 욕구 × 세포 비유 원본 |
 | `docs/거짓말-유형-체계.md` | 분류 체계, 12종 목록, 출제 규칙 |
 | `docs/세포-중심-구조.md` | 세포 비유를 뼈대로 삼는 설명 구조 |
 
 ## 시작하기
 
-연결 방법이 두 가지다. 화면 맨 위 연결 패널에서 고른다.
+### 방법 A — 링크로 접속해서 쓰기 (권장, 설정이 아예 없다)
 
-### 방법 A — 혼자 쓸 때 (설치할 게 없다)
+앱을 아티팩트로 배포해 두면 링크만 열면 된다. 페이지가 Claude에게 직접
+물어보므로 API 키도, 중계 서버도, 호스팅도 필요 없다.
+
+```
+python build.py    # web/책분석-앱.html 생성 (감싸는 태그를 벗긴 버전)
+```
+
+생성된 파일을 `capabilities: {sample: {}}` 로 아티팩트 발행하면 끝이다.
+앱은 열릴 때 `claude.use("sample")`을 확인해서, 값이 오면 연결 패널을
+숨기고 바로 쓸 수 있게 한다.
+
+### 방법 B — 로컬 파일 / 직접 호스팅 (Gemini 키)
 
 1. [aistudio.google.com/apikey](https://aistudio.google.com/apikey)에서 Gemini API 키 발급 (무료)
 2. `book_analysis_app.html`을 브라우저로 연다
@@ -35,7 +49,7 @@
 키는 그 브라우저에만 저장되고 다른 곳으로 나가지 않는다. 파일을 남에게 줘도
 키는 따라가지 않으므로, 공유하려면 방법 B를 쓴다.
 
-### 방법 B — 남에게 나눠 줄 때
+### 방법 C — 남에게 나눠 줄 때 (Apps Script 중계)
 
 1. [script.google.com](https://script.google.com)에서 새 프로젝트를 만들고 `Code.gs`를 붙여넣기
 2. `GEMINI_API_KEY`에 키 입력
