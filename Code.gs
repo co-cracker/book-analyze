@@ -33,7 +33,11 @@ function callGemini(systemText, userText) {
     var requestBody = {
       systemInstruction: { parts: [{ text: systemText }] },
       contents: [{ role: 'user', parts: [{ text: userText }] }],
-      generationConfig: { maxOutputTokens: 16384, temperature: 0.5 }
+      generationConfig: {
+        maxOutputTokens: 16384,
+        temperature: 0.15,
+        thinkingConfig: { thinkingLevel: 'high' }
+      }
     };
 
     var options = {

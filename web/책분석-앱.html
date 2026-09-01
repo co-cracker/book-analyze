@@ -157,6 +157,23 @@ textarea.book-content:focus{border-color:#AFA9EC}
   margin-left:6px;vertical-align:middle;
 }
 
+.pick{background:var(--tl);border-radius:8px;padding:12px 14px;margin-bottom:14px}
+.pick-row{display:flex;gap:8px;align-items:baseline;font-size:9.5pt;line-height:1.75;margin-bottom:4px}
+.pick-row:last-child{margin-bottom:0}
+.pick-k{flex-shrink:0;font-size:7.5pt;font-weight:700;color:var(--teal);width:80px}
+.pick-v{color:var(--text)}
+.steps{display:flex;flex-direction:column;gap:12px}
+.step{border-left:3px solid var(--teal);padding-left:13px}
+.step-h{font-size:9pt;font-weight:700;color:var(--teal);margin-bottom:5px}
+.step-b{font-size:10pt;line-height:1.95;color:var(--text);word-break:keep-all}
+.step:last-child{border-left-color:var(--purple)}
+.step:last-child .step-h{color:var(--purple)}
+.scenes{display:flex;flex-direction:column;gap:9px;margin-top:14px}
+.scene-c{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:11px 13px}
+.scene-t{font-size:8.5pt;font-weight:700;color:var(--muted);margin-bottom:6px}
+.scene-r{display:grid;grid-template-columns:56px 1fr;gap:5px 8px;font-size:9pt;line-height:1.7}
+.scene-k{font-size:7.5pt;font-weight:700;color:var(--muted);padding-top:2px}
+
 /* ── 줄글 본문 ── */
 .prose{font-size:10pt;color:var(--text);line-height:1.95;word-break:keep-all}
 .prose p{margin-bottom:14px}
@@ -253,7 +270,7 @@ textarea.book-content:focus{border-color:#AFA9EC}
 <!-- ── 메인 ── -->
 <main class="main">
   <div class="page-title">책 분석 + 거짓말 사냥</div>
-  <div class="page-sub">세포 이야기 하나를 먼저 세우고, 그 이야기로 계속 돌아오면서 책을 이해합니다</div>
+  <div class="page-sub">세포·면역계 비유를 먼저 세우고, 그 비유로 계속 돌아오면서 책을 이해합니다</div>
 
   <details class="conn-panel" id="connPanel">
     <summary class="conn-summary">
@@ -273,7 +290,7 @@ textarea.book-content:focus{border-color:#AFA9EC}
       </div>
 
       <div id="keyPane">
-        <label class="conn-label" for="apiKey">Gemini API 키</label>
+        <label class="conn-label" for="apiKey">Gemini API 키 <span style="font-weight:400;color:var(--muted)">— Flash 확장 사고로 연결됩니다</span></label>
         <input class="conn-input" id="apiKey" type="password" placeholder="AIzaSy..." oninput="saveConn()">
         <p class="conn-help">
           <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">aistudio.google.com/apikey</a>에서
@@ -316,7 +333,7 @@ textarea.book-content:focus{border-color:#AFA9EC}
 
   <div class="progress" id="progress">
     <div class="prog-steps">
-      <div class="ps" id="ps1">① 세포 장면</div>
+      <div class="ps" id="ps1">① 세포 비유</div>
       <div class="ps" id="ps2">② 배경지식</div>
       <div class="ps" id="ps3">③ 욕구·행동</div>
       <div class="ps" id="ps4">④ 챕터 연결</div>
@@ -328,52 +345,49 @@ textarea.book-content:focus{border-color:#AFA9EC}
 
   <div class="result" id="result">
 
-    <!-- ⓪ 세포 앵커 -->
+    <!-- 세포 앵커 요약 -->
     <div class="anchor" id="sec0" style="display:none">
       <div class="anchor-top">
-        <span class="anchor-tag">기준이 되는 세포 이야기</span>
+        <span class="anchor-tag">이 챕터를 담는 세포</span>
         <span class="anchor-name" id="anchorName"></span>
         <span class="anchor-need" id="anchorNeed" style="display:none"></span>
       </div>
-      <div class="anchor-note">아래 네 박자가 이 챕터를 이해하는 뼈대입니다. 다음 모든 설명은 이 이야기로 계속 돌아옵니다.</div>
+      <div class="anchor-note" id="anchorCore"></div>
       <div class="anchor-beats" id="anchorBeats"></div>
       <div class="map-title">세포 ↔ 책 대응표</div>
       <div class="map-list" id="anchorMap"></div>
     </div>
 
-    <div class="sec-card" id="sec0p" style="display:none">
-      <span class="sec-tag" style="background:#E1F5EE;color:#0F6E56">세포 이야기 — 먼저 이것부터 이해한다</span>
-      <div class="prose" id="cellProse"></div>
+    <!-- ① 세포·면역계 비유 -->
+    <div class="sec-card" id="sec1" style="display:none">
+      <span class="sec-tag" style="background:#E1F5EE;color:#0F6E56">① 세포·면역계 비유</span>
+      <div class="pick" id="cellPick"></div>
+      <div class="steps" id="cellSteps"></div>
     </div>
 
-    <!-- ① 배경지식 -->
-    <div class="sec-card" id="sec1" style="display:none">
-      <span class="sec-tag" style="background:#EEEDFE;color:#3C3489">① 배경지식 설명</span>
+    <!-- ② 배경지식 설명 -->
+    <div class="sec-card" id="sec2" style="display:none">
+      <span class="sec-tag" style="background:#EEEDFE;color:#3C3489">② 배경지식 설명</span>
       <span class="return-mark">🔬 세포로 돌아오기 1번째</span>
       <div class="prose" id="bgProse" style="margin-top:12px"></div>
     </div>
 
-    <!-- ② 욕구와 행동 -->
-    <div class="sec-card" id="sec2" style="display:none">
-      <span class="sec-tag" style="background:#E1F5EE;color:#0F6E56">② 욕구와 행동 유형</span>
+    <!-- ③ 욕구와 행동 유형 -->
+    <div class="sec-card" id="sec3" style="display:none">
+      <span class="sec-tag" style="background:#FAEEDA;color:#854F0B">③ 욕구와 행동 유형</span>
       <span class="return-mark">🔬 세포로 돌아오기 2번째</span>
       <div class="flow-chain" id="desireFlow" style="margin-top:12px"></div>
       <div class="prose" id="desireProse"></div>
+      <div class="scenes" id="desireScenes"></div>
     </div>
 
-    <!-- ③ 챕터 연결 -->
-    <div class="sec-card" id="sec3" style="display:none">
-      <span class="sec-tag" style="background:#FAECE7;color:#993C1D">③ 챕터 연결 필연성</span>
-      <span class="return-mark">🔬 세포로 돌아오기 3번째</span>
-      <div class="flow-chain" id="connFlow" style="margin-top:12px"></div>
-      <div class="prose" id="connProse"></div>
-      <div id="linkBadge" style="margin-top:10px;font-size:8pt;font-weight:700;padding:2px 10px;border-radius:20px;background:#EEEDFE;color:#3C3489;display:inline-block"></div>
-    </div>
-
-    <!-- ④ 마무리 회귀 -->
+    <!-- ④ 챕터 연결 필연성 -->
     <div class="sec-card" id="sec4" style="display:none">
-      <span class="sec-tag" style="background:#FAEEDA;color:#854F0B">④ 세포 이야기로 전체 다시 보기</span>
-      <div class="prose" id="recapProse" style="margin-top:4px"></div>
+      <span class="sec-tag" style="background:#FAECE7;color:#993C1D">④ 챕터 연결 필연성</span>
+      <span class="return-mark">🔬 세포로 돌아오기 3번째</span>
+      <div class="prose" id="connProse" style="margin-top:12px"></div>
+      <div class="scenes" id="connScenes"></div>
+      <div id="linkBadge" style="margin-top:10px;font-size:8pt;font-weight:700;padding:2px 10px;border-radius:20px;background:#EEEDFE;color:#3C3489;display:inline-block"></div>
     </div>
 
     <div class="divider"></div>
@@ -1251,6 +1265,13 @@ function setProgress(step, msg) {
 
 // 줄글 텍스트를 HTML로 변환
 // [[인용구]] 는 dark 배경 블록, {{세포말}} 은 세포 강조, **굵게** 는 bold
+function parseInline(text) {
+  let p = esc(String(text || '').trim());
+  p = p.replace(/\{\{(.+?)\}\}/g, '<span class="cell">$1</span>');
+  p = p.replace(/\*\*(.+?)\*\*/g, '<span class="concept">$1</span>');
+  return p;
+}
+
 function parseProse(text) {
   if (!text) return '';
   return text.split(/\n\n+/).map(p => {
@@ -1299,6 +1320,11 @@ const STORE = 'bookAnalyze.conn';
 // 2026-08 기준 실측. gemini-1.5/2.0은 폐기됐고, gemini-flash-latest는 응답이
 // 45초를 넘겨 쓸 수 없다. 아래 셋은 1~2초에 JSON을 정확히 돌려준다.
 const MODELS = ['gemini-3.6-flash', 'gemini-3.5-flash', 'gemini-2.5-flash'];
+// Flash Extended = Flash + 확장 사고. API에는 그런 이름의 모델이 따로 없고
+// thinkingLevel로 켠다. high면 답하기 전에 생각에 토큰을 더 쓴다.
+const THINKING = { thinkingLevel: 'high' };
+// 같은 책을 넣으면 같은 구조가 나오도록 온도를 낮춘다.
+const TEMPERATURE = 0.15;
 // 새 모델들은 답하기 전에 '생각'에 토큰을 쓴다. 그 몫까지 얹어 넉넉히 잡는다.
 const MAX_TOKENS = 16384;
 // 한 모델이 응답하지 않고 매달리면 다음 모델로 넘어간다.
@@ -1409,7 +1435,11 @@ async function callGeminiDirect(system, user) {
         body: JSON.stringify({
           systemInstruction: { parts: [{ text: system }] },
           contents: [{ role: 'user', parts: [{ text: user }] }],
-          generationConfig: { maxOutputTokens: MAX_TOKENS, temperature: 0.5 }
+          generationConfig: {
+            maxOutputTokens: MAX_TOKENS,
+            temperature: TEMPERATURE,
+            thinkingConfig: THINKING
+          }
         })
       });
     } catch (e) {
@@ -1521,6 +1551,33 @@ function parseJsonReply(raw) {
    모든 분석 단락이 이 규칙을 공유한다. 책 문장을 인용하고
    같은 뜻을 쉬운 말로 바꿔 쓰는 것(= 그냥 반복)을 막는 장치다.
    ──────────────────────────────────────────────────────────── */
+/* ────────────────────────────────────────────────────────────
+   프롬프트 공통 조각 — 네 파트가 모두 같은 역할·금지 사항을 쓴다.
+   같은 책을 넣으면 같은 구조가 나오도록 형식을 못 박아 둔다.
+   ──────────────────────────────────────────────────────────── */
+const ROLE = '너는 이 책이 다루는 분야의 전문가이자, 초등학생도 이해할 수 있도록 설명하는 분석가야.';
+
+const BAN = [
+  '[절대 하지 말 것]',
+  '- "앞은 서론이고 뒤는 본론이다" 같은 일반적인 설명 금지',
+  '- 개념 이름만 쓰고 끝내는 것 금지',
+  '- 어떤 책에나 붙일 수 있는 말 금지',
+  '- 일상 갈등 장면 없이 이론만 쓰는 것 금지',
+  '- 세포 비유를 쓰고 책 내용으로 돌아오지 않는 것 금지'
+].join(NL);
+
+const CELL_BAN = [
+  '[세포 비유에서 절대 하지 말 것]',
+  '- "면역세포처럼 싸운다" 처럼 단순 비교로 끝내기 금지',
+  '- 세포 이름만 언급하고 역할 설명 없이 넘어가기 금지',
+  '- 비유를 쓰고 책 내용으로 돌아오지 않기 금지',
+  '- 전문 용어에 괄호 설명 없이 쓰기 금지'
+].join(NL);
+
+function targetBlock(title, chapter, concept) {
+  return ['[분석 대상]', '책 제목: ' + title, '챕터: ' + chapter, '핵심 개념: ' + concept].join(NL);
+}
+
 const PROSE_RULES = `
 [모든 단락의 뼈대 — 반드시 이 순서로 쓴다]
 1) 세포 장면에서 시작한다. 앵커의 네 박자(하는 일 / 위기 / 신호 / 도우미) 중
@@ -1615,26 +1672,53 @@ function normalizeLie(lie) {
   return { ...lie, _fam: fam, famAsk: (fam && fam.ask) || '—' };
 }
 
-/* ── 세포 앵커 카드 렌더링 ── */
-function renderAnchor(a) {
+/* ── ① 세포 비유 결과 렌더링 ── */
+function renderCellPart(r) {
   document.getElementById('sec0').style.display = 'block';
-  document.getElementById('anchorName').textContent = a.cell_name || '';
+  document.getElementById('anchorName').textContent = r.cell_name || '';
   const nd = document.getElementById('anchorNeed');
-  nd.textContent = a.need_no ? ('#' + a.need_no + ' ' + (a.need_name || '')) : '';
-  nd.style.display = a.need_no ? 'inline-block' : 'none';
+  nd.textContent = r.need_no ? ('#' + r.need_no + ' ' + (r.need_name || '')) : '';
+  nd.style.display = r.need_no ? 'inline-block' : 'none';
+  document.getElementById('anchorCore').textContent = r.core_line || '';
+
   const beats = [
-    ['평소 하는 일', a.cell_job],
-    ['혼자서는 안 되는 순간', a.cell_crisis],
-    ['보내는 신호', a.cell_signal],
-    ['불려오는 도우미', a.cell_helper]
+    ['평소 하는 일', r.cell_job],
+    ['혼자서는 안 되는 순간', r.cell_crisis],
+    ['보내는 신호', r.cell_signal],
+    ['불려오는 도우미', r.cell_helper]
   ];
-  document.getElementById('anchorBeats').innerHTML = beats.map(([n,t]) =>
+  document.getElementById('anchorBeats').innerHTML = beats.map(([n, t]) =>
     `<div class="beat"><div class="beat-n">${esc(n)}</div><div class="beat-t">${esc(t)}</div></div>`).join('');
-  document.getElementById('anchorMap').innerHTML = (a.map || []).map(m =>
+  document.getElementById('anchorMap').innerHTML = (r.map || []).map(m =>
     `<div class="map-row">
        <span class="map-cell">${esc(m.cell)}</span>
        <span class="map-arrow">=</span>
        <span class="map-book">${esc(m.book)}</span>
+     </div>`).join('');
+
+  document.getElementById('sec1').style.display = 'block';
+  document.getElementById('cellPick').innerHTML =
+    `<div class="pick-row"><span class="pick-k">핵심 작동 방식</span><span class="pick-v">${esc(r.core_line)}</span></div>` +
+    `<div class="pick-row"><span class="pick-k">고른 세포</span><span class="pick-v">${esc(r.cell_name)}</span></div>` +
+    `<div class="pick-row"><span class="pick-k">고른 이유</span><span class="pick-v">${esc(r.pick_reason)}</span></div>`;
+
+  const titles = ['1단계 — 세포의 역할', '2단계 — 혼자 감당 안 되는 위기 장면',
+                  '3단계 — 불려오는 다른 세포', '4단계 — 이 구조 = 책 내용'];
+  const steps = [r.step1, r.step2, r.step3, r.step4];
+  document.getElementById('cellSteps').innerHTML = titles.map((t, i) =>
+    `<div class="step"><div class="step-h">${esc(t)}</div><div class="step-b">${parseInline(steps[i])}</div></div>`).join('');
+}
+
+/* 일상 갈등 장면 3개 — 상황 → 내면 반응 → 결과 */
+function renderScenes(el, scenes) {
+  document.getElementById(el).innerHTML = (scenes || []).map((s, i) =>
+    `<div class="scene-c">
+       <div class="scene-t">일상 장면 ${i + 1}</div>
+       <div class="scene-r">
+         <span class="scene-k">상황</span><span>${esc(s.situation)}</span>
+         <span class="scene-k">내면 반응</span><span>${esc(s.inner)}</span>
+         <span class="scene-k">결과</span><span>${esc(s.result)}</span>
+       </div>
      </div>`).join('');
 }
 
@@ -1703,147 +1787,172 @@ async function runAll() {
   document.getElementById('runBtn').disabled = true;
   document.getElementById('progress').className = 'progress show';
   document.getElementById('result').className = 'result show';
-  ['sec0','sec0p','sec1','sec2','sec3','sec4','sec5m','sec5s','sec5h','sec5a']
+  ['sec0','sec1','sec2','sec3','sec4','sec5m','sec5s','sec5h','sec5a']
     .forEach(id => document.getElementById(id).style.display='none');
 
-  const info = `책: "${title}" / 챕터: "${chapter}" / 핵심 개념: "${concept}"`;
-  const shortContent = content.slice(0, 4000);
+  const target = targetBlock(title, chapter, concept);
+  const book = content.slice(0, 4000);
 
   try {
-    /* ── 1: 세포 앵커 세우기 + 배경지식 (세포 회귀 1) ── */
-    setProgress(1, '이 챕터가 켜는 욕구와 세포 비유를 사전에서 고르는 중...');
+    /* ── ① 세포·면역계 비유 ── */
+    setProgress(1, '이 챕터에 맞는 세포를 사전에서 고르고 4단계 비유를 쓰는 중...');
     const r1 = await askAI(
-`너는 비문학 책을 세포·면역 이야기로 가르치는 전문가야. JSON만 반환해.
+`${ROLE} JSON만 반환해.
 
-할 일은 두 가지다.
+${target}
 
-[1] 이 챕터가 켜는 욕구를 아래 사전에서 하나 고르고, 그 줄의 세포 비유를 앵커로 삼는다.
-    - 세포를 새로 지어내지 마라. 반드시 사전에 있는 것만 쓴다.
-    - 고른 욕구 번호(need_no)와 이름(need_name)을 함께 반환한다.
-    - 그 세포의 작동을 네 박자로 정리한다:
-      평소 하는 일 → 혼자서는 안 되는 위기 → 도움을 청하는 신호 → 불려오는 도우미
-      사전의 '세포 이야기'에 있는 내용만으로 채운다.
-    - 전문 용어는 괄호 안에 쉬운 설명을 붙인다.
-    - 세포 요소와 책 개념을 짝지은 대응표를 4~5쌍 만든다.
+[할 일 — 세포·면역계 비유]
+먼저 이 챕터의 핵심 작동 방식을 한 줄로 써라 (core_line).
+그 다음, 이 챕터와 가장 잘 맞는 세포 하나를 아래 사전에서 고르고
+고른 이유를 한 줄로 써라 (pick_reason). 세포를 새로 지어내지 마라.
+그 다음 아래 4단계로 비유를 작성해. 각 단계 2문장 이상.
+
+ 1단계 — 세포의 역할 (step1)
+ 이 세포가 몸 안에서 평소에 어떤 일을 하는지 초등학생이 이해할 수 있는 말로.
+ "이 세포는 마치 ○○처럼 작동해" 방식의 비유를 반드시 포함.
+ 전문 용어는 반드시 괄호 안에 쉬운 설명 추가.
+ 예: 사이토카인(세포들이 서로에게 보내는 '도움 요청 신호')
+
+ 2단계 — 혼자 감당 안 되는 위기 장면 (step2)
+ 어떤 상황에서 이 세포 혼자로는 막을 수 없는지 구체적인 장면으로.
+ "한계가 있다"가 아니라, 어떤 상황에서 왜 혼자 안 되는지까지.
+
+ 3단계 — 불려오는 다른 세포 (step3)
+ 그 한계를 해결하기 위해 어떤 세포가 오는지, 그 세포가 어떻게 문제를 해결하는지.
+
+ 4단계 — 이 구조 = 책 내용 (step4)
+ 위 세포들의 관계가 이 챕터의 핵심 논리와 어떻게 같은 구조인지 연결해.
+ 반드시 "이것이 바로 이 챕터가 말하는 ○○이다"로 마무리.
+ 비유로 끝내지 말고 책 내용으로 반드시 돌아와.
+
+${CELL_BAN}
+
+${BAN}
+
+[표기] 세포 이야기의 핵심 낱말은 {{세포말}}, 책의 핵심 개념은 **개념어**.
 
 [세포 비유 사전 — 이 안에서만 고른다]
 ${cellCatalogText()}
 
-[2] 그 앵커를 써서 배경지식 줄글을 쓴다.
-${PROSE_RULES}
-
-cell_prose 는 책 인용 없이 세포 이야기만으로 쓴다. 아이가 그림처럼 떠올릴 수 있게 구체적으로.
-bg_prose 는 위 뼈대(세포 → 책 인용 → 다시 세포)를 지켜 2~3단락으로 쓴다.
-
 {
-  "need_no": 1,
-  "need_name": "고른 욕구 이름",
-  "cell_name": "사전에 적힌 세포 이름 그대로",
-  "cell_job": "평소 하는 일 한 줄",
-  "cell_crisis": "혼자서는 안 되는 순간 한 줄",
-  "cell_signal": "도움을 청하는 방식 한 줄",
-  "cell_helper": "불려오는 도우미 한 줄",
-  "map": [{"cell":"세포 쪽 요소","book":"책 쪽 개념"}],
-  "cell_prose": "세포 이야기 줄글",
-  "bg_prose": "배경지식 줄글"
-}`,
-    `${info}\n\n[책 내용]\n${shortContent}`);
+  "core_line": "", "need_no": 1, "need_name": "", "cell_name": "사전에 적힌 세포 이름 그대로",
+  "pick_reason": "", "step1": "", "step2": "", "step3": "", "step4": "",
+  "cell_job": "", "cell_crisis": "", "cell_signal": "", "cell_helper": "",
+  "map": [{"cell":"세포 쪽 요소","book":"책 쪽 개념"}]
+}`, `[책 내용]\n${book}`);
 
-    renderAnchor(r1);
-    document.getElementById('sec0p').style.display='block';
-    document.getElementById('cellProse').innerHTML = parseProse(r1.cell_prose);
-
-    setProgress(2, '세포 장면으로 배경지식을 설명하는 중...');
-    document.getElementById('sec1').style.display='block';
-    document.getElementById('bgProse').innerHTML = parseProse(r1.bg_prose);
-
+    renderCellPart(r1);
     const anchor = anchorBlock(r1);
 
-    /* ── 2: 욕구와 행동 (세포 회귀 2) ── */
-    setProgress(3, '세포가 왜 신호를 보내는지 욕구로 풀어내는 중...');
+    /* ── ② 배경지식 설명 ── */
+    setProgress(2, '세포 비유로 돌아오면서 배경지식을 설명하는 중...');
     const r2 = await askAI(
-`너는 욕구·행동 유형 분석 전문가야. JSON만 반환해.
+`${ROLE} JSON만 반환해.
+
+${target}
 
 ${anchor}
 
-할 일: 앵커의 "위기"와 "신호"가 왜 일어나는지를 사람의 욕구로 설명한다.
-세포가 신호를 보내는 것과, 사람이 무언가를 원해서 그렇게 행동하는 것이
-같은 구조라는 걸 보여라. 세포 장면을 한 걸음 더 진행시키면서 설명한다.
+[할 일 — 배경지식 설명]
+- 초등학생이 처음 들어도 이해할 수 있는 언어와 예시를 쓴다.
+- "이것은 마치 ○○과 같다" 방식의 일상 비유를 반드시 포함한다.
+- 위 세포 비유의 어느 대목과 같은 구조인지 짚으면서 설명한다.
 
 ${PROSE_RULES}
+
+${BAN}
+
+{"prose": "줄글 2~3단락"}`, `[책 내용]\n${book}`);
+
+    document.getElementById('sec2').style.display='block';
+    document.getElementById('bgProse').innerHTML = parseProse(r2.prose);
+
+    /* ── ③ 욕구와 행동 유형 ── */
+    setProgress(3, '작동하는 욕구와 일상 갈등 장면 3개를 쓰는 중...');
+    const r3 = await askAI(
+`${ROLE} JSON만 반환해.
+
+${target}
+
+${anchor}
+
+[할 일 — 욕구와 행동 유형]
+- 이 챕터가 건드리는 욕구 이름을 아래 목록에서 찾아 명시한다.
+- 욕구 → 행동 유형 → 구체적 방향, 3단계 구조로 설명한다.
+  이 세 칸은 화면에 나란히 표시되는 짧은 딱지다. 각각 12자를 넘기지 마라.
+  desire_name은 "회복 욕구"처럼 목록의 이름 그대로, behavior_type은 "물러남",
+  direction은 "자기 세계로" 같은 짧은 말로 쓴다. 설명은 prose에 쓴다.
+- 일상 갈등 장면을 정확히 3개 넣는다.
+  각 장면은 상황 → 내면 반응 → 결과 순서의 흐름으로 쓴다.
+- 줄글은 앵커의 "위기"와 "신호"로 돌아오면서 쓴다.
+
+${PROSE_RULES}
+
+${BAN}
 
 욕구 목록: 청결/안전/통제/균형/효율/이해/회복/생존/의미/소속/일관성/고통회피/완성/공정/확인
 
 {
-  "desire_name": "욕구 이름",
-  "behavior_type": "행동 유형",
-  "direction": "구체적 방향",
-  "prose": "줄글 2~3단락"
-}`,
-    `${info}\n\n[책 내용]\n${shortContent}`);
+  "desire_name": "", "behavior_type": "", "direction": "",
+  "prose": "줄글 2~3단락",
+  "scenes": [{"situation":"","inner":"","result":""}]
+}`, `[책 내용]\n${book}`);
 
-    document.getElementById('sec2').style.display='block';
+    document.getElementById('sec3').style.display='block';
     document.getElementById('desireFlow').innerHTML =
-      [r2.desire_name, r2.behavior_type, r2.direction]
+      [r3.desire_name, r3.behavior_type, r3.direction]
         .map(p=>`<span class="fn">${esc(p)}</span>`).join('<span class="fa">→</span>');
-    document.getElementById('desireProse').innerHTML = parseProse(r2.prose);
+    document.getElementById('desireProse').innerHTML = parseProse(r3.prose);
+    renderScenes('desireScenes', r3.scenes);
 
-    /* ── 3: 챕터 연결 (세포 회귀 3) + 마무리 회귀 ── */
-    setProgress(4, '도우미 세포가 도착하듯 다음 챕터가 필요한 이유를 쓰는 중...');
-    const r3 = await askAI(
-`너는 책 구조 분석 전문가야. JSON만 반환해.
+    /* ── ④ 챕터 연결 필연성 ── */
+    setProgress(4, '이 챕터가 여기 있어야 하는 이유를 쓰는 중...');
+    const r4 = await askAI(
+`${ROLE} JSON만 반환해.
+
+${target}
 
 ${anchor}
 
-할 일 1 (conn_prose): 앵커의 "도우미"가 도착해야 이야기가 끝나듯,
-다음 챕터가 와야 이 챕터가 완성된다는 것을 보여라.
-이 챕터가 이 위치에 없으면 책이 무너지는 이유를, 세포 장면을 진행시키며 설명한다.
-
-할 일 2 (recap_prose): 지금까지 세포 장면이 세 번 돌아왔다.
-그 세 번을 하나의 이야기로 이어 붙여 처음부터 끝까지 다시 들려준다.
-같은 문장을 복사하지 말고, 이야기가 이어지도록 다시 쓴다.
-마지막 문장은 반드시 "이것이 바로 이 챕터가 말하는 ○○이다" 형태로 끝낸다.
+[할 일 — 챕터 연결 필연성]
+- 이 챕터가 다음 챕터로 이어지는 방향을 설명한다.
+- 이 책에만 성립하는 이유를 일상 장면 2개로 확인한다.
+  각 장면은 상황 → 내면 반응 → 결과 순서로 쓴다.
+- 앵커의 "도우미"가 도착해야 이야기가 끝나듯, 다음 챕터가 와야
+  이 챕터가 완성된다는 것을 세포 비유로 돌아오며 보여라.
 
 ${PROSE_RULES}
 
-{
-  "conn_desire": "건드려지는 욕구",
-  "conn_behavior": "작동하는 행동 유형",
-  "conn_direction": "다음 챕터 방향",
-  "conn_prose": "챕터 연결 줄글",
-  "link_type": "연결 유형 한 줄 (예: B — 당연한 것이 흔들릴 때 진짜 배움이 시작된다)",
-  "recap_prose": "세포 이야기로 전체를 다시 들려주는 줄글"
-}`,
-    `${info}\n\n[책 내용]\n${content.slice(0,3000)}`);
+${BAN}
 
-    document.getElementById('sec3').style.display='block';
-    document.getElementById('connFlow').innerHTML =
-      [r3.conn_desire, r3.conn_behavior, r3.conn_direction]
-        .map(p=>`<span class="fn">${esc(p)}</span>`).join('<span class="fa">→</span>');
-    document.getElementById('connProse').innerHTML = parseProse(r3.conn_prose);
-    document.getElementById('linkBadge').textContent = '연결 유형 ' + (r3.link_type || '');
+{
+  "prose": "줄글 2~3단락",
+  "link_type": "연결 유형 한 줄",
+  "scenes": [{"situation":"","inner":"","result":""}]
+}`, `[책 내용]\n${content.slice(0,3000)}`);
 
     document.getElementById('sec4').style.display='block';
-    document.getElementById('recapProse').innerHTML = parseProse(r3.recap_prose);
+    document.getElementById('connProse').innerHTML = parseProse(r4.prose);
+    renderScenes('connScenes', r4.scenes);
+    document.getElementById('linkBadge').textContent = '연결 유형 ' + (r4.link_type || '');
 
-    /* ── 4: 거짓말 사냥 ── */
+    /* ── ⑤ 거짓말 사냥 ── */
     setProgress(5, '분석 내용을 바탕으로 거짓말 3개를 설계하는 중...');
-    const analysisSum = `${r1.cell_prose}\n${r1.bg_prose}\n${r2.prose}\n${r3.conn_prose}\n${r3.recap_prose}`;
-    const lieUser = `${info}\n\n${anchor}\n\n[분석 요약]\n${analysisSum.slice(0,2400)}`;
+    const analysisSum = [r1.step1, r1.step4, r2.prose, r3.prose, r4.prose].join('\n');
+    const lieUser = `${target}\n\n${anchor}\n\n[분석 요약]\n${analysisSum.slice(0,2400)}`;
 
-    let r4 = await askAI(lieHuntSystemPrompt(), lieUser);
+    let r5 = await askAI(lieHuntSystemPrompt(), lieUser);
 
-    // 군이 겹치거나 개수가 안 맞으면 한 번만 다시 요청한다
-    if (!lieSetIsValid(r4)) {
+    if (!lieSetIsValid(r5)) {
       setProgress(5, '거짓말 3개가 서로 다른 군에서 나오도록 다시 설계하는 중...');
       const retry = await askAI(
         lieHuntSystemPrompt() +
         '\n\n[재작성 지시] 앞선 결과가 규칙을 어겼다. 거짓말은 정확히 3개이고, 세 개의 family가 모두 달라야 한다. idx는 sentences 범위 안이어야 한다.',
         lieUser);
-      if (lieSetIsValid(retry)) r4 = retry;
+      if (lieSetIsValid(retry)) r5 = retry;
     }
 
-    renderLieHunt(r4, (r4.lies || []).map(normalizeLie));
+    renderLieHunt(r5, (r5.lies || []).map(normalizeLie));
 
     setProgress(6,'완성!');
     document.getElementById('progress').className='progress';
