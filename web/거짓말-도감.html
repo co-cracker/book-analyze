@@ -4,10 +4,10 @@
   --paper:#FBFAF7; --surface:#FFFFFF; --line:#E6E2D8; --line-soft:#F1EDE4;
   --ink:#1B1A17; --ink-2:#4A4740; --ink-3:#7A766C;
   --said:#B5372B; --said-bg:#FBEDEA; --real:#2F6B4F; --real-bg:#EAF3EC;
-  --fam1:#8A5A12; --fam1-bg:#FAF0DC;
-  --fam2:#14685A; --fam2-bg:#E4F4EF;
-  --fam3:#3B3585; --fam3-bg:#EDECFC;
-  --fam4:#97401F; --fam4-bg:#FAEDE7;
+  --f1:#8A5A12; --f1-bg:#FAF0DC;
+  --f2:#14685A; --f2-bg:#E4F4EF;
+  --f3:#3B3585; --f3-bg:#EDECFC;
+  --f4:#97401F; --f4-bg:#FAEDE7;
   --sans:'Pretendard','Pretendard Variable',-apple-system,'Apple SD Gothic Neo',
          'Malgun Gothic','맑은 고딕','Noto Sans KR',system-ui,sans-serif;
 }
@@ -16,446 +16,438 @@
     --paper:#141311; --surface:#1C1B18; --line:#302E29; --line-soft:#242220;
     --ink:#F0EDE5; --ink-2:#C4C0B6; --ink-3:#8E8A80;
     --said:#E98A7C; --said-bg:#31201D; --real:#8FC5A5; --real-bg:#1A2A21;
-    --fam1:#CAB494; --fam1-bg:#2F2D29;
-    --fam2:#95BBB4; --fam2-bg:#2B2E2D;
-    --fam3:#A6A4C8; --fam3-bg:#2D2C2F;
-    --fam4:#D0A99A; --fam4-bg:#2F2D2B;
+    --f1:#CAB494; --f1-bg:#2F2D29;
+    --f2:#95BBB4; --f2-bg:#2B2E2D;
+    --f3:#A6A4C8; --f3-bg:#2D2C2F;
+    --f4:#D0A99A; --f4-bg:#2F2D2B;
   }
 }
 :root[data-theme="dark"]{
   --paper:#141311; --surface:#1C1B18; --line:#302E29; --line-soft:#242220;
   --ink:#F0EDE5; --ink-2:#C4C0B6; --ink-3:#8E8A80;
   --said:#E98A7C; --said-bg:#31201D; --real:#8FC5A5; --real-bg:#1A2A21;
-    --fam1:#CAB494; --fam1-bg:#2F2D29;
-    --fam2:#95BBB4; --fam2-bg:#2B2E2D;
-    --fam3:#A6A4C8; --fam3-bg:#2D2C2F;
-    --fam4:#D0A99A; --fam4-bg:#2F2D2B;
+    --f1:#CAB494; --f1-bg:#2F2D29;
+    --f2:#95BBB4; --f2-bg:#2B2E2D;
+    --f3:#A6A4C8; --f3-bg:#2D2C2F;
+    --f4:#D0A99A; --f4-bg:#2F2D2B;
 }
 
 *{box-sizing:border-box}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
      font-size:17px;line-height:1.75;word-break:keep-all;-webkit-text-size-adjust:100%}
 .wrap{max-width:34rem;margin:0 auto;padding:2.5rem 1.25rem 5rem;
-       display:flex;flex-direction:column;gap:2.75rem}
-
+      display:flex;flex-direction:column;gap:2.75rem}
 .masthead{display:flex;flex-direction:column;gap:.5rem}
-.eyebrow{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;
-         color:var(--ink-3);font-weight:700}
+.eyebrow{font-size:.75rem;letter-spacing:.14em;color:var(--ink-3);font-weight:700}
 h1{margin:0;font-size:2.1rem;line-height:1.2;letter-spacing:-.02em;font-weight:800;text-wrap:balance}
 .standfirst{margin:0;color:var(--ink-2);font-size:1rem}
-
 section{display:flex;flex-direction:column;gap:1rem}
-h2{margin:0;font-size:1.3rem;line-height:1.35;font-weight:800;text-wrap:balance}
+h2{margin:0;font-size:1.35rem;line-height:1.35;font-weight:800;text-wrap:balance}
 p{margin:0}
 .lede{color:var(--ink-2)}
-
-.qbox{background:var(--ink);color:var(--paper);border-radius:.85rem;
-      padding:1.35rem 1.3rem;display:flex;flex-direction:column;gap:.45rem}
-.qbox .qk{font-size:.72rem;letter-spacing:.1em;font-weight:700;opacity:.65}
-.qbox .qq{font-size:1.25rem;font-weight:800;line-height:1.45;text-wrap:balance}
-.qbox .qn{font-size:.85rem;opacity:.72;line-height:1.6}
-
-.triage{display:flex;flex-direction:column;gap:.55rem}
-.tri{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--fc);
-     border-radius:.55rem;padding:.8rem .9rem;display:grid;
-     grid-template-columns:auto 1fr;gap:.15rem .55rem;align-items:baseline}
-.tri-tag{font-size:.68rem;font-weight:800;letter-spacing:.05em;color:var(--fc);
-         background:var(--fc-bg);padding:.1rem .4rem;border-radius:.25rem}
-.tri-name{font-size:1.05rem;font-weight:800}
-.tri-intent{grid-column:2;font-size:.92rem;color:var(--ink-2)}
-.tri-when{grid-column:2;font-size:.82rem;color:var(--ink-3);margin-top:.15rem}
-.tri-when::before{content:"이럴 때 — ";font-weight:700}
-
-.fam-head{display:flex;flex-direction:column;gap:.35rem;
-          border-top:3px solid var(--fc);padding-top:.85rem}
-.fam-title{display:flex;align-items:baseline;gap:.5rem;flex-wrap:wrap}
-.fam-tag{font-size:.72rem;font-weight:800;letter-spacing:.06em;color:var(--fc);
-         background:var(--fc-bg);padding:.15rem .5rem;border-radius:.3rem}
-.fam-name{font-size:1.4rem;font-weight:800;letter-spacing:-.01em}
-.fam-intent{color:var(--ink-2);font-size:.98rem}
-.fam-when{font-size:.88rem;color:var(--ink-3)}
-.fam-when b{color:var(--ink-2)}
-
-.type{background:var(--surface);border:1px solid var(--line);border-radius:.75rem;
+.card{background:var(--surface);border:1px solid var(--line);border-radius:.75rem;
       padding:1.15rem 1.2rem;display:flex;flex-direction:column;gap:.8rem}
-.t-head{display:flex;align-items:baseline;gap:.5rem}
-.t-no{font-size:1.15rem;font-weight:800;color:var(--fc)}
-.t-name{font-size:1.1rem;font-weight:800;letter-spacing:-.01em}
 .chips{display:flex;flex-wrap:wrap;gap:.3rem}
 .chip{font-size:.74rem;color:var(--ink-3);background:var(--line-soft);
       border-radius:1rem;padding:.15rem .55rem}
+footer{border-top:1px solid var(--line);padding-top:1.25rem;
+       color:var(--ink-3);font-size:.85rem;line-height:1.7}
+.tablewrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.85rem;min-width:20rem}
+th{text-align:left;font-weight:800;color:var(--ink-3);font-size:.72rem;
+   letter-spacing:.04em;padding:.5rem .6rem;border-bottom:1px solid var(--line)}
+td{padding:.5rem .6rem;border-bottom:1px solid var(--line-soft);
+   color:var(--ink-2);vertical-align:top}
+td b{color:var(--ink)}
+@media (max-width:400px){h1{font-size:1.8rem}}
 
+/* 거짓말이 생기는 자리 */
+.origin{background:var(--ink);color:var(--paper);border-radius:.85rem;
+        padding:1.4rem 1.3rem;display:flex;flex-direction:column;gap:.75rem}
+.origin .ok{font-size:.72rem;letter-spacing:.1em;font-weight:700;opacity:.6}
+.origin .oq{font-size:1.15rem;font-weight:800;line-height:1.5;text-wrap:balance}
+.flow{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;font-size:.8rem}
+.flow span{background:rgba(255,255,255,.12);border-radius:.35rem;padding:.25rem .55rem}
+.flow span.hot{background:var(--said);color:#fff;font-weight:700}
+.flow i{opacity:.45;font-style:normal}
+.origin .on{font-size:.85rem;opacity:.75;line-height:1.7}
+
+/* 네 개의 질문 */
+.triage{display:flex;flex-direction:column;gap:.55rem}
+.tri{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--fc);
+     border-radius:.55rem;padding:.85rem .95rem;display:flex;flex-direction:column;gap:.2rem}
+.tri-top{display:flex;align-items:baseline;gap:.5rem;flex-wrap:wrap}
+.tri-tag{font-size:.68rem;font-weight:800;color:var(--fc);background:var(--fc-bg);
+         padding:.1rem .4rem;border-radius:.25rem}
+.tri-name{font-size:1.02rem;font-weight:800}
+.tri-ask{font-size:.98rem;font-weight:700;color:var(--fc)}
+.tri-when{font-size:.82rem;color:var(--ink-3)}
+
+/* 거짓말이 되는 선 */
+.rulebox{border:1px solid var(--line);border-radius:.75rem;padding:1.15rem 1.2rem;
+         background:var(--surface);display:flex;flex-direction:column;gap:.6rem}
+.rulebox .big{font-size:1.05rem;font-weight:800;line-height:1.6;
+              border-left:3px solid var(--said);padding-left:.8rem}
+.rulebox .sub{font-size:.9rem;color:var(--ink-3);padding-left:.8rem}
+
+/* 군 헤더 */
+.fam-head{display:flex;flex-direction:column;gap:.3rem;
+          border-top:3px solid var(--fc);padding-top:.85rem}
+.fam-title{display:flex;align-items:baseline;gap:.5rem;flex-wrap:wrap}
+.fam-tag{font-size:.72rem;font-weight:800;color:var(--fc);background:var(--fc-bg);
+         padding:.15rem .5rem;border-radius:.3rem}
+.fam-name{font-size:1.4rem;font-weight:800;letter-spacing:-.01em}
+.fam-ask{font-size:1rem;font-weight:700;color:var(--fc)}
+.fam-when{font-size:.85rem;color:var(--ink-3)}
+.fam-note{font-size:.88rem;color:var(--ink-2);background:var(--fc-bg);
+          border-radius:.5rem;padding:.7rem .85rem;line-height:1.7}
+
+/* 유형 카드 */
+.t-head{display:flex;align-items:baseline;gap:.5rem}
+.t-no{font-size:1.15rem;font-weight:800;color:var(--fc)}
+.t-name{font-size:1.1rem;font-weight:800;letter-spacing:-.01em}
+.spec{display:grid;grid-template-columns:auto 1fr;gap:.35rem .75rem;margin:0;
+      font-size:.92rem;line-height:1.7}
+.spec dt{font-size:.72rem;font-weight:800;color:var(--ink-3);
+         white-space:nowrap;padding-top:.28rem}
+.spec dd{margin:0;color:var(--ink-2)}
 .scene{border:1px solid var(--line);border-radius:.6rem;overflow:hidden}
-.s-row{display:flex;gap:.7rem;padding:.75rem .85rem;align-items:flex-start}
+.s-row{display:flex;gap:.7rem;padding:.7rem .85rem;align-items:flex-start}
 .s-row + .s-row{border-top:1px solid var(--line)}
-.s-tag{flex:0 0 auto;font-size:.66rem;font-weight:800;letter-spacing:.04em;
-       padding:.15rem .45rem;border-radius:.25rem;margin-top:.3rem;white-space:nowrap}
-.s-said{background:var(--said-bg)}
-.s-said .s-tag{background:var(--said);color:var(--paper)}
-.s-said .s-txt{font-weight:700}
-.s-real .s-tag{background:var(--real-bg);color:var(--real)}
-.s-txt{font-size:.95rem;line-height:1.7}
-
+.s-tag{flex:0 0 auto;font-size:.66rem;font-weight:800;padding:.15rem .45rem;
+       border-radius:.25rem;margin-top:.3rem;white-space:nowrap}
+.s-a{background:var(--real-bg)} .s-a .s-tag{background:var(--real-bg);color:var(--real)}
+.s-b{background:var(--said-bg)} .s-b .s-tag{background:var(--said);color:#fff}
+.s-b .s-txt{font-weight:700}
+.s-txt{font-size:.94rem;line-height:1.7}
+.variant{font-size:.86rem;color:var(--ink-3);background:var(--line-soft);
+         border-radius:.5rem;padding:.65rem .8rem;line-height:1.7}
+.line{border-left:3px solid var(--said);padding-left:.8rem;font-size:.92rem;
+      color:var(--ink-2);line-height:1.7}
+.line b{color:var(--ink);display:block;font-size:.72rem;letter-spacing:.04em;margin-bottom:.15rem}
+.believe{background:var(--said-bg);border-radius:.6rem;padding:.8rem .9rem;
+         font-size:.93rem;line-height:1.75;color:var(--ink-2)}
+.believe b{display:block;font-size:.72rem;font-weight:800;color:var(--said);
+           letter-spacing:.04em;margin-bottom:.2rem}
+.places{display:flex;flex-direction:column;gap:.4rem;font-size:.88rem;
+        color:var(--ink-2);line-height:1.65}
+.places b{font-size:.72rem;font-weight:800;color:var(--ink-3);letter-spacing:.04em}
+.places li{list-style:none;padding-left:.85rem;position:relative}
+.places li::before{content:"";position:absolute;left:0;top:.62em;
+                   width:.3rem;height:.3rem;border-radius:50%;background:var(--ink-3)}
+.places ul{margin:0;padding:0;display:flex;flex-direction:column;gap:.35rem}
 .ask{background:var(--fc-bg);border-radius:.6rem;padding:.75rem .85rem;
      font-size:1rem;font-weight:700;color:var(--fc);line-height:1.6}
 .ask-k{display:block;font-size:.68rem;letter-spacing:.08em;font-weight:800;
        opacity:.75;margin-bottom:.15rem}
-
-.spec{display:grid;grid-template-columns:auto 1fr;gap:.35rem .75rem;margin:0;
-      font-size:.92rem;line-height:1.7}
-.spec dt{font-size:.72rem;font-weight:800;letter-spacing:.03em;color:var(--ink-3);
-        white-space:nowrap;padding-top:.28rem}
-.spec dd{margin:0;color:var(--ink-2)}
-.real{border-top:1px dashed var(--line);padding-top:.85rem;
-     display:flex;flex-direction:column;gap:.5rem}
-.real-k{font-size:.72rem;font-weight:800;letter-spacing:.03em;color:var(--ink-3)}
 .vs{background:var(--line-soft);border-radius:.5rem;padding:.6rem .75rem;
-   color:var(--ink-3);font-size:.86rem;line-height:1.65}
+    color:var(--ink-3);font-size:.85rem;line-height:1.65}
 
-footer{border-top:1px solid var(--line);padding-top:1.25rem;
-       color:var(--ink-3);font-size:.85rem;line-height:1.7}
-@media (max-width:400px){h1{font-size:1.8rem}}
+/* 규칙 목록 */
+ol.steps{margin:0;padding:0;list-style:none;counter-reset:s;
+         display:flex;flex-direction:column;gap:.7rem}
+ol.steps li{counter-increment:s;position:relative;padding-left:1.9rem;color:var(--ink-2)}
+ol.steps li::before{content:counter(s);position:absolute;left:0;top:.15rem;
+  width:1.35rem;height:1.35rem;border-radius:50%;background:var(--ink);color:var(--paper);
+  font-size:.74rem;font-weight:700;display:flex;align-items:center;justify-content:center}
+ol.steps b{color:var(--ink)}
+.pairlist{display:flex;flex-direction:column;gap:.7rem}
+.pair{display:flex;flex-direction:column;gap:.15rem}
+.pair b{font-size:.85rem;color:var(--ink)}
+.pair span{font-size:.88rem;color:var(--ink-2);line-height:1.65}
+
+/* 마지막 질문 */
+.closing{background:var(--ink);color:var(--paper);border-radius:.85rem;
+         padding:1.4rem 1.3rem;display:flex;flex-direction:column;gap:.6rem}
+.closing .ck{font-size:.72rem;letter-spacing:.1em;font-weight:700;opacity:.6}
+.closing .cq{font-size:1.2rem;font-weight:800;line-height:1.5;text-wrap:balance}
+.closing .cb{font-size:.9rem;opacity:.78;line-height:1.7}
+
+/* 세포 사전 */
+.need{background:var(--surface);border:1px solid var(--line);border-radius:.75rem;
+      overflow:hidden}
+.need-head{background:var(--fc-bg);padding:.9rem 1.1rem;display:flex;
+           align-items:baseline;gap:.6rem;flex-wrap:wrap;border-bottom:1px solid var(--line)}
+.need-no{font-size:.75rem;font-weight:800;color:#fff;background:var(--fc);
+         padding:.15rem .5rem;border-radius:.3rem}
+.need-name{font-size:1.15rem;font-weight:800}
+.need-beh{font-size:.85rem;color:var(--ink-3);width:100%}
+.need-cell{padding:.75rem 1.1rem;border-bottom:1px solid var(--line);
+           font-size:1rem;font-weight:800;color:var(--fc);line-height:1.5}
+.need-cell small{display:block;font-size:.68rem;font-weight:700;color:var(--ink-3);
+                 letter-spacing:.06em;margin-bottom:.2rem}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.col{padding:.95rem 1.1rem;display:flex;flex-direction:column;gap:.45rem}
+.col + .col{border-left:1px solid var(--line)}
+.col-k{font-size:.72rem;font-weight:800;color:var(--ink-3);letter-spacing:.04em}
+.col p{font-size:.88rem;color:var(--ink-2);line-height:1.7}
+.need-why{padding:.85rem 1.1rem;background:var(--fc-bg);font-size:.88rem;
+          line-height:1.7;color:var(--ink-2)}
+.need-why b{color:var(--fc);font-size:.72rem;font-weight:800;letter-spacing:.04em;
+            display:block;margin-bottom:.2rem}
+@media (max-width:520px){.cols{grid-template-columns:1fr}.col + .col{border-left:none;border-top:1px solid var(--line)}}
+
 </style>
 
 <div class="wrap">
   <header class="masthead">
     <div class="eyebrow">책 분석 + 거짓말 사냥</div>
     <h1>거짓말 12종 도감</h1>
-    <p class="standfirst">책 요약문에 숨은 거짓말, 그리고 현실에서 만나는 같은 수법. 광고에서, 단톡방에서, 어른들 말에서 실제로 마주치는 것들입니다.</p>
+    <p class="standfirst">글을 읽고 옮기는 과정에서 생기는 거짓말 · 비판적 독해 훈련 자료</p>
   </header>
 
   <section>
-    <div class="qbox">
-      <span class="qk">유형을 고르기 전에</span>
-      <span class="qq">이 문장이 본문의 무엇을 건드렸나?</span>
-      <span class="qn">유형을 먼저 고르지 마라. 네 가지 중 무엇을 건드렸는지 정하면 12개가 3개로 줄어든다.</span>
+    <div class="origin">
+      <span class="ok">거짓말이 생기는 자리</span>
+      <span class="oq">거짓말은 글 안에 있지 않습니다. 글에서 남에게 옮겨질 때 생깁니다.</span>
+      <div class="flow"><span>원문</span><i>→</i><span>읽는다</span><i>→</i><span class="hot">옮긴다</span><i>→</i><span>요약 · 대화 · 전달</span></div>
+      <span class="on">↑ 거짓말은 전부 여기서 생긴다</span>
+      <span class="on">옮기는 사람은 대부분 거짓말할 마음이 없습니다. 그냥 줄이다가, 매끄럽게 다듬다가, 자기가 이해한 대로 정리하다가 생깁니다. 그래서 잡기 어렵고, 그래서 훈련이 필요합니다.</span>
     </div>
+  </section>
+
+  <section>
+    <h2>유형을 고르기 전에 — 네 개의 질문</h2>
+    <p class="lede">12개를 외우지 마세요. 질문 네 개만 외우면 됩니다. 정리 문장을 읽고 어느 질문이 걸리는지 보면, 12개가 3개로 줄어듭니다.</p>
     <div class="triage">
-      <div class="tri" style="--fc:var(--fam1);--fc-bg:var(--fam1-bg)">
-        <span class="tri-tag">1군</span>
-        <span class="tri-name">부풀리기</span>
-        <span class="tri-intent">말의 세기를 한 단계 올린다</span>
-        <span class="tri-when">정리가 본문보다 세게 들린다</span>
+      <div class="tri" style="--fc:var(--f1);--fc-bg:var(--f1-bg)">
+        <div class="tri-top"><span class="tri-tag">1군</span><span class="tri-name">세기가 올라간다</span></div>
+        <div class="tri-ask">본문이 정말 그렇게까지 말했나?</div>
+        <div class="tri-when">이럴 때 걸린다 — 정리가 본문보다 어쩐지 세게 들린다</div>
       </div>
-      <div class="tri" style="--fc:var(--fam2);--fc-bg:var(--fam2-bg)">
-        <span class="tri-tag">2군</span>
-        <span class="tri-name">골라 보여주기</span>
-        <span class="tri-intent">있는 것 중 유리한 것만 남긴다</span>
-        <span class="tri-when">말한 건 다 사실인데 뭔가 허전하다</span>
+      <div class="tri" style="--fc:var(--f2);--fc-bg:var(--f2-bg)">
+        <div class="tri-top"><span class="tri-tag">2군</span><span class="tri-name">붙어 있는 게 떨어진다</span></div>
+        <div class="tri-ask">빠진 건 없나?</div>
+        <div class="tri-when">이럴 때 걸린다 — 말한 건 다 맞는데 이상하게 매끈하다</div>
       </div>
-      <div class="tri" style="--fc:var(--fam3);--fc-bg:var(--fam3-bg)">
-        <span class="tri-tag">3군</span>
-        <span class="tri-name">엮기</span>
-        <span class="tri-intent">원인과 이유를 손댄다</span>
-        <span class="tri-when">「그래서 그렇게 됐다」가 너무 매끄럽다</span>
+      <div class="tri" style="--fc:var(--f3);--fc-bg:var(--f3-bg)">
+        <div class="tri-top"><span class="tri-tag">3군</span><span class="tri-name">주인이 바뀐다</span></div>
+        <div class="tri-ask">누구의, 누구에 대한 말이지?</div>
+        <div class="tri-when">이럴 때 걸린다 — 누가 한 말인지 흐릿하다</div>
       </div>
-      <div class="tri" style="--fc:var(--fam4);--fc-bg:var(--fam4-bg)">
-        <span class="tri-tag">4군</span>
-        <span class="tri-name">옮기고 얹기</span>
-        <span class="tri-intent">주인을 바꾸거나 없던 말을 붙인다</span>
-        <span class="tri-when">누구 이야기인지, 누가 한 말인지가 흐릿하다</span>
+      <div class="tri" style="--fc:var(--f4);--fc-bg:var(--f4-bg)">
+        <div class="tri-top"><span class="tri-tag">4군</span><span class="tri-name">없던 연결이 생긴다</span></div>
+        <div class="tri-ask">이 연결이 본문에 있었나?</div>
+        <div class="tri-when">이럴 때 걸린다 — 「그래서 그렇게 된다」가 너무 매끄럽다</div>
       </div>
     </div>
   </section>
 
-  <section style="--fc:var(--fam1);--fc-bg:var(--fam1-bg)">
-    <div class="fam-head">
-      <div class="fam-title"><span class="fam-tag">1군</span><span class="fam-name">부풀리기</span></div>
-      <p class="fam-intent">말의 세기를 한 단계 올린다</p>
-      <p class="fam-when"><b>이럴 때 의심한다</b> 정리가 본문보다 세게 들린다</p>
+  <section>
+    <h2>거짓말이 되는 선</h2>
+    <p class="lede">유형에 들어맞는다고 자동으로 거짓말은 아닙니다. 줄이는 건 요약이고, 요약은 잘못이 아닙니다. 그래서 유형마다 선을 넣었습니다. 기준은 하나입니다.</p>
+    <div class="rulebox">
+      <div class="big">원문을 읽은 사람과 정리를 읽은 사람이 다르게 행동해야 거짓말이다.</div>
+      <div class="sub">같게 행동하면 그건 거짓말이 아니라 요약이다.</div>
     </div>
-    <article class="type">
+  </section>
+
+  <section style="--fc:var(--f1);--fc-bg:var(--f1-bg)">
+    <div class="fam-head">
+      <div class="fam-title"><span class="fam-tag">1군</span><span class="fam-name">세기가 올라간다</span></div>
+      <div class="fam-ask">본문이 정말 그렇게까지 말했나?</div>
+      <div class="fam-when">이럴 때 걸린다 — 정리가 본문보다 어쩐지 세게 들린다</div>
+    </div>
+    
+    <article class="card">
       <div class="t-head"><span class="t-no">①</span><span class="t-name">확신 올리기</span></div>
-      <dl class="spec">
-        <dt>정의</dt><dd>주장의 확신 정도를 한 단계만 올린다. 정반대가 아니라 살짝만.</dd>
-        <dt>알아보는 법</dt><dd>본문은 「~일 수 있다 / ~로 보인다 / ~라고 추정된다」인데 정리는 「~이다 / ~임이 밝혀졌다」로 단정할 때. 단어 하나가 아니라 문장의 확신 온도를 비교해야 보인다.</dd>
-        <dt>왜 거짓인가</dt><dd>작가의 조심스러운 추측이 확정된 사실로 둔갑한다.</dd>
-      </dl>
-      <div class="scene">
-        <div class="s-row s-real"><span class="s-tag">작가</span><span class="s-txt">결핍감이 4번 유형의 행동을 이끄는 요인일 수 있다</span></div>
-        <div class="s-row s-said"><span class="s-tag">정리</span><span class="s-txt">결핍감이 4번 유형의 행동을 이끄는 요인이다</span></div>
-      </div>
-      <div class="real">
-        <div class="real-k">현실에서 같은 수법</div>
-        <div class="chips"><span class="chip">유튜브 썸네일</span><span class="chip">뉴스 제목</span><span class="chip">건강 정보 글</span></div>
-        <div class="scene">
-          <div class="s-row s-said"><span class="s-tag">이렇게 말한다</span><span class="s-txt">충격! 매일 이것만 먹었더니 키가 쑥</span></div>
-          <div class="s-row s-real"><span class="s-tag">실제로는</span><span class="s-txt">본문에는 한 사람이 석 달 동안 1cm 자랐다고만 적혀 있다</span></div>
-        </div>
-      </div>
-      <p class="ask"><span class="ask-k">되받아치는 질문</span>본문이 정말 그렇게까지 말했나?</p>
-      <p class="vs">④ 조건 제거와 헷갈리면 — 사라진 말이 「확신을 낮추는 말」이면 ①, 「상황을 한정하는 말」이면 ④.</p>
+      <dl class="spec"><dt>정의</dt><dd>주장의 확신 정도를 한 단계 올린다. 정반대로 뒤집는 게 아니라 추측을 사실로 바꾼다.</dd><dt>알아보는 법</dt><dd>본문은 「~일 수 있다 / ~로 보인다 / ~라고 추정된다」인데 정리는 「~이다 / ~로 밝혀졌다」일 때. 단어 하나가 아니라 문장의 확신 온도를 비교해야 보인다.</dd></dl>
+      <div class="scene"><div class="s-row s-a"><span class="s-tag">작가</span><span class="s-txt">결핍감이 4번 유형의 행동을 이끄는 요인일 수 있다</span></div><div class="s-row s-b"><span class="s-tag">정리</span><span class="s-txt">4번 유형의 행동은 결핍감에서 나온다</span></div></div>
+      
+      <div class="line"><b>거짓말이 되는 선</b>확신이 올라간 결과 그 문장으로 사람을 판정할 수 있게 되면 거짓말. 여전히 「그럴 수도 있다」에 머물면 요약.</div>
+      <div class="believe"><b>믿으면 벌어지는 일</b>4번인 친구가 무슨 행동을 하든 「너 그거 결핍 때문이야」라고 말하게 된다. 그 친구는 반박할 방법이 없다.</div>
+      <div class="places"><b>글 읽을 때 만나는 자리</b><ul><li>뉴스 제목 — 본문은 「가능성이 제기된다」, 제목은 「밝혀졌다」</li><li>유튜브 요약 영상 — 「~라고 합니다」가 「~입니다」로 바뀌어 있다</li><li>참고서 요약 — 학설을 정설처럼 한 줄로 정리해 놓는다</li></ul></div>
+      <p class="ask"><span class="ask-k">되받아치는 질문</span>원래 문장에 「~일 수 있다」가 있지 않았나?</p>
+      <p class="vs">④와 헷갈리면 — 사라진 말이 「확신을 낮추는 말」이면 ①, 「상황을 한정하는 말」이면 ④.</p>
     </article>
-    <article class="type">
-      <div class="t-head"><span class="t-no">②</span><span class="t-name">수량 부풀리기</span></div>
-      <dl class="spec">
-        <dt>정의</dt><dd>얼마나 많은지를 나타내는 말을 한 단계 위로 올린다.</dd>
-        <dt>알아보는 법</dt><dd>본문의 수량어(일부·여럿·절반쯤·때때로)와 정리의 수량어(대체로·흔히·자주·거의)를 나란히 놓고 센다. 퍼센트가 나오면 분모가 본문에 있는지 찾는다.</dd>
-        <dt>왜 거짓인가</dt><dd>몇몇의 이야기가 대다수의 이야기로 바뀌면, 읽는 사람이 자기도 거기 속한다고 느낀다.</dd>
-      </dl>
-      <div class="scene">
-        <div class="s-row s-real"><span class="s-tag">작가</span><span class="s-txt">4번 유형 중 일부는 남의 관심을 부담스러워한다</span></div>
-        <div class="s-row s-said"><span class="s-tag">정리</span><span class="s-txt">4번 유형은 대체로 남의 관심을 부담스러워한다</span></div>
-      </div>
-      <div class="real">
-        <div class="real-k">현실에서 같은 수법</div>
-        <div class="chips"><span class="chip">광고 배너</span><span class="chip">통계 인용 기사</span><span class="chip">친구가 전하는 말</span></div>
-        <div class="scene">
-          <div class="s-row s-said"><span class="s-tag">이렇게 말한다</span><span class="s-txt">무려 90%가 효과를 봤습니다</span></div>
-          <div class="s-row s-real"><span class="s-tag">실제로는</span><span class="s-txt">몇 명 중 90%인지 없다. 열 명 중 아홉일 수도 있다</span></div>
-        </div>
-      </div>
-      <p class="ask"><span class="ask-k">되받아치는 질문</span>몇 명 중에 몇 명이지? 그건 누가 세었지?</p>
-      <p class="vs">① 확신 올리기와 헷갈리면 — 「얼마나 확실한가」가 바뀌면 ①, 「얼마나 많은가」가 바뀌면 ②.</p>
+    <article class="card">
+      <div class="t-head"><span class="t-no">②</span><span class="t-name">수량 올리기</span></div>
+      <dl class="spec"><dt>정의</dt><dd>얼마나 많은지를 나타내는 말을 한 단계 위로 올린다. 일부 → 대체로.</dd><dt>알아보는 법</dt><dd>본문의 수량어(일부·여럿·절반쯤·때때로)와 정리의 수량어(대체로·흔히·자주·거의)를 나란히 놓고 비교한다. 숫자가 나오면 몇 중에 몇인지가 본문에 있는지 찾는다.</dd></dl>
+      <div class="scene"><div class="s-row s-a"><span class="s-tag">작가</span><span class="s-txt">4번 유형 중 일부는 남의 관심을 부담스러워한다</span></div><div class="s-row s-b"><span class="s-tag">정리</span><span class="s-txt">4번 유형은 대체로 남의 관심을 부담스러워한다</span></div></div>
+      
+      <div class="line"><b>거짓말이 되는 선</b>수량어가 바뀐 결과 「나도 여기 포함되나」의 답이 바뀌면 거짓말.</div>
+      <div class="believe"><b>믿으면 벌어지는 일</b>4번인 친구를 칭찬 대신 배려한다. 정작 그 친구는 알아봐 주기를 기다리고 있었다.</div>
+      <div class="places"><b>글 읽을 때 만나는 자리</b><ul><li>기사의 인용된 통계 — 「응답자의 60%」인데 응답자가 몇 명인지가 없다</li><li>친구가 전하는 말 — 「우리 반 애들 다 그렇대」의 실제 표본은 세 명이다</li><li>책 소개 글 — 「많은 심리학자들이」의 '많은'을 아무도 세지 않았다</li></ul></div>
+      <p class="ask"><span class="ask-k">되받아치는 질문</span>정말 대부분인가? 몇 명 중 몇 명이지?</p>
+      <p class="vs">①과 헷갈리면 — 「얼마나 확실한가」가 바뀌면 ①, 「얼마나 많은가」가 바뀌면 ②.</p>
     </article>
-    <article class="type">
-      <div class="t-head"><span class="t-no">③</span><span class="t-name">비교 대상 지우기</span></div>
-      <dl class="spec">
-        <dt>정의</dt><dd>「B보다 A가 낫다」는 비교 주장에서 비교 대상 B를 빼고 「A가 좋다」는 절대 주장으로 만든다.</dd>
-        <dt>알아보는 법</dt><dd>정리에 「좋다 / 낫다 / 더 / 가장 / 유일한」 같은 평가가 있으면, 본문에서 「무엇과 비교해서」인지를 찾는다. 비교 대상이 본문에만 있고 정리에 없으면 이 유형.</dd>
-        <dt>왜 거짓인가</dt><dd>'둘 중 나은 것'이 '그냥 좋은 것'으로 둔갑한다.</dd>
-      </dl>
-      <div class="scene">
-        <div class="s-row s-real"><span class="s-tag">작가</span><span class="s-txt">4번 유형은 3번 유형보다 감정의 결을 세밀하게 느낀다</span></div>
-        <div class="s-row s-said"><span class="s-tag">정리</span><span class="s-txt">4번 유형은 감정의 결을 세밀하게 느낀다</span></div>
-      </div>
-      <div class="real">
-        <div class="real-k">현실에서 같은 수법</div>
-        <div class="chips"><span class="chip">학원 광고</span><span class="chip">제품 상세페이지</span><span class="chip">자기소개</span></div>
-        <div class="scene">
-          <div class="s-row s-said"><span class="s-tag">이렇게 말한다</span><span class="s-txt">국내 유일, 1등 학습법</span></div>
-          <div class="s-row s-real"><span class="s-tag">실제로는</span><span class="s-txt">무엇 중에 1등인지, 누가 그렇게 정했는지가 없다</span></div>
-        </div>
-      </div>
-      <p class="ask"><span class="ask-k">되받아치는 질문</span>무엇과 비교해서? 그건 누가 정했지?</p>
-      <p class="vs">⑥ 불리한 항목 빼기와 헷갈리면 — 사라진 것이 「비교 대상」이면 ③, 「나란히 있던 다른 사실」이면 ⑥.</p>
+    <article class="card">
+      <div class="t-head"><span class="t-no">③</span><span class="t-name">비유를 사실로 만들기</span></div>
+      <dl class="spec"><dt>정의</dt><dd>작가가 이해를 돕기 위해 쓴 그림을 실제 주장으로 바꾼다. 문학적 표현이 확정적 진술이 된다.</dd><dt>알아보는 법</dt><dd>정리 문장이 이상하게 그럴듯하고 인용하기 좋으면 의심한다. 본문에서 그 자리에 「~같다 / ~인 셈이다 / 마치 / 비유하자면」이 있었는지 찾는다.</dd></dl>
+      <div class="scene"><div class="s-row s-a"><span class="s-tag">작가</span><span class="s-txt">결핍감은 4번 유형에게 마르지 않는 우물과 같다</span></div><div class="s-row s-b"><span class="s-tag">정리</span><span class="s-txt">4번 유형은 결핍감에서 에너지를 얻는다</span></div></div>
+      
+      <div class="line"><b>거짓말이 되는 선</b>비유가 사실이 된 결과 그 문장으로 무언가를 설명하거나 예측하게 되면 거짓말. 인상만 남기고 지나가면 요약.</div>
+      <div class="believe"><b>믿으면 벌어지는 일</b>힘든 상태를 필요한 연료로 여긴다. 그 친구가 괜찮아지는 걸 오히려 재능의 상실로 본다.</div>
+      <div class="places"><b>글 읽을 때 만나는 자리</b><ul><li>「뇌는 근육이다」라는 비유가 「뇌도 쓸수록 커진다」는 주장으로 유통된다</li><li>심리·자기계발서의 표현이 그대로 진단명처럼 쓰인다 (「마음의 그릇이 작다」)</li><li>문학 작품의 상징이 사실 정보로 옮겨져 대화의 전제가 된다</li></ul></div>
+      <p class="ask"><span class="ask-k">되받아치는 질문</span>작가가 이걸 설명하려고 그린 그림인가, 진짜 그렇다는 건가?</p>
+      <p class="vs">①과 헷갈리면 — 원래 문장이 「조심스러운 주장」이었으면 ①, 「비유·이미지」였으면 ③.</p>
     </article>
   </section>
 
-  <section style="--fc:var(--fam2);--fc-bg:var(--fam2-bg)">
+  <section style="--fc:var(--f2);--fc-bg:var(--f2-bg)">
     <div class="fam-head">
-      <div class="fam-title"><span class="fam-tag">2군</span><span class="fam-name">골라 보여주기</span></div>
-      <p class="fam-intent">있는 것 중 유리한 것만 남긴다</p>
-      <p class="fam-when"><b>이럴 때 의심한다</b> 말한 건 다 사실인데 뭔가 허전하다</p>
+      <div class="fam-title"><span class="fam-tag">2군</span><span class="fam-name">붙어 있는 게 떨어진다</span></div>
+      <div class="fam-ask">빠진 건 없나?</div>
+      <div class="fam-when">이럴 때 걸린다 — 말한 건 다 맞는데 이상하게 매끈하다</div>
     </div>
-    <article class="type">
-      <div class="t-head"><span class="t-no">④</span><span class="t-name">조건 제거</span></div>
-      <dl class="spec">
-        <dt>정의</dt><dd>「X 상황에서는 Y이다」에서 조건 X를 빼서 무조건 주장으로 만든다.</dd>
-        <dt>알아보는 법</dt><dd>정리가 매끈하게 단정적인데 본문에는 「만약 / ~하는 경우 / ~할 때 / ~에 한해」가 붙어 있을 때.</dd>
-        <dt>왜 거짓인가</dt><dd>특정 상황에서만 맞는 말이 항상 맞는 진리로 둔갑한다.</dd>
-      </dl>
-      <div class="scene">
-        <div class="s-row s-real"><span class="s-tag">작가</span><span class="s-txt">결핍감이 커질 때 4번 유형은 자기 세계로 물러난다</span></div>
-        <div class="s-row s-said"><span class="s-tag">정리</span><span class="s-txt">4번 유형은 자기 세계로 물러난다</span></div>
-      </div>
-      <div class="real">
-        <div class="real-k">현실에서 같은 수법</div>
-        <div class="chips"><span class="chip">작은 글씨 약관</span><span class="chip">이벤트 배너</span><span class="chip">부모님과의 약속</span></div>
-        <div class="scene">
-          <div class="s-row s-said"><span class="s-tag">이렇게 말한다</span><span class="s-txt">지금 신청하면 무료!</span></div>
-          <div class="s-row s-real"><span class="s-tag">실제로는</span><span class="s-txt">별표 아래 작은 글씨에 「첫 달만, 3개월 약정 시」가 붙어 있다</span></div>
-        </div>
-      </div>
-      <p class="ask"><span class="ask-k">되받아치는 질문</span>언제, 누구한테, 어떤 경우에만 해당하지?</p>
-      <p class="vs">⑤ 반례 무시와 헷갈리면 — 빠진 것이 「성립하는 상황」이면 ④, 「반대 사례」면 ⑤.</p>
+    <p class="fam-note">이 군의 공통점: 거짓말한 문장이 하나도 없습니다. 쓴 내용은 전부 사실인데 전체 인상이 원문과 다릅니다. 그래서 반박할 데가 없고, 그래서 가장 자주 통과합니다.</p>
+    <article class="card">
+      <div class="t-head"><span class="t-no">④</span><span class="t-name">조건 떼기</span></div>
+      <dl class="spec"><dt>정의</dt><dd>「X할 때는 Y이다」에서 조건 X를 떼어 무조건 주장으로 만든다.</dd><dt>알아보는 법</dt><dd>정리가 매끈하게 단정적인데 본문에는 「만약 / ~하는 경우 / ~할 때 / ~에 한해」가 붙어 있을 때.</dd></dl>
+      <div class="scene"><div class="s-row s-a"><span class="s-tag">작가</span><span class="s-txt">결핍감이 커질 때는 자기 세계로 물러나지만, 안정되면 무대 위에 서고 싶어 한다</span></div><div class="s-row s-b"><span class="s-tag">정리</span><span class="s-txt">4번 유형은 자기 세계에 머무는 유형이다</span></div></div>
+      <div class="variant">변형 — 시점 떼기: 조건 대신 시점을 떼는 경우도 같은 유형이다. 「어린 시절 반복된 결핍감이」에서 '어린 시절'이 사라지면, 과거의 이야기가 지금의 상태가 된다.</div>
+      <div class="line"><b>거짓말이 되는 선</b>떼어낸 조건 바깥에서 반대 현상이 일어나야 거짓말. 조건 밖에서도 비슷하면 요약.</div>
+      <div class="believe"><b>믿으면 벌어지는 일</b>발표나 공연에서 그 친구를 아예 빼놓는다. 하고 싶어 한다는 걸 끝까지 모른다.</div>
+      <div class="places"><b>글 읽을 때 만나는 자리</b><ul><li>기사 제목 — 본문의 「특정 조건에서」가 제목에는 없다</li><li>요약 카드뉴스 — 조건절은 글자 수가 많아서 가장 먼저 잘린다</li><li>시험 문제 지문 — 원문의 단서를 지우면 그대로 함정 선택지가 된다</li></ul></div>
+      <p class="ask"><span class="ask-k">되받아치는 질문</span>언제, 어떤 경우에만 그렇지?</p>
+      <p class="vs">⑤와 헷갈리면 — 빠진 게 「성립 조건」이면 ④, 「반대 결과」면 ⑤.</p>
     </article>
-    <article class="type">
-      <div class="t-head"><span class="t-no">⑤</span><span class="t-name">반례 무시</span></div>
-      <dl class="spec">
-        <dt>정의</dt><dd>작가가 강조한 예외·반례·단서를 정리에서 빼버린다.</dd>
-        <dt>알아보는 법</dt><dd>정리는 깔끔한데 본문에 「다만 / 하지만 / 예외적으로 / 물론 ~한 경우도 있다」가 있을 때. 빠진 것을 찾는 일이라 가장 안 보인다.</dd>
-        <dt>왜 거짓인가</dt><dd>작가가 균형을 위해 넣은 반쪽이 사라져 그림이 한쪽으로 기운다.</dd>
-      </dl>
-      <div class="scene">
-        <div class="s-row s-real"><span class="s-tag">작가</span><span class="s-txt">이 물러남은 대체로 회복으로 이어지지만, 길어지면 고립이 되기도 한다</span></div>
-        <div class="s-row s-said"><span class="s-tag">정리</span><span class="s-txt">이 물러남은 회복으로 이어진다</span></div>
-      </div>
-      <div class="real">
-        <div class="real-k">현실에서 같은 수법</div>
-        <div class="chips"><span class="chip">학원 벽의 합격증</span><span class="chip">쇼핑몰 후기</span><span class="chip">성공 사례 모음</span></div>
-        <div class="scene">
-          <div class="s-row s-said"><span class="s-tag">이렇게 말한다</span><span class="s-txt">우리 학원 다니고 이만큼 붙었습니다 (합격증 30장)</span></div>
-          <div class="s-row s-real"><span class="s-tag">실제로는</span><span class="s-txt">떨어진 300명의 이야기는 벽에 붙지 않는다</span></div>
-        </div>
-      </div>
-      <p class="ask"><span class="ask-k">되받아치는 질문</span>안 된 쪽, 반대쪽 이야기는 어디 갔지?</p>
-      <p class="vs">④ 조건 제거와 헷갈리면 — 빠진 것이 「반대 사례」면 ⑤, 「성립 조건」이면 ④.</p>
+    <article class="card">
+      <div class="t-head"><span class="t-no">⑤</span><span class="t-name">반례 지우기</span></div>
+      <dl class="spec"><dt>정의</dt><dd>작가가 균형을 위해 넣은 예외·반례·경고를 정리에서 뺀다.</dd><dt>알아보는 법</dt><dd>정리는 깔끔한데 본문에 「다만 / 하지만 / 길어지면 / 물론 ~한 경우도 있다」가 있을 때. 빠진 것을 찾는 일이라 가장 안 보인다.</dd></dl>
+      <div class="scene"><div class="s-row s-a"><span class="s-tag">작가</span><span class="s-txt">이 물러남은 회복으로 이어지기도 하지만, 길어지면 고립으로 굳는다</span></div><div class="s-row s-b"><span class="s-tag">정리</span><span class="s-txt">이 물러남은 회복의 과정이다</span></div></div>
+      
+      <div class="line"><b>거짓말이 되는 선</b>지워진 반례가 위험 신호일 때 거짓말. 단순한 예외면 요약.</div>
+      <div class="believe"><b>믿으면 벌어지는 일</b>두 달째 방에서 안 나오는 친구를 그냥 둔다. 회복 중이라고 배웠으니까.</div>
+      <div class="places"><b>글 읽을 때 만나는 자리</b><ul><li>책 리뷰 — 저자가 붙인 경고 문단은 리뷰에 거의 옮겨지지 않는다</li><li>성공 사례 모음 — 실패한 쪽 이야기는 애초에 글이 되지 않는다</li><li>자기 주장에 맞는 부분만 인용한 발표문</li></ul></div>
+      <p class="ask"><span class="ask-k">되받아치는 질문</span>반대쪽 이야기는 어디 갔지? 작가가 걱정한 건 없었나?</p>
+      <p class="vs">⑥과 헷갈리면 — 지운 게 「반대 사례」면 ⑤, 「같은 대상의 다른 성질」이면 ⑥.</p>
     </article>
-    <article class="type">
-      <div class="t-head"><span class="t-no">⑥</span><span class="t-name">불리한 항목 빼기</span></div>
-      <dl class="spec">
-        <dt>정의</dt><dd>한 대상에 대해 나란히 있던 여러 사실 중, 유리한 항목만 남기고 불리한 항목을 뺀다.</dd>
-        <dt>알아보는 법</dt><dd>말한 내용은 전부 사실이라 반박할 데가 없다. 본문에서 같은 대상을 설명한 문장을 모두 모은 다음, 정리에 빠진 항목이 있는지 센다.</dd>
-        <dt>왜 거짓인가</dt><dd>거짓말한 문장이 하나도 없는데 전체 인상은 사실과 다르다. 그래서 방심하게 된다.</dd>
-      </dl>
-      <div class="scene">
-        <div class="s-row s-real"><span class="s-tag">작가</span><span class="s-txt">이 성향은 창의성을 높이지만, 관계에서는 오해를 자주 부른다</span></div>
-        <div class="s-row s-said"><span class="s-tag">정리</span><span class="s-txt">이 성향은 창의성을 높인다</span></div>
-      </div>
-      <div class="real">
-        <div class="real-k">현실에서 같은 수법</div>
-        <div class="chips"><span class="chip">제품 포장 앞면</span><span class="chip">성적표 설명</span><span class="chip">잘못을 설명할 때</span></div>
-        <div class="scene">
-          <div class="s-row s-said"><span class="s-tag">이렇게 말한다</span><span class="s-txt">이 과자, 설탕 0g이에요</span></div>
-          <div class="s-row s-real"><span class="s-tag">실제로는</span><span class="s-txt">설탕은 정말 없다. 대신 지방이 두 배인데 그건 말하지 않는다</span></div>
-        </div>
-      </div>
-      <p class="ask"><span class="ask-k">되받아치는 질문</span>이것 말고 같이 봐야 할 항목은 뭐지?</p>
-      <p class="vs">⑤ 반례 무시와 헷갈리면 — 지운 것이 「예외 사례」면 ⑤, 「같은 대상의 다른 성질」이면 ⑥.</p>
+    <article class="card">
+      <div class="t-head"><span class="t-no">⑥</span><span class="t-name">다른 항목 지우기</span></div>
+      <dl class="spec"><dt>정의</dt><dd>한 대상에 나란히 붙어 있는 여러 성질 중, 유리한 항목만 남기고 불리한 항목을 뺀다.</dd><dt>알아보는 법</dt><dd>본문에서 같은 대상을 설명한 문장을 전부 모은 다음, 정리에 빠진 항목을 센다. 문장 하나만 봐서는 절대 안 잡힌다.</dd></dl>
+      <div class="scene"><div class="s-row s-a"><span class="s-tag">작가</span><span class="s-txt">이 성향은 창의성을 높이지만, 관계에서는 오해를 자주 부른다</span></div><div class="s-row s-b"><span class="s-tag">정리</span><span class="s-txt">이 성향은 창의성의 원천이다</span></div></div>
+      
+      <div class="line"><b>거짓말이 되는 선</b>빠진 항목이 함께 따라오는 대가일 때 거짓말. 그냥 부가 정보면 요약.</div>
+      <div class="believe"><b>믿으면 벌어지는 일</b>그 성향을 더 키우려 한다. 친구들이 하나씩 멀어지는 이유는 끝내 모른다.</div>
+      <div class="places"><b>글 읽을 때 만나는 자리</b><ul><li>인물 소개 글 — 업적만 적고 그 사람이 한 다른 일은 적지 않는다</li><li>책 뒤표지 홍보 문구 — 책 속의 단점 설명은 뒤표지에 오지 않는다</li><li>성격 유형 콘텐츠 — 장점 카드와 단점 카드가 따로 돌아다닌다</li></ul></div>
+      <p class="ask"><span class="ask-k">되받아치는 질문</span>같은 대상에 대해 본문이 말한 다른 항목은 뭐가 있었지?</p>
+      <p class="vs">⑤와 헷갈리면 — 지운 게 「같은 대상의 다른 성질」이면 ⑥, 「반대 사례」면 ⑤.</p>
     </article>
   </section>
 
-  <section style="--fc:var(--fam3);--fc-bg:var(--fam3-bg)">
+  <section style="--fc:var(--f3);--fc-bg:var(--f3-bg)">
     <div class="fam-head">
-      <div class="fam-title"><span class="fam-tag">3군</span><span class="fam-name">엮기</span></div>
-      <p class="fam-intent">원인과 이유를 손댄다</p>
-      <p class="fam-when"><b>이럴 때 의심한다</b> 「그래서 그렇게 됐다」가 너무 매끄럽다</p>
+      <div class="fam-title"><span class="fam-tag">3군</span><span class="fam-name">주인이 바뀐다</span></div>
+      <div class="fam-ask">누구의, 누구에 대한 말이지?</div>
+      <div class="fam-when">이럴 때 걸린다 — 누가 한 말인지 흐릿하다</div>
     </div>
-    <article class="type">
-      <div class="t-head"><span class="t-no">⑦</span><span class="t-name">상관-인과 둔갑</span></div>
-      <dl class="spec">
-        <dt>정의</dt><dd>작가가 「같이 나타난다」고만 한 것을 「하나가 다른 하나를 일으킨다」로 바꾼다.</dd>
-        <dt>알아보는 법</dt><dd>본문이 「~와 관련이 있다 / 함께 나타난다 / 동시에 증가했다」인데 정리가 「~때문에 / ~가 ~를 만든다」일 때.</dd>
-        <dt>왜 거짓인가</dt><dd>함께 나타나는 것과 원인인 것은 완전히 다른 주장이다. 작가가 일부러 피한 단정을 작가 입에 욱여넣는 셈이다.</dd>
-      </dl>
-      <div class="scene">
-        <div class="s-row s-real"><span class="s-tag">작가</span><span class="s-txt">결핍감이 강한 사람에게서 예술적 표현 욕구가 함께 관찰된다</span></div>
-        <div class="s-row s-said"><span class="s-tag">정리</span><span class="s-txt">결핍감이 예술적 표현 욕구를 만들어 낸다</span></div>
-      </div>
-      <div class="real">
-        <div class="real-k">현실에서 같은 수법</div>
-        <div class="chips"><span class="chip">건강 기사</span><span class="chip">공부법 조언</span><span class="chip">어른들의 훈계</span></div>
-        <div class="scene">
-          <div class="s-row s-said"><span class="s-tag">이렇게 말한다</span><span class="s-txt">아침 먹는 애들이 성적이 좋대. 그러니까 아침을 먹어야 성적이 올라</span></div>
-          <div class="s-row s-real"><span class="s-tag">실제로는</span><span class="s-txt">아침을 챙겨 주는 집이 공부도 챙겨 주는 것일 수 있다. 진짜 원인은 따로 있다</span></div>
-        </div>
-      </div>
-      <p class="ask"><span class="ask-k">되받아치는 질문</span>정말 이것 때문일까, 둘 다 다른 것 때문일까?</p>
-      <p class="vs">⑧ 인과 뒤집기와 헷갈리면 — 본문에 화살표가 아예 없었으면 ⑦, 있었는데 방향만 반대면 ⑧.</p>
+    
+    <article class="card">
+      <div class="t-head"><span class="t-no">⑦</span><span class="t-name">인용을 저자 말로 만들기</span></div>
+      <dl class="spec"><dt>정의</dt><dd>작가가 소개한 다른 사람의 말을, 작가 자신의 주장으로 바꾼다. 내용은 그대로 두고 말한 사람만 지운다.</dd><dt>알아보는 법</dt><dd>본문에서 인용 표시(「~는 말한다 / ~에 따르면 / 한 사례에서 / 어떤 상담자는」)를 찾는다. 정리에서 그 부분이 통째로 사라졌으면 이 유형.</dd></dl>
+      <div class="scene"><div class="s-row s-a"><span class="s-tag">작가</span><span class="s-txt">한 상담자는 4번 유형이 침묵 속에서 회복된다고 말했다</span></div><div class="s-row s-b"><span class="s-tag">정리</span><span class="s-txt">4번 유형은 침묵 속에서 회복된다</span></div></div>
+      
+      <div class="line"><b>거짓말이 되는 선</b>화자가 지워진 결과 말의 무게가 올라가면 거짓말. 한 사람의 경험담이 이 분야의 정설이 된다.</div>
+      <div class="believe"><b>믿으면 벌어지는 일</b>한 상담자의 인상을 모든 4번에게 적용한다. 틀렸을 때 누구에게 물어야 할지도 알 수 없다.</div>
+      <div class="places"><b>글 읽을 때 만나는 자리</b><ul><li>「전문가에 따르면」 — 이름이 없으면 확인할 방법도 없다</li><li>등장인물의 대사를 작가의 생각으로 적은 독후감 (소설 읽을 때 가장 잦은 실수)</li><li>인터뷰 기사의 답변을 기자의 주장으로 옮긴 요약</li></ul></div>
+      <p class="ask"><span class="ask-k">되받아치는 질문</span>이 말을 처음 한 사람이 누구지?</p>
+      <p class="vs">⑧과 헷갈리면 — 작가가 소개만 했으면 ⑦, 반박까지 했으면 ⑧.</p>
     </article>
-    <article class="type">
-      <div class="t-head"><span class="t-no">⑧</span><span class="t-name">인과 뒤집기</span></div>
-      <dl class="spec">
-        <dt>정의</dt><dd>A가 B를 일으킨다는 걸 B가 A를 일으킨다로 뒤집는다. 쓰인 단어는 하나도 바뀌지 않는다.</dd>
-        <dt>알아보는 법</dt><dd>「~때문에 / ~로 인해 / 그래서」 앞뒤에 놓인 두 가지에 동그라미를 치고, 본문과 순서를 대조한다. 화살표를 직접 그려야 잡힌다.</dd>
-        <dt>왜 거짓인가</dt><dd>원인이 바뀌면 해결책도 정반대가 된다.</dd>
-      </dl>
-      <div class="scene">
-        <div class="s-row s-real"><span class="s-tag">작가</span><span class="s-txt">채워지지 않은 결핍감 때문에 특별함에 집착하게 된다</span></div>
-        <div class="s-row s-said"><span class="s-tag">정리</span><span class="s-txt">특별함에 대한 집착 때문에 결핍감이 생긴다</span></div>
-      </div>
-      <div class="real">
-        <div class="real-k">현실에서 같은 수법</div>
-        <div class="chips"><span class="chip">혼날 때</span><span class="chip">뉴스 해설</span><span class="chip">친구 사이의 다툼</span></div>
-        <div class="scene">
-          <div class="s-row s-said"><span class="s-tag">이렇게 말한다</span><span class="s-txt">게임을 많이 해서 성적이 떨어진 거야</span></div>
-          <div class="s-row s-real"><span class="s-tag">실제로는</span><span class="s-txt">성적이 먼저 떨어졌고, 그게 힘들어서 게임으로 도망친 것일 수도 있다</span></div>
-        </div>
-      </div>
-      <p class="ask"><span class="ask-k">되받아치는 질문</span>둘 중에 어느 쪽이 먼저 일어났지?</p>
-      <p class="vs">⑩ 주체 바꾸기와 헷갈리면 — 바뀐 것이 「원인과 결과의 순서」면 ⑧, 「행동의 주인」이면 ⑩.</p>
+    <article class="card">
+      <div class="t-head"><span class="t-no">⑧</span><span class="t-name">반박 대상 훔치기</span></div>
+      <dl class="spec"><dt>정의</dt><dd>작가가 반박하려고 가져온 주장을 작가의 주장으로 뒤집어 놓는다. 인용문 바로 뒤에 오는 「그러나」만 지우면 완성된다.</dd><dt>알아보는 법</dt><dd>정리 문장이 있는 자리 앞뒤를 반드시 읽는다. 「흔히 ~라고 말한다 / 사람들은 ~로 여긴다 / 이런 오해가 있다」로 시작하고, 몇 줄 뒤에 「그러나 / 하지만 / 이는 ~만 본 것이다」가 오면 이 유형.</dd></dl>
+      <div class="scene"><div class="s-row s-a"><span class="s-tag">작가</span><span class="s-txt">흔히 4번 유형은 관심받고 싶어 하는 유형이라고 말한다. 그러나 이는 겉으로 드러난 행동만 본 설명이다</span></div><div class="s-row s-b"><span class="s-tag">정리</span><span class="s-txt">4번 유형은 관심받고 싶어 하는 유형이다</span></div></div>
+      
+      <div class="line"><b>거짓말이 되는 선</b>이건 선이 필요 없다. 언제나 거짓말이다. 작가가 없애려던 오해를 작가의 결론으로 만들어, 책이 하려던 말을 정확히 반대로 뒤집기 때문이다.</div>
+      <div class="believe"><b>믿으면 벌어지는 일</b>책을 읽고도 읽기 전보다 더 틀린 생각을 갖게 된다. 그리고 그 생각에 「책에서 봤다」는 근거까지 붙는다.</div>
+      <div class="places"><b>글 읽을 때 만나는 자리</b><ul><li>기사 제목만 보고 공유할 때 — 본문은 그 주장을 반박하는 내용인 경우가 흔하다</li><li>토론문 요약 — 반대 측 주장을 정리해 둔 부분이 필자 주장으로 인용된다</li><li>캡처 한 장으로 돌아다니는 글 — 그 문단을 뒤집는 다음 문단이 잘려 있다</li></ul></div>
+      <p class="ask"><span class="ask-k">되받아치는 질문</span>작가가 이 말에 동의하나, 반박하나? 이 문장 다음 줄에 뭐라고 쓰여 있지?</p>
+      <p class="vs">⑦과 헷갈리면 — 작가가 소개만 했으면 ⑦, 반박까지 했으면 ⑧.</p>
     </article>
-    <article class="type">
-      <div class="t-head"><span class="t-no">⑨</span><span class="t-name">근거 바꿔치기</span></div>
-      <dl class="spec">
-        <dt>정의</dt><dd>주장은 그대로 두고, 그 주장을 받치는 근거나 이유를 다른 것으로 갈아끼운다.</dd>
-        <dt>알아보는 법</dt><dd>결론만 보면 맞다. 결론에 동그라미를 치고, 「왜냐하면」 뒤만 따로 떼어 본문과 대조해야 잡힌다. 주장이 맞으니 그냥 통과시키기 쉽다.</dd>
-        <dt>왜 거짓인가</dt><dd>틀린 이유로 맞는 결론을 믿으면, 다음 판단에서 반드시 틀리게 된다.</dd>
-      </dl>
-      <div class="scene">
-        <div class="s-row s-real"><span class="s-tag">작가</span><span class="s-txt">4번 유형이 평범함을 견디지 못하는 것은 자기 정체성이 흔들리기 때문이다</span></div>
-        <div class="s-row s-said"><span class="s-tag">정리</span><span class="s-txt">4번 유형이 평범함을 견디지 못하는 것은 남보다 앞서고 싶기 때문이다</span></div>
-      </div>
-      <div class="real">
-        <div class="real-k">현실에서 같은 수법</div>
-        <div class="chips"><span class="chip">약속을 어겼을 때</span><span class="chip">거절할 때</span><span class="chip">사과문</span></div>
-        <div class="scene">
-          <div class="s-row s-said"><span class="s-tag">이렇게 말한다</span><span class="s-txt">네가 늦게 말해서 못 갔어</span></div>
-          <div class="s-row s-real"><span class="s-tag">실제로는</span><span class="s-txt">애초에 갈 생각이 없었다. 늦게 말한 건 사실이지만 그것 때문은 아니다</span></div>
-        </div>
-      </div>
-      <p class="ask"><span class="ask-k">되받아치는 질문</span>이 이유가 없어졌다면 결과가 달라졌을까?</p>
-      <p class="vs">⑫ 결론 비약과 헷갈리면 — 결론이 본문에 있던 것이면 ⑨, 결론 자체가 새로 생겼으면 ⑫.</p>
-    </article>
-  </section>
-
-  <section style="--fc:var(--fam4);--fc-bg:var(--fam4-bg)">
-    <div class="fam-head">
-      <div class="fam-title"><span class="fam-tag">4군</span><span class="fam-name">옮기고 얹기</span></div>
-      <p class="fam-intent">주인을 바꾸거나 없던 말을 붙인다</p>
-      <p class="fam-when"><b>이럴 때 의심한다</b> 누구 이야기인지, 누가 한 말인지가 흐릿하다</p>
-    </div>
-    <article class="type">
-      <div class="t-head"><span class="t-no">⑩</span><span class="t-name">주체 바꾸기</span></div>
-      <dl class="spec">
-        <dt>정의</dt><dd>행위자나 책임의 주인을 슬쩍 다른 대상으로 옮긴다.</dd>
-        <dt>알아보는 법</dt><dd>「누가」 하는 일인지를 본문과 대조한다. 내용은 같아 보여도 주어가 다르면 완전히 다른 주장이다.</dd>
-        <dt>왜 거짓인가</dt><dd>책임 소재가 바뀌면 해결의 방향이 통째로 달라진다.</dd>
-      </dl>
-      <div class="scene">
-        <div class="s-row s-real"><span class="s-tag">작가</span><span class="s-txt">4번 유형은 상대가 자기를 알아봐 주기를 기다린다</span></div>
-        <div class="s-row s-said"><span class="s-tag">정리</span><span class="s-txt">4번 유형은 상대를 먼저 알아봐 주려고 한다</span></div>
-      </div>
-      <div class="real">
-        <div class="real-k">현실에서 같은 수법</div>
-        <div class="chips"><span class="chip">책임을 따질 때</span><span class="chip">뉴스 논평</span><span class="chip">사과문</span></div>
-        <div class="scene">
-          <div class="s-row s-said"><span class="s-tag">이렇게 말한다</span><span class="s-txt">소비자가 정보를 꼼꼼히 확인해야 합니다</span></div>
-          <div class="s-row s-real"><span class="s-tag">실제로는</span><span class="s-txt">원래 기사는 기업이 정보를 투명하게 공개해야 한다고 했다</span></div>
-        </div>
-      </div>
-      <p class="ask"><span class="ask-k">되받아치는 질문</span>이 일을 하는 사람이 누구지? 책임은 누구한테 있지?</p>
-      <p class="vs">⑪ 범위 이동과 헷갈리면 — 아예 다른 대상으로 옮겨 갔으면 ⑩, 같은 대상의 범위가 커졌으면 ⑪.</p>
-    </article>
-    <article class="type">
-      <div class="t-head"><span class="t-no">⑪</span><span class="t-name">범위 이동</span></div>
-      <dl class="spec">
-        <dt>정의</dt><dd>주장이 적용되는 대상의 범위를 옆으로 살짝 옮긴다. 넓히는 게 아니라 슬쩍 이동.</dd>
-        <dt>알아보는 법</dt><dd>「누구에 대한 / 무엇에 대한」 이야기인지를 본문과 대조한다. 본문은 '4번 유형'인데 정리는 '사람들', 본문은 '어린 시절'인데 정리는 '평생'.</dd>
-        <dt>왜 거짓인가</dt><dd>검증된 범위 밖으로 주장이 슬그머니 확장된다.</dd>
-      </dl>
-      <div class="scene">
-        <div class="s-row s-real"><span class="s-tag">작가</span><span class="s-txt">4번 유형은 남과 다르다는 감각에서 자기를 확인한다</span></div>
-        <div class="s-row s-said"><span class="s-tag">정리</span><span class="s-txt">사람은 남과 다르다는 감각에서 자기를 확인한다</span></div>
-      </div>
-      <div class="real">
-        <div class="real-k">현실에서 같은 수법</div>
-        <div class="chips"><span class="chip">연구 인용 기사</span><span class="chip">일반화하는 말</span><span class="chip">단톡방 소문</span></div>
-        <div class="scene">
-          <div class="s-row s-said"><span class="s-tag">이렇게 말한다</span><span class="s-txt">이 방법은 효과가 확인되었습니다</span></div>
-          <div class="s-row s-real"><span class="s-tag">실제로는</span><span class="s-txt">원래 논문은 쥐에게서 효과를 확인했다고 적었다</span></div>
-        </div>
-      </div>
+    <article class="card">
+      <div class="t-head"><span class="t-no">⑨</span><span class="t-name">대상 넓히기</span></div>
+      <dl class="spec"><dt>정의</dt><dd>주장이 적용되는 대상의 범위를 슬쩍 옮긴다. 4번 유형 → 사람, 어떤 경우 → 모든 경우.</dd><dt>알아보는 법</dt><dd>「누구에 대한 이야기인가」를 본문과 대조한다. 내용은 같은데 주어의 범위만 커져 있으면 이 유형.</dd></dl>
+      <div class="scene"><div class="s-row s-a"><span class="s-tag">작가</span><span class="s-txt">4번 유형은 남과 다르다는 감각에서 자기를 확인한다</span></div><div class="s-row s-b"><span class="s-tag">정리</span><span class="s-txt">사람은 남과 다르다는 감각에서 자기를 확인한다</span></div></div>
+      <div class="variant">변형 — 주체 바꾸기: 범위가 아니라 행동의 주인이 바뀌는 경우도 같은 자리의 문제다. 「상대가 알아봐 주기를 기다린다」가 「상대를 먼저 알아봐 주려 한다」가 되면, 누가 먼저 움직여야 하는지가 통째로 달라진다.</div>
+      <div class="line"><b>거짓말이 되는 선</b>범위가 옮겨진 결과 원래 해당 없던 사람이 자기 이야기로 읽게 되면 거짓말. 심리 책에서 가장 위험한 유형이다.</div>
+      <div class="believe"><b>믿으면 벌어지는 일</b>남들과 비슷해서 편안한 사람을 자기가 없는 사람으로 본다. 자기 자신도 그렇게 의심하기 시작한다.</div>
+      <div class="places"><b>글 읽을 때 만나는 자리</b><ul><li>논문은 쥐에게서 확인했다고 적었는데 기사에는 「효과가 확인되었다」만 남는다</li><li>특정 시대·지역 이야기를 인류 전체 이야기로 옮긴 교양서 요약</li><li>「우리나라 청소년은」으로 시작하는 문장의 원자료가 한 학교 설문인 경우</li></ul></div>
       <p class="ask"><span class="ask-k">되받아치는 질문</span>이건 원래 누구에 대한 이야기였지?</p>
-      <p class="vs">⑩ 주체 바꾸기와 헷갈리면 — 같은 대상이 커진 것이면 ⑪, 다른 대상으로 옮겨 갔으면 ⑩.</p>
+      <p class="vs">⑦과 헷갈리면 — 바뀐 게 「말한 사람」이면 ⑦, 「말이 가리키는 대상」이면 ⑨.</p>
     </article>
-    <article class="type">
-      <div class="t-head"><span class="t-no">⑫</span><span class="t-name">결론 비약</span></div>
-      <dl class="spec">
-        <dt>정의</dt><dd>작가가 직접 내리지 않은 결론을 작가의 결론처럼 정리에 넣는다.</dd>
-        <dt>알아보는 법</dt><dd>정리의 결론 문장이 본문 어디에 명시돼 있는지 찾아본다. 못 찾으면 비약이다. 「그러므로 ~해야 한다 / 결국 ~이다」를 특히 의심한다.</dd>
-        <dt>왜 거짓인가</dt><dd>작가가 신중하게 멈춘 지점을 넘어가서, 작가에게 하지 않은 말을 시킨다. 그럴듯할수록 위험하다.</dd>
-      </dl>
-      <div class="scene">
-        <div class="s-row s-real"><span class="s-tag">작가</span><span class="s-txt">작가는 물러남을 도피가 아니라 회복의 과정으로 설명했을 뿐이다</span></div>
-        <div class="s-row s-said"><span class="s-tag">정리</span><span class="s-txt">그러므로 4번 유형은 결핍감을 극복해야 성숙해진다</span></div>
-      </div>
-      <div class="real">
-        <div class="real-k">현실에서 같은 수법</div>
-        <div class="chips"><span class="chip">기사 공유하며 덧붙일 때</span><span class="chip">훈계</span><span class="chip">독후감</span></div>
-        <div class="scene">
-          <div class="s-row s-said"><span class="s-tag">이렇게 말한다</span><span class="s-txt">라면 소비가 늘었대. 그러니까 요즘 애들이 건강을 안 챙기는 거지</span></div>
-          <div class="s-row s-real"><span class="s-tag">실제로는</span><span class="s-txt">기사는 소비가 늘었다는 데까지만 말했다. 뒷문장은 공유한 사람이 붙였다</span></div>
-        </div>
-      </div>
-      <p class="ask"><span class="ask-k">되받아치는 질문</span>이 결론을 원래 말한 사람이 진짜로 말했나?</p>
-      <p class="vs">⑨ 근거 바꿔치기와 헷갈리면 — 본문에 있던 결론의 이유만 바뀌었으면 ⑨, 결론 자체가 새로 생겼으면 ⑫.</p>
+  </section>
+
+  <section style="--fc:var(--f4);--fc-bg:var(--f4-bg)">
+    <div class="fam-head">
+      <div class="fam-title"><span class="fam-tag">4군</span><span class="fam-name">없던 연결이 생긴다</span></div>
+      <div class="fam-ask">이 연결이 본문에 있었나?</div>
+      <div class="fam-when">이럴 때 걸린다 — 「그래서 그렇게 된다」가 너무 매끄럽다</div>
+    </div>
+    
+    <article class="card">
+      <div class="t-head"><span class="t-no">⑩</span><span class="t-name">원인 만들기</span></div>
+      <dl class="spec"><dt>정의</dt><dd>작가가 「함께 나타난다」고만 한 것을 「하나가 다른 하나를 일으킨다」로 바꾼다. 또는 원인과 결과의 방향을 뒤집는다.</dd><dt>알아보는 법</dt><dd>본문이 「~와 관련이 있다 / 함께 관찰된다」인데 정리가 「~때문에 / ~가 ~를 만든다」일 때. 두 대상에 동그라미를 치고 화살표를 직접 그려 본문과 대조한다.</dd></dl>
+      <div class="scene"><div class="s-row s-a"><span class="s-tag">작가</span><span class="s-txt">결핍감이 강한 사람에게서 예술적 표현 욕구가 함께 관찰된다</span></div><div class="s-row s-b"><span class="s-tag">정리</span><span class="s-txt">결핍감이 예술적 재능을 만들어 낸다</span></div><div class="s-row s-a"><span class="s-tag">작가</span><span class="s-txt">채워지지 않은 결핍감 때문에 특별함에 집착하게 된다</span></div><div class="s-row s-b"><span class="s-tag">정리 (방향 뒤집기)</span><span class="s-txt">특별해지려는 집착 때문에 결핍감이 생긴다</span></div></div>
+      
+      <div class="line"><b>거짓말이 되는 선</b>인과로 바뀐 결과 없던 해결책이 생기면 거짓말. 「함께 나타난다」는 아무것도 하라고 시키지 않지만, 「~때문이다」는 반드시 무언가를 하라고 시킨다.</div>
+      <div class="believe"><b>믿으면 벌어지는 일</b>방향이 뒤집힌 경우 — 친구에게 「욕심 좀 내려놔」라고 말하게 된다. 그 친구에게 필요하던 건 인정 한마디였다.</div>
+      <div class="places"><b>글 읽을 때 만나는 자리</b><ul><li>건강·교육 기사 — 「아침 먹는 학생이 성적이 높다」가 「아침을 먹어야 성적이 오른다」로 옮겨진다</li><li>뇌 과학 기사 — 「함께 나타났다」는 연구 결과가 「때문이다」로 정리된다</li><li>어른들의 훈계 — 「게임을 많이 해서 성적이 떨어진 거야」</li></ul></div>
+      <p class="ask"><span class="ask-k">되받아치는 질문</span>정말 이것 때문일까? 어느 쪽이 먼저 일어났지?</p>
+      <p class="vs">⑪과 헷갈리면 — 없던 연결이 새로 생겼으면 ⑩, 있던 연결의 이유만 바뀌었으면 ⑪.</p>
     </article>
+    <article class="card">
+      <div class="t-head"><span class="t-no">⑪</span><span class="t-name">이유 갈아끼우기</span></div>
+      <dl class="spec"><dt>정의</dt><dd>결론은 그대로 두고, 그 결론을 받치는 이유와 동기만 다른 것으로 바꾼다.</dd><dt>알아보는 법</dt><dd>결론만 보면 맞다. 결론에 동그라미를 치고 「왜냐하면」 뒤만 따로 떼어 본문과 대조해야 잡힌다. 결론이 맞으니 그냥 넘기기 쉽다.</dd></dl>
+      <div class="scene"><div class="s-row s-a"><span class="s-tag">작가</span><span class="s-txt">4번 유형이 평범함을 견디지 못하는 것은 자기 정체성이 흔들리기 때문이다</span></div><div class="s-row s-b"><span class="s-tag">정리</span><span class="s-txt">4번 유형이 평범함을 견디지 못하는 것은 남보다 앞서고 싶기 때문이다</span></div></div>
+      
+      <div class="line"><b>거짓말이 되는 선</b>바뀐 것이 동기일 때 거짓말. 특히 두려움을 욕심으로, 불안을 야심처럼 바꾸는 것.</div>
+      <div class="believe"><b>믿으면 벌어지는 일</b>불안한 사람을 야심 있는 사람으로 본다. 결론이 맞으니 아무도 이 오해를 정정해 주지 않는다.</div>
+      <div class="places"><b>글 읽을 때 만나는 자리</b><ul><li>역사 요약 — 사건의 결과는 맞는데 원인이 통째로 다른 것으로 바뀌어 있다</li><li>인물 평가 — 같은 행동인데 「용기 있어서」와 「이기고 싶어서」는 완전히 다른 사람이 된다</li><li>사과문 — 잘못은 인정하는데 이유를 다른 데로 돌린다</li></ul></div>
+      <p class="ask"><span class="ask-k">되받아치는 질문</span>이 이유가 아니었다면 결과가 달라졌을까? 작가가 댄 이유는 뭐였지?</p>
+      <p class="vs">⑫와 헷갈리면 — 본문에 있는 결론의 이유만 바뀌었으면 ⑪, 결론 자체가 새로 생겼으면 ⑫.</p>
+    </article>
+    <article class="card">
+      <div class="t-head"><span class="t-no">⑫</span><span class="t-name">결론 얹기</span></div>
+      <dl class="spec"><dt>정의</dt><dd>작가가 내리지 않은 결론을 작가의 결론처럼 붙인다. 대개 「그러므로 ~해야 한다」 형태다.</dd><dt>알아보는 법</dt><dd>정리의 마지막 문장이 본문 어디에 적혀 있는지 찾는다. 못 찾으면 얹은 것이다.</dd></dl>
+      <div class="scene"><div class="s-row s-a"><span class="s-tag">작가</span><span class="s-txt">작가는 물러남을 도피가 아니라 회복의 과정으로 설명했을 뿐이다</span></div><div class="s-row s-b"><span class="s-tag">정리</span><span class="s-txt">그러므로 4번 유형은 결핍감을 극복해야 성숙해진다</span></div></div>
+      
+      <div class="line"><b>거짓말이 되는 선</b>새로 붙은 결론이 행동 지시일 때 거짓말. 내용 요약 한 줄이면 요약.</div>
+      <div class="believe"><b>믿으면 벌어지는 일</b>자기 성격을 고쳐야 할 결함으로 취급한다. 책은 이해하라고 했지 고치라고 하지 않았다.</div>
+      <div class="places"><b>글 읽을 때 만나는 자리</b><ul><li>기사를 공유하며 덧붙이는 한 줄 — 기사는 사실까지만 말하고 판단은 공유한 사람이 붙였다</li><li>독후감의 마지막 문단 — 「그러므로 우리는 ~해야 한다」는 대개 책에 없는 문장이다</li><li>명언 카드 — 원래 맥락에 없던 교훈이 붙어서 돌아다닌다</li></ul></div>
+      <p class="ask"><span class="ask-k">되받아치는 질문</span>이 결론을 작가가 진짜로 말했나? 아니면 옮긴 사람이 붙였나?</p>
+      <p class="vs">⑪과 헷갈리면 — 본문에 있는 결론의 이유만 바뀌었으면 ⑪, 결론 자체가 새로 생겼으면 ⑫.</p>
+    </article>
+  </section>
+
+  <section>
+    <h2>한눈에 보는 표</h2>
+    <div class="tablewrap"><table>
+      <thead><tr><th>군</th><th>유형</th><th>본문에서 사라지거나 바뀌는 것</th></tr></thead><tbody><tr><td>1군 세기</td><td><b>① 확신 올리기</b></td><td>~일 수 있다</td></tr><tr><td></td><td><b>② 수량 올리기</b></td><td>일부, 몇 명 중 몇 명</td></tr><tr><td></td><td><b>③ 비유를 사실로</b></td><td>~같다, 마치</td></tr><tr><td>2군 누락</td><td><b>④ 조건 떼기</b></td><td>~할 때, 어린 시절</td></tr><tr><td></td><td><b>⑤ 반례 지우기</b></td><td>다만, 하지만, 길어지면</td></tr><tr><td></td><td><b>⑥ 다른 항목 지우기</b></td><td>나란히 적힌 다른 성질</td></tr><tr><td>3군 주인</td><td><b>⑦ 인용을 저자 말로</b></td><td>~는 말했다</td></tr><tr><td></td><td><b>⑧ 반박 대상 훔치기</b></td><td>흔히 ~라고 하지만</td></tr><tr><td></td><td><b>⑨ 대상 넓히기</b></td><td>4번 유형은 (→ 사람은)</td></tr><tr><td>4군 연결</td><td><b>⑩ 원인 만들기</b></td><td>함께 나타난다 (→ 때문에)</td></tr><tr><td></td><td><b>⑪ 이유 갈아끼우기</b></td><td>작가가 댄 진짜 이유</td></tr><tr><td></td><td><b>⑫ 결론 얹기</b></td><td>(원래 문장이 없음)</td></tr></tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <h2>문제를 만드는 규칙</h2>
+    <div class="card">
+      <div class="col-k">통과 기준 — 거짓 문장 하나 만들 때마다 검사한다.</div>
+      <div class="pairlist"><div class="pair"><b>행동 테스트</b><span>「이 문장을 믿은 사람이 ○○하는 장면」을 한 줄로 써 본다. 안 써지면 거짓말이 아니라 요약이다.</span></div><div class="pair"><b>방향 테스트</b><span>이 거짓말로 누가 좋아 보이거나, 누가 오해받거나, 무언가를 하게 되는가. 방향 없는 왜곡은 훈련용 거짓말이 아니다.</span></div><div class="pair"><b>빠져나가기 테스트</b><span>걸렸을 때 「나는 거짓말한 적 없는데?」라고 우길 수 있어야 한다. 못 우기면 너무 큰 덩어리 문제다.</span></div></div>
+    </div>
+    <div class="card">
+      <div class="col-k">출제 규칙</div>
+      <ol class="steps"><li>거짓말은 정확히 3개, 서로 다른 군에서 하나씩. 같은 군 중복 금지.</li><li>한 문장에서 손대는 건 딱 한 군데. 문장 전체를 반대로 만들지 않는다.</li><li>손대지 않은 부분은 본문 표현 그대로. 새 단어·새 개념 등장 금지.</li><li>극단 단어(모든·항상·절대·전혀) 금지. ②도 「대체로/자주/흔히」까지만.</li><li>거짓 문장은 참 문장과 길이·문체·어미가 구별되지 않아야 한다.</li><li>참 문장 최소 2개에 「~일 수 있다」 「~할 때」 「~보다」를 미끼로 남긴다. 이게 없으면 「조심스러운 표현이 없는 문장이 거짓말」이라는 요령만으로 다 찍힌다.</li><li>거짓말의 원래 내용은 본문 안에 실제로 있어야 한다. 없는 내용을 지어내 비틀지 않는다.</li><li>거짓말은 정의문이 아니라 아래 세 종류에만 심는다. 반전문(「A처럼 보이지만 실제 B다」) · 예측문(「이러면 이렇게 된다」) · 라벨문(학생이 자기나 친구에게 붙일 문장). 정의문·설명문에 심으면 학생이 「그건 거짓말 아닌데요」라고 한다.</li></ol>
+    </div>
+    <div class="card">
+      <div class="col-k">힌트 3단계</div>
+      <div class="pairlist"><div class="pair"><b>1단계</b><span>네 질문 중 어느 것이 걸리는지만 알려 준다 (군까지)</span></div><div class="pair"><b>2단계</b><span>위치 범위 (몇 번째 문장 근처)</span></div><div class="pair"><b>3단계</b><span>해당 유형의 되받아치는 질문</span></div></div>
+    </div>
+    <div class="card">
+      <div class="col-k">정답 카드에 반드시 넣을 두 줄</div>
+      <div class="pairlist"><div class="pair"><b>믿으면 벌어지는 일</b><span>이게 있어야 「이게 왜 거짓말이냐」는 반발이 사라진다</span></div><div class="pair"><b>글 읽을 때 만나는 자리</b><span>책 안에서 끝나면 훈련이 되지 않는다</span></div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="closing">
+      <span class="ck">마지막 질문</span>
+      <span class="cb">정답을 공개한 뒤 항상 이것을 묻습니다.</span>
+      <span class="cq">“네가 이 책을 요약한다면, 어느 자리에서 똑같이 실수할 것 같니?”</span>
+      <span class="cb">거짓말을 찾아내는 것보다 중요한 건, 자기가 쓰는 요약에도 같은 일이 일어난다는 걸 아는 것입니다.</span>
+    </div>
   </section>
 
   <footer>
     책 분석 + 거짓말 사냥 · 비판적 독해 훈련 자료<br>
-    12종. 인쇄용 워드 파일, 앱 화면 왼쪽 도감과 같은 내용입니다.
+    앱 화면 왼쪽 도감, 인쇄용 워드와 같은 내용입니다.
   </footer>
 </div>

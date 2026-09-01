@@ -1,0 +1,413 @@
+<title>욕구별 세포·면역계 비유 사전</title>
+<style>
+:root{
+  --paper:#FBFAF7; --surface:#FFFFFF; --line:#E6E2D8; --line-soft:#F1EDE4;
+  --ink:#1B1A17; --ink-2:#4A4740; --ink-3:#7A766C;
+  --said:#B5372B; --said-bg:#FBEDEA; --real:#2F6B4F; --real-bg:#EAF3EC;
+  --c0:#2C4A8A; --c0-bg:#EAF0FB;
+  --c1:#1F6B5B; --c1-bg:#E4F4EF;
+  --c2:#6B3A8F; --c2-bg:#F2ECFA;
+  --c3:#8A5A12; --c3-bg:#FAF0DC;
+  --c4:#A03A2E; --c4-bg:#FBECEA;
+  --sans:'Pretendard','Pretendard Variable',-apple-system,'Apple SD Gothic Neo',
+         'Malgun Gothic','맑은 고딕','Noto Sans KR',system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#141311; --surface:#1C1B18; --line:#302E29; --line-soft:#242220;
+    --ink:#F0EDE5; --ink-2:#C4C0B6; --ink-3:#8E8A80;
+    --said:#E98A7C; --said-bg:#31201D; --real:#8FC5A5; --real-bg:#1A2A21;
+    --c0:#A0ADCA; --c0-bg:#2C2D2F;
+    --c1:#9ABCB5; --c1-bg:#2B2E2D;
+    --c2:#BCA6CC; --c2-bg:#2D2C2F;
+    --c3:#CAB494; --c3-bg:#2F2D29;
+    --c4:#D4A6A0; --c4-bg:#2F2C2C;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#141311; --surface:#1C1B18; --line:#302E29; --line-soft:#242220;
+  --ink:#F0EDE5; --ink-2:#C4C0B6; --ink-3:#8E8A80;
+  --said:#E98A7C; --said-bg:#31201D; --real:#8FC5A5; --real-bg:#1A2A21;
+    --c0:#A0ADCA; --c0-bg:#2C2D2F;
+    --c1:#9ABCB5; --c1-bg:#2B2E2D;
+    --c2:#BCA6CC; --c2-bg:#2D2C2F;
+    --c3:#CAB494; --c3-bg:#2F2D29;
+    --c4:#D4A6A0; --c4-bg:#2F2C2C;
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+     font-size:17px;line-height:1.75;word-break:keep-all;-webkit-text-size-adjust:100%}
+.wrap{max-width:34rem;margin:0 auto;padding:2.5rem 1.25rem 5rem;
+      display:flex;flex-direction:column;gap:2.75rem}
+.masthead{display:flex;flex-direction:column;gap:.5rem}
+.eyebrow{font-size:.75rem;letter-spacing:.14em;color:var(--ink-3);font-weight:700}
+h1{margin:0;font-size:2.1rem;line-height:1.2;letter-spacing:-.02em;font-weight:800;text-wrap:balance}
+.standfirst{margin:0;color:var(--ink-2);font-size:1rem}
+section{display:flex;flex-direction:column;gap:1rem}
+h2{margin:0;font-size:1.35rem;line-height:1.35;font-weight:800;text-wrap:balance}
+p{margin:0}
+.lede{color:var(--ink-2)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:.75rem;
+      padding:1.15rem 1.2rem;display:flex;flex-direction:column;gap:.8rem}
+.chips{display:flex;flex-wrap:wrap;gap:.3rem}
+.chip{font-size:.74rem;color:var(--ink-3);background:var(--line-soft);
+      border-radius:1rem;padding:.15rem .55rem}
+footer{border-top:1px solid var(--line);padding-top:1.25rem;
+       color:var(--ink-3);font-size:.85rem;line-height:1.7}
+.tablewrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.85rem;min-width:20rem}
+th{text-align:left;font-weight:800;color:var(--ink-3);font-size:.72rem;
+   letter-spacing:.04em;padding:.5rem .6rem;border-bottom:1px solid var(--line)}
+td{padding:.5rem .6rem;border-bottom:1px solid var(--line-soft);
+   color:var(--ink-2);vertical-align:top}
+td b{color:var(--ink)}
+@media (max-width:400px){h1{font-size:1.8rem}}
+
+/* 거짓말이 생기는 자리 */
+.origin{background:var(--ink);color:var(--paper);border-radius:.85rem;
+        padding:1.4rem 1.3rem;display:flex;flex-direction:column;gap:.75rem}
+.origin .ok{font-size:.72rem;letter-spacing:.1em;font-weight:700;opacity:.6}
+.origin .oq{font-size:1.15rem;font-weight:800;line-height:1.5;text-wrap:balance}
+.flow{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;font-size:.8rem}
+.flow span{background:rgba(255,255,255,.12);border-radius:.35rem;padding:.25rem .55rem}
+.flow span.hot{background:var(--said);color:#fff;font-weight:700}
+.flow i{opacity:.45;font-style:normal}
+.origin .on{font-size:.85rem;opacity:.75;line-height:1.7}
+
+/* 네 개의 질문 */
+.triage{display:flex;flex-direction:column;gap:.55rem}
+.tri{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--fc);
+     border-radius:.55rem;padding:.85rem .95rem;display:flex;flex-direction:column;gap:.2rem}
+.tri-top{display:flex;align-items:baseline;gap:.5rem;flex-wrap:wrap}
+.tri-tag{font-size:.68rem;font-weight:800;color:var(--fc);background:var(--fc-bg);
+         padding:.1rem .4rem;border-radius:.25rem}
+.tri-name{font-size:1.02rem;font-weight:800}
+.tri-ask{font-size:.98rem;font-weight:700;color:var(--fc)}
+.tri-when{font-size:.82rem;color:var(--ink-3)}
+
+/* 거짓말이 되는 선 */
+.rulebox{border:1px solid var(--line);border-radius:.75rem;padding:1.15rem 1.2rem;
+         background:var(--surface);display:flex;flex-direction:column;gap:.6rem}
+.rulebox .big{font-size:1.05rem;font-weight:800;line-height:1.6;
+              border-left:3px solid var(--said);padding-left:.8rem}
+.rulebox .sub{font-size:.9rem;color:var(--ink-3);padding-left:.8rem}
+
+/* 군 헤더 */
+.fam-head{display:flex;flex-direction:column;gap:.3rem;
+          border-top:3px solid var(--fc);padding-top:.85rem}
+.fam-title{display:flex;align-items:baseline;gap:.5rem;flex-wrap:wrap}
+.fam-tag{font-size:.72rem;font-weight:800;color:var(--fc);background:var(--fc-bg);
+         padding:.15rem .5rem;border-radius:.3rem}
+.fam-name{font-size:1.4rem;font-weight:800;letter-spacing:-.01em}
+.fam-ask{font-size:1rem;font-weight:700;color:var(--fc)}
+.fam-when{font-size:.85rem;color:var(--ink-3)}
+.fam-note{font-size:.88rem;color:var(--ink-2);background:var(--fc-bg);
+          border-radius:.5rem;padding:.7rem .85rem;line-height:1.7}
+
+/* 유형 카드 */
+.t-head{display:flex;align-items:baseline;gap:.5rem}
+.t-no{font-size:1.15rem;font-weight:800;color:var(--fc)}
+.t-name{font-size:1.1rem;font-weight:800;letter-spacing:-.01em}
+.spec{display:grid;grid-template-columns:auto 1fr;gap:.35rem .75rem;margin:0;
+      font-size:.92rem;line-height:1.7}
+.spec dt{font-size:.72rem;font-weight:800;color:var(--ink-3);
+         white-space:nowrap;padding-top:.28rem}
+.spec dd{margin:0;color:var(--ink-2)}
+.scene{border:1px solid var(--line);border-radius:.6rem;overflow:hidden}
+.s-row{display:flex;gap:.7rem;padding:.7rem .85rem;align-items:flex-start}
+.s-row + .s-row{border-top:1px solid var(--line)}
+.s-tag{flex:0 0 auto;font-size:.66rem;font-weight:800;padding:.15rem .45rem;
+       border-radius:.25rem;margin-top:.3rem;white-space:nowrap}
+.s-a{background:var(--real-bg)} .s-a .s-tag{background:var(--real-bg);color:var(--real)}
+.s-b{background:var(--said-bg)} .s-b .s-tag{background:var(--said);color:#fff}
+.s-b .s-txt{font-weight:700}
+.s-txt{font-size:.94rem;line-height:1.7}
+.variant{font-size:.86rem;color:var(--ink-3);background:var(--line-soft);
+         border-radius:.5rem;padding:.65rem .8rem;line-height:1.7}
+.line{border-left:3px solid var(--said);padding-left:.8rem;font-size:.92rem;
+      color:var(--ink-2);line-height:1.7}
+.line b{color:var(--ink);display:block;font-size:.72rem;letter-spacing:.04em;margin-bottom:.15rem}
+.believe{background:var(--said-bg);border-radius:.6rem;padding:.8rem .9rem;
+         font-size:.93rem;line-height:1.75;color:var(--ink-2)}
+.believe b{display:block;font-size:.72rem;font-weight:800;color:var(--said);
+           letter-spacing:.04em;margin-bottom:.2rem}
+.places{display:flex;flex-direction:column;gap:.4rem;font-size:.88rem;
+        color:var(--ink-2);line-height:1.65}
+.places b{font-size:.72rem;font-weight:800;color:var(--ink-3);letter-spacing:.04em}
+.places li{list-style:none;padding-left:.85rem;position:relative}
+.places li::before{content:"";position:absolute;left:0;top:.62em;
+                   width:.3rem;height:.3rem;border-radius:50%;background:var(--ink-3)}
+.places ul{margin:0;padding:0;display:flex;flex-direction:column;gap:.35rem}
+.ask{background:var(--fc-bg);border-radius:.6rem;padding:.75rem .85rem;
+     font-size:1rem;font-weight:700;color:var(--fc);line-height:1.6}
+.ask-k{display:block;font-size:.68rem;letter-spacing:.08em;font-weight:800;
+       opacity:.75;margin-bottom:.15rem}
+.vs{background:var(--line-soft);border-radius:.5rem;padding:.6rem .75rem;
+    color:var(--ink-3);font-size:.85rem;line-height:1.65}
+
+/* 규칙 목록 */
+ol.steps{margin:0;padding:0;list-style:none;counter-reset:s;
+         display:flex;flex-direction:column;gap:.7rem}
+ol.steps li{counter-increment:s;position:relative;padding-left:1.9rem;color:var(--ink-2)}
+ol.steps li::before{content:counter(s);position:absolute;left:0;top:.15rem;
+  width:1.35rem;height:1.35rem;border-radius:50%;background:var(--ink);color:var(--paper);
+  font-size:.74rem;font-weight:700;display:flex;align-items:center;justify-content:center}
+ol.steps b{color:var(--ink)}
+.pairlist{display:flex;flex-direction:column;gap:.7rem}
+.pair{display:flex;flex-direction:column;gap:.15rem}
+.pair b{font-size:.85rem;color:var(--ink)}
+.pair span{font-size:.88rem;color:var(--ink-2);line-height:1.65}
+
+/* 마지막 질문 */
+.closing{background:var(--ink);color:var(--paper);border-radius:.85rem;
+         padding:1.4rem 1.3rem;display:flex;flex-direction:column;gap:.6rem}
+.closing .ck{font-size:.72rem;letter-spacing:.1em;font-weight:700;opacity:.6}
+.closing .cq{font-size:1.2rem;font-weight:800;line-height:1.5;text-wrap:balance}
+.closing .cb{font-size:.9rem;opacity:.78;line-height:1.7}
+
+/* 세포 사전 */
+.need{background:var(--surface);border:1px solid var(--line);border-radius:.75rem;
+      overflow:hidden}
+.need-head{background:var(--fc-bg);padding:.9rem 1.1rem;display:flex;
+           align-items:baseline;gap:.6rem;flex-wrap:wrap;border-bottom:1px solid var(--line)}
+.need-no{font-size:.75rem;font-weight:800;color:#fff;background:var(--fc);
+         padding:.15rem .5rem;border-radius:.3rem}
+.need-name{font-size:1.15rem;font-weight:800}
+.need-beh{font-size:.85rem;color:var(--ink-3);width:100%}
+.need-cell{padding:.75rem 1.1rem;border-bottom:1px solid var(--line);
+           font-size:1rem;font-weight:800;color:var(--fc);line-height:1.5}
+.need-cell small{display:block;font-size:.68rem;font-weight:700;color:var(--ink-3);
+                 letter-spacing:.06em;margin-bottom:.2rem}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.col{padding:.95rem 1.1rem;display:flex;flex-direction:column;gap:.45rem}
+.col + .col{border-left:1px solid var(--line)}
+.col-k{font-size:.72rem;font-weight:800;color:var(--ink-3);letter-spacing:.04em}
+.col p{font-size:.88rem;color:var(--ink-2);line-height:1.7}
+.need-why{padding:.85rem 1.1rem;background:var(--fc-bg);font-size:.88rem;
+          line-height:1.7;color:var(--ink-2)}
+.need-why b{color:var(--fc);font-size:.72rem;font-weight:800;letter-spacing:.04em;
+            display:block;margin-bottom:.2rem}
+@media (max-width:520px){.cols{grid-template-columns:1fr}.col + .col{border-left:none;border-top:1px solid var(--line)}}
+
+</style>
+
+<div class="wrap">
+  <header class="masthead">
+    <div class="eyebrow">책 분석 + 거짓말 사냥</div>
+    <h1>욕구별 세포·면역계 비유 사전</h1>
+    <p class="standfirst">15가지 욕구 × 각각의 세포 비유 + 해설. 배경지식·챕터 연결 제외 — 욕구의 행동 구조에만 집중</p>
+  </header>
+
+  <section>
+    <h2>15가지 욕구 — 한눈에 보기</h2>
+    <div class="tablewrap"><table>
+      <thead><tr><th>#</th><th>욕구</th><th>핵심 행동 유형</th><th>세포·면역계 비유</th></tr></thead>
+      <tbody><tr><td><b>1</b></td><td><b>청결 욕구</b></td><td>어긋난 것을 원래 상태로 되돌리는 복원 행동</td><td>대식세포(Macrophage)의 세포 잔해 청소</td></tr><tr><td><b>2</b></td><td><b>안전 욕구</b></td><td>불확실한 것을 파악한 뒤에야 움직이는 확인 행동</td><td>NK세포(자연살해세포)의 MHC 신분증 확인</td></tr><tr><td><b>3</b></td><td><b>통제 욕구</b></td><td>원인을 찾아 상황을 다시 손에 쥐려는 추적 행동</td><td>보체계(Complement System)의 C3b 추적 표지</td></tr><tr><td><b>4</b></td><td><b>균형 욕구</b></td><td>어긋난 인식을 해소하려는 조정 행동</td><td>Th1/Th2 세포의 사이토카인 균형 조정</td></tr><tr><td><b>5</b></td><td><b>효율 욕구</b></td><td>혼자 감당 안 될 때 더 적합한 수단을 끌어오는 조달 행동</td><td>수지상세포(Dendritic Cell)의 T세포 동원</td></tr><tr><td><b>6</b></td><td><b>이해 욕구</b></td><td>원리를 파악해 더 잘 다루려는 분해 행동</td><td>항원제시세포(APC)의 항원 분해와 MHC 제시</td></tr><tr><td><b>7</b></td><td><b>회복 욕구</b></td><td>손상된 상태를 반대 방향으로 되돌리려는 역전 행동</td><td>섬유아세포(Fibroblast)의 콜라겐 합성과 상처 치유</td></tr><tr><td><b>8</b></td><td><b>생존 욕구</b></td><td>기존 방식이 실패하면 즉시 대안을 수용하는 전환 행동</td><td>B세포의 항체 클래스 전환(Class Switching)</td></tr><tr><td><b>9</b></td><td><b>의미 욕구</b></td><td>기술을 익히면 그 기술 너머의 이유를 묻는 확장 행동</td><td>기억 T세포(Memory T Cell)의 교차 반응</td></tr><tr><td><b>10</b></td><td><b>소속 욕구</b></td><td>혼자라는 느낌이 들면 연결을 회복하려는 접근 행동</td><td>림프구의 귀환(Lymphocyte Homing)과 케모카인 반응</td></tr><tr><td><b>11</b></td><td><b>일관성 욕구</b></td><td>내가 믿는 것과 행동이 어긋나면 맞추려는 정렬 행동</td><td>흉선(Thymus)에서의 음성 선택(Negative Selection)</td></tr><tr><td><b>12</b></td><td><b>고통 회피 욕구</b></td><td>불쾌한 자극이 오면 즉시 멀어지려는 회피 행동</td><td>비만세포(Mast Cell)의 즉각적 히스타민 방출</td></tr><tr><td><b>13</b></td><td><b>완성 욕구</b></td><td>미완성 상태를 견디지 못하고 끝내려는 마무리 행동</td><td>면역 반응 종결 신호(Resolution) — IL-10과 리폭신</td></tr><tr><td><b>14</b></td><td><b>공정 욕구</b></td><td>불균형한 상황을 바로잡으려는 교정 행동</td><td>IgG 항체의 옵소닌화(Opsonization)와 Fc 수용체 결합</td></tr><tr><td><b>15</b></td><td><b>확인 욕구</b></td><td>불분명한 것을 명확히 하려는 검증 행동</td><td>B세포 수용체(BCR)의 항원 특이적 결합 검증</td></tr></tbody>
+    </table></div>
+    <p class="lede">챕터를 분석할 때는 이 표에서 <b>그 챕터가 켜는 욕구</b>를 먼저 고르고,
+    그 줄의 세포 비유를 이야기의 뼈대로 삼습니다. 세포를 새로 지어내지 않습니다.</p>
+  </section>
+
+  <section>
+  <div class="need" style="--fc:var(--c0);--fc-bg:var(--c0-bg)">
+    <div class="need-head">
+      <span class="need-no">#1</span><span class="need-name">청결 욕구</span>
+      <span class="need-beh">핵심 행동 유형 | 어긋난 것을 원래 상태로 되돌리는 복원 행동</span>
+    </div>
+    <div class="need-cell"><small>세포·면역계 비유</small>대식세포(Macrophage)의 세포 잔해 청소</div>
+    <div class="cols">
+      <div class="col"><span class="col-k">쉬운 비유</span><p>음료를 쏟았다. 더럽다는 인식이 생기는 순간, 원래 깨끗했던 상태가 머릿속에 떠오른다.</p><p>그 차이를 없애야 한다는 충동이 생기고, 걸레를 찾아 닦는 행동이 시작된다.</p><p>몸에서도 똑같은 일이 일어난다. 세포가 죽으면 대식세포가 즉시 청소에 나선다.</p></div>
+      <div class="col"><span class="col-k">세포 이야기</span><p>대식세포는 몸 안의 청소부다. 세포가 노화·손상으로 죽으면 세포 잔해가 생긴다.</p><p>대식세포는 이 잔해를 탐지하는 즉시 통째로 삼켜 제거한다(포식작용, phagocytosis).</p><p>잔해를 방치하면 주변에 염증이 생기기 때문에, 원래 깨끗한 조직이라는 기준으로의 복원이 최우선이다.</p></div>
+    </div>
+    <div class="need-why"><b>이 욕구와 같은 이유</b>더럽다는 인식(어긋남) → 원래 상태 기억 → 차이를 없애는 복원 = 대식세포가 정상 조직이라는 기준값으로 즉시 복원하는 구조가 같다.</div>
+  </div>
+
+  <div class="need" style="--fc:var(--c0);--fc-bg:var(--c0-bg)">
+    <div class="need-head">
+      <span class="need-no">#2</span><span class="need-name">안전 욕구</span>
+      <span class="need-beh">핵심 행동 유형 | 불확실한 것을 파악한 뒤에야 움직이는 확인 행동</span>
+    </div>
+    <div class="need-cell"><small>세포·면역계 비유</small>NK세포(자연살해세포)의 MHC 신분증 확인</div>
+    <div class="cols">
+      <div class="col"><span class="col-k">쉬운 비유</span><p>처음 가는 동네, 길을 모른다. 잘못 가면 손해라는 감각이 든다.</p><p>그래서 움직이기 전에 먼저 지도를 검색한다. 확인 후 이동이 원칙이다.</p><p>NK세포도 정확히 이 순서로 작동한다. 확인 전에는 아무것도 하지 않는다.</p></div>
+      <div class="col"><span class="col-k">세포 이야기</span><p>NK세포(Natural Killer cell)는 만나는 세포마다 MHC class I이라는 신분증을 확인한다.</p><p>신분증이 정상이면 통과. 신분증이 없거나 이상하면 즉시 공격한다.</p><p>먼저 확인(파악), 그 다음 행동. 확인 과정을 건너뛰는 일이 없다.</p></div>
+    </div>
+    <div class="need-why"><b>이 욕구와 같은 이유</b>불확실한 것을 파악한 뒤에야 움직인다 = NK세포가 반드시 MHC를 먼저 확인하고, 그 결과에 따라 통과 또는 공격을 결정하는 구조가 같다.</div>
+  </div>
+
+  <div class="need" style="--fc:var(--c0);--fc-bg:var(--c0-bg)">
+    <div class="need-head">
+      <span class="need-no">#3</span><span class="need-name">통제 욕구</span>
+      <span class="need-beh">핵심 행동 유형 | 원인을 찾아 상황을 다시 손에 쥐려는 추적 행동</span>
+    </div>
+    <div class="need-cell"><small>세포·면역계 비유</small>보체계(Complement System)의 C3b 추적 표지</div>
+    <div class="cols">
+      <div class="col"><span class="col-k">쉬운 비유</span><p>차가 안 켜진다. 통제 불가 상황이 발생했다.</p><p>원인을 알아야 대처할 수 있다. 배터리인지, 엔진인지 원인을 추적하기 시작한다.</p><p>보체계도 원인(병원체)을 추적해 상황을 통제하는 구조로 작동한다.</p></div>
+      <div class="col"><span class="col-k">세포 이야기</span><p>보체계는 병원체를 만나면 C3b라는 추적 표지를 병원체 표면에 붙인다.</p><p>병원체가 어디로 도망가든 이 표지가 따라간다. 대식세포는 C3b를 보고 찾아가 제거한다.</p><p>원인(병원체)을 놓치지 않고 끝까지 추적해, 마침내 상황을 다시 손에 쥔다.</p></div>
+    </div>
+    <div class="need-why"><b>이 욕구와 같은 이유</b>원인을 추적해 상황을 통제한다 = 보체계가 병원체에 표지를 붙여 어디로 가든 추적하고, 결국 제거함으로써 통제권을 회복하는 구조가 같다.</div>
+  </div>
+
+  <div class="need" style="--fc:var(--c1);--fc-bg:var(--c1-bg)">
+    <div class="need-head">
+      <span class="need-no">#4</span><span class="need-name">균형 욕구</span>
+      <span class="need-beh">핵심 행동 유형 | 어긋난 인식을 해소하려는 조정 행동</span>
+    </div>
+    <div class="need-cell"><small>세포·면역계 비유</small>Th1/Th2 세포의 사이토카인 균형 조정</div>
+    <div class="cols">
+      <div class="col"><span class="col-k">쉬운 비유</span><p>믿던 상식이 뒤집혔다. 기존 믿음과 새 정보가 충돌한다.</p><p>이 불편함이 조정 행동을 작동시킨다. 둘을 통합하거나 하나를 버려야 한다.</p><p>면역계도 두 방향의 균형이 깨지면 즉시 반대 방향을 강화해 조정한다.</p></div>
+      <div class="col"><span class="col-k">세포 이야기</span><p>T도움세포는 Th1(세균 공격 담당)과 Th2(알레르기 반응 담당) 두 방향으로 작동한다.</p><p>Th1이 지나치면 Th2를 강화하는 사이토카인(IL-4, IL-10)이 분비된다.</p><p>반대로 Th2가 과하면 Th1을 강화하는 신호(IFN-γ)가 나온다. 기울면 반대를 강화한다.</p></div>
+    </div>
+    <div class="need-why"><b>이 욕구와 같은 이유</b>어긋난 것을 해소하려는 조정 행동 = 한쪽이 과해지면 반대 방향을 강화해 균형으로 돌아오는 Th1/Th2 조정 구조가 같다.</div>
+  </div>
+
+  <div class="need" style="--fc:var(--c1);--fc-bg:var(--c1-bg)">
+    <div class="need-head">
+      <span class="need-no">#5</span><span class="need-name">효율 욕구</span>
+      <span class="need-beh">핵심 행동 유형 | 혼자 감당 안 될 때 더 적합한 수단을 끌어오는 조달 행동</span>
+    </div>
+    <div class="need-cell"><small>세포·면역계 비유</small>수지상세포(Dendritic Cell)의 T세포 동원</div>
+    <div class="cols">
+      <div class="col"><span class="col-k">쉬운 비유</span><p>소파를 혼자 못 든다. 한계가 명확하다.</p><p>더 적합한 수단이 필요하다. 친구에게 전화한다. 직접 해결이 아니라 조달이다.</p><p>수지상세포도 직접 싸우지 않는다. 더 강력한 세포를 불러온다.</p></div>
+      <div class="col"><span class="col-k">세포 이야기</span><p>수지상세포는 병원체를 직접 죽이지 않는다. 대신 병원체를 분해해 그 조각(항원)을 수집한다.</p><p>이 정보를 들고 림프절로 이동해 T세포와 B세포에게 전달한다.</p><p>나 혼자는 한계다, 이 병원체 정보야, 네가 맞서야 한다 — 전문가를 소환한다.</p></div>
+    </div>
+    <div class="need-why"><b>이 욕구와 같은 이유</b>혼자 감당 안 될 때 더 적합한 수단을 조달한다 = 수지상세포가 직접 싸우는 대신 정보를 수집해 더 강력한 세포를 불러오는 구조가 같다.</div>
+  </div>
+
+  <div class="need" style="--fc:var(--c1);--fc-bg:var(--c1-bg)">
+    <div class="need-head">
+      <span class="need-no">#6</span><span class="need-name">이해 욕구</span>
+      <span class="need-beh">핵심 행동 유형 | 원리를 파악해 더 잘 다루려는 분해 행동</span>
+    </div>
+    <div class="need-cell"><small>세포·면역계 비유</small>항원제시세포(APC)의 항원 분해와 MHC 제시</div>
+    <div class="cols">
+      <div class="col"><span class="col-k">쉬운 비유</span><p>레시피대로 했는데 맛이 다르다. 모르는 원리가 있다는 인식이 생긴다.</p><p>원리를 알아야 바꿀 수 있다. 요리의 원리를 분해해 공부하기 시작한다.</p><p>항원제시세포도 병원체를 통째로 두지 않는다. 먼저 분해해 원리를 꺼낸다.</p></div>
+      <div class="col"><span class="col-k">세포 이야기</span><p>항원제시세포(APC)는 병원체를 잡아 내부에서 잘게 분해한다.</p><p>분해된 조각(항원 펩타이드)을 MHC 분자 위에 올려 T세포에게 보여준다.</p><p>이게 적이야, 이 구조를 기억해, 이 원리로 싸워야 해 — 원리를 파악해야 정확히 대응한다.</p></div>
+    </div>
+    <div class="need-why"><b>이 욕구와 같은 이유</b>원리를 파악해 더 잘 다룬다 = APC가 병원체를 분해해 그 구조를 T세포에게 전달하고, T세포는 그 원리로 정확히 대응하는 구조가 같다.</div>
+  </div>
+
+  <div class="need" style="--fc:var(--c2);--fc-bg:var(--c2-bg)">
+    <div class="need-head">
+      <span class="need-no">#7</span><span class="need-name">회복 욕구</span>
+      <span class="need-beh">핵심 행동 유형 | 손상된 상태를 반대 방향으로 되돌리려는 역전 행동</span>
+    </div>
+    <div class="need-cell"><small>세포·면역계 비유</small>섬유아세포(Fibroblast)의 콜라겐 합성과 상처 치유</div>
+    <div class="cols">
+      <div class="col"><span class="col-k">쉬운 비유</span><p>2주 야근 후 방전됐다. 손상된 상태가 인식된다.</p><p>반대 방향으로 가야 회복된다. 알람 없이 자고, 산책한다. 손상의 역방향이 회복이다.</p><p>섬유아세포도 손상이 생긴 방향과 정반대로 물질을 쌓아 복구한다.</p></div>
+      <div class="col"><span class="col-k">세포 이야기</span><p>상처가 나면 조직이 손상되어 구멍이 생긴다. 섬유아세포가 활성화된다.</p><p>이 세포는 콜라겐(결합조직의 기초 재료)을 합성해 손상된 부위를 채운다.</p><p>없어진 만큼 만들어내는 역전 행동이다. 손상된 방향과 정반대로 복구가 이루어진다.</p></div>
+    </div>
+    <div class="need-why"><b>이 욕구와 같은 이유</b>손상된 상태를 반대 방향으로 되돌린다 = 섬유아세포가 손상(소실)의 역방향인 합성(생성)으로 원래 상태를 향해 가는 구조가 같다.</div>
+  </div>
+
+  <div class="need" style="--fc:var(--c2);--fc-bg:var(--c2-bg)">
+    <div class="need-head">
+      <span class="need-no">#8</span><span class="need-name">생존 욕구</span>
+      <span class="need-beh">핵심 행동 유형 | 기존 방식이 실패하면 즉시 대안을 수용하는 전환 행동</span>
+    </div>
+    <div class="need-cell"><small>세포·면역계 비유</small>B세포의 항체 클래스 전환(Class Switching)</div>
+    <div class="cols">
+      <div class="col"><span class="col-k">쉬운 비유</span><p>지도를 들고 갔는데 길을 잃었다. 기존 방식 실패가 확인됐다.</p><p>저항 없이 내비게이션을 켠다. 기존 방식에 미련이 없다. 생존이 먼저다.</p><p>B세포도 처음 방식이 한계에 부딪히면 즉시 더 강력한 방식으로 전환한다.</p></div>
+      <div class="col"><span class="col-k">세포 이야기</span><p>B세포는 처음 감염 시 IgM 항체를 만든다. 빠르지만 정밀도가 낮다.</p><p>IgM만으로 감염을 막기 어렵다는 신호(인터루킨-4, 인터루킨-13)가 오면, 즉시 IgG·IgA·IgE로 전환한다.</p><p>기존 방식(IgM)에 미련이 없다. 한계가 확인된 순간 더 효과적인 방식으로 바뀐다.</p></div>
+    </div>
+    <div class="need-why"><b>이 욕구와 같은 이유</b>기존 방식의 실패가 확인되면 즉시 대안으로 전환한다 = B세포가 IgM의 한계를 신호로 받자마자 저항 없이 더 강력한 항체 유형으로 전환하는 구조가 같다.</div>
+  </div>
+
+  <div class="need" style="--fc:var(--c2);--fc-bg:var(--c2-bg)">
+    <div class="need-head">
+      <span class="need-no">#9</span><span class="need-name">의미 욕구</span>
+      <span class="need-beh">핵심 행동 유형 | 기술을 익히면 그 기술 너머의 이유를 묻는 확장 행동</span>
+    </div>
+    <div class="need-cell"><small>세포·면역계 비유</small>기억 T세포(Memory T Cell)의 교차 반응</div>
+    <div class="cols">
+      <div class="col"><span class="col-k">쉬운 비유</span><p>요리를 잘하게 됐다. 기술이 쌓였다.</p><p>그러자 기술 너머가 궁금해진다. 나는 왜 음식에 공을 들이는가 하는 질문이 생긴다.</p><p>기억 T세포도 처음 경험 너머로 확장되는 능력을 갖게 된다.</p></div>
+      <div class="col"><span class="col-k">세포 이야기</span><p>감염 후 살아남은 T세포 일부가 기억 T세포가 된다. 처음 만난 병원체를 기억한다.</p><p>그런데 기억 T세포는 처음 만난 병원체만 기억하지 않는다.</p><p>유사한 구조의 다른 병원체에도 반응할 수 있는 교차 반응(cross-reactivity) 능력을 갖는다. 경험이 쌓이면 범위가 넓어진다.</p></div>
+    </div>
+    <div class="need-why"><b>이 욕구와 같은 이유</b>기술을 익히면 그 너머로 확장한다 = 기억 T세포가 특정 경험에서 출발해 더 넓은 범위의 위협에 대응할 수 있게 확장되는 구조가 같다.</div>
+  </div>
+
+  <div class="need" style="--fc:var(--c3);--fc-bg:var(--c3-bg)">
+    <div class="need-head">
+      <span class="need-no">#10</span><span class="need-name">소속 욕구</span>
+      <span class="need-beh">핵심 행동 유형 | 혼자라는 느낌이 들면 연결을 회복하려는 접근 행동</span>
+    </div>
+    <div class="need-cell"><small>세포·면역계 비유</small>림프구의 귀환(Lymphocyte Homing)과 케모카인 반응</div>
+    <div class="cols">
+      <div class="col"><span class="col-k">쉬운 비유</span><p>이사 후 아는 사람이 없다. 연결이 끊긴 상태다. 비어 있는 느낌이 생긴다.</p><p>오래된 친구에게 전화한다. 연결 신호를 보내거나 받으면 그 방향으로 움직인다.</p><p>혈류를 순환하던 림프구도 연결 신호를 받는 순간 그 방향으로 이동한다.</p></div>
+      <div class="col"><span class="col-k">세포 이야기</span><p>림프구는 평소 혈류를 타고 혼자 순환한다.</p><p>감염이 일어난 림프절에서 케모카인(chemokine, 여기로 오라는 화학 신호)이 방출되면,</p><p>림프구는 즉시 그 방향으로 이동해 모여든다. 혼자 순환하다가 연결 신호를 받으면 집단으로 귀환한다.</p></div>
+    </div>
+    <div class="need-why"><b>이 욕구와 같은 이유</b>혼자라는 느낌이 들면 연결을 회복하려 움직인다 = 림프구가 홀로 순환하다가 케모카인 신호를 받는 순간 집단으로 귀환하는 접근 구조가 같다.</div>
+  </div>
+
+  <div class="need" style="--fc:var(--c3);--fc-bg:var(--c3-bg)">
+    <div class="need-head">
+      <span class="need-no">#11</span><span class="need-name">일관성 욕구</span>
+      <span class="need-beh">핵심 행동 유형 | 내가 믿는 것과 행동이 어긋나면 맞추려는 정렬 행동</span>
+    </div>
+    <div class="need-cell"><small>세포·면역계 비유</small>흉선(Thymus)에서의 음성 선택(Negative Selection)</div>
+    <div class="cols">
+      <div class="col"><span class="col-k">쉬운 비유</span><p>채식주의인데 고기를 먹었다. 신념과 행동이 불일치한다. 불편함이 생긴다.</p><p>다음날 채식 재료를 더 꼼꼼히 산다. 믿음과 행동을 정렬해야 불편함이 사라진다.</p><p>흉선도 믿음(자기 보호)과 행동(공격)이 불일치하는 세포를 제거해 일관성을 유지한다.</p></div>
+      <div class="col"><span class="col-k">세포 이야기</span><p>T세포는 성숙 과정에서 흉선이라는 훈련 기관을 통과한다.</p><p>흉선은 자신의 정상 세포를 공격하는 T세포를 발견하면 즉시 아포토시스(세포 자멸)로 제거한다.</p><p>자기 세포를 지켜야 한다는 신념과 자기 세포를 공격하는 행동이 불일치하면 존재가 허용되지 않는다.</p></div>
+    </div>
+    <div class="need-why"><b>이 욕구와 같은 이유</b>믿는 것과 행동이 어긋나면 맞춘다 = 흉선이 신념(자기 보호)과 행동(공격)이 불일치하는 T세포를 제거해 면역계 전체의 일관성을 강제하는 구조가 같다.</div>
+  </div>
+
+  <div class="need" style="--fc:var(--c3);--fc-bg:var(--c3-bg)">
+    <div class="need-head">
+      <span class="need-no">#12</span><span class="need-name">고통 회피 욕구</span>
+      <span class="need-beh">핵심 행동 유형 | 불쾌한 자극이 오면 즉시 멀어지려는 회피 행동</span>
+    </div>
+    <div class="need-cell"><small>세포·면역계 비유</small>비만세포(Mast Cell)의 즉각적 히스타민 방출</div>
+    <div class="cols">
+      <div class="col"><span class="col-k">쉬운 비유</span><p>회의에서 동료가 갑자기 화를 냈다. 불쾌 자극이 발생했다.</p><p>이 상황을 끝내려 한다. 분석 전에 먼저 알겠다고 하고 넘어간다. 일단 멀어진다.</p><p>비만세포도 자극 분석 전에 즉각적으로 반응한다. 먼저 밀어낸다.</p></div>
+      <div class="col"><span class="col-k">세포 이야기</span><p>비만세포는 IgE 항체가 알레르겐(자극)에 결합하는 순간 히스타민을 폭발적으로 방출한다.</p><p>히스타민은 코를 흘리게 하고 재채기를 유발한다. 자극을 몸 밖으로 내보내는 즉각적 반응이다.</p><p>확인하고 분석하는 과정이 없다. 자극 감지 → 즉시 방출 → 자극을 밀어낸다.</p></div>
+    </div>
+    <div class="need-why"><b>이 욕구와 같은 이유</b>불쾌한 자극이 오면 즉시 멀어진다 = 비만세포가 자극을 확인하기 전에 히스타민을 즉각 방출해 자극을 밀어내는 즉각성이 같다.</div>
+  </div>
+
+  <div class="need" style="--fc:var(--c4);--fc-bg:var(--c4-bg)">
+    <div class="need-head">
+      <span class="need-no">#13</span><span class="need-name">완성 욕구</span>
+      <span class="need-beh">핵심 행동 유형 | 미완성 상태를 견디지 못하고 끝내려는 마무리 행동</span>
+    </div>
+    <div class="need-cell"><small>세포·면역계 비유</small>면역 반응 종결 신호(Resolution) — IL-10과 리폭신</div>
+    <div class="cols">
+      <div class="col"><span class="col-k">쉬운 비유</span><p>드라마를 반쯤 봤다. 이야기가 열려 있다. 결말을 모른다는 불완전함이 불편하다.</p><p>세 화를 더 보고 나서야 잠든다. 끝을 봐야 마음이 놓인다.</p><p>면역계도 적을 물리친 뒤 반드시 끝났다는 신호를 내보낸다.</p></div>
+      <div class="col"><span class="col-k">세포 이야기</span><p>면역 반응이 적을 물리친 뒤, IL-10(인터루킨-10)과 리폭신(lipoxin)이 분비된다.</p><p>이 신호가 이제 끝났으니 면역 반응을 멈추라고 지시한다.</p><p>종결 신호가 없으면 면역계는 적이 사라진 후에도 계속 작동해 정상 조직을 손상시킨다. 마무리가 시스템에 내장되어 있다.</p></div>
+    </div>
+    <div class="need-why"><b>이 욕구와 같은 이유</b>미완성 상태를 견디지 못하고 끝낸다 = 면역계가 임무 완수 후 반드시 종결 신호를 내보내 반응을 마무리하는 구조가 같다. 종결이 없으면 손상이 생긴다.</div>
+  </div>
+
+  <div class="need" style="--fc:var(--c4);--fc-bg:var(--c4-bg)">
+    <div class="need-head">
+      <span class="need-no">#14</span><span class="need-name">공정 욕구</span>
+      <span class="need-beh">핵심 행동 유형 | 불균형한 상황을 바로잡으려는 교정 행동</span>
+    </div>
+    <div class="need-cell"><small>세포·면역계 비유</small>IgG 항체의 옵소닌화(Opsonization)와 Fc 수용체 결합</div>
+    <div class="cols">
+      <div class="col"><span class="col-k">쉬운 비유</span><p>나만 야근 요청을 받는다. 불균형이 인식된다.</p><p>이번엔 다른 분이 해주실 수 있을까요라고 한다. 예외 없는 기준을 요구한다.</p><p>IgG 항체도 모든 병원체에 동일한 표지를 붙여 예외 없이 처리한다.</p></div>
+      <div class="col"><span class="col-k">세포 이야기</span><p>IgG 항체는 병원체 표면에 결합해 Fc 부위를 노출시킨다(옵소닌화).</p><p>대식세포의 Fc 수용체가 이 표지를 인식하고, 표지가 있는 것은 크든 작든 동일하게 탐식한다.</p><p>IgG 표지가 붙어 있다는 것 하나만이 기준이다. 특정 병원체에 예외가 없다.</p></div>
+    </div>
+    <div class="need-why"><b>이 욕구와 같은 이유</b>불균형을 바로잡으려는 교정 행동 = IgG가 모든 병원체에 동일한 기준(Fc 표지)을 적용해 예외 없이 처리하는 구조가 같다.</div>
+  </div>
+
+  <div class="need" style="--fc:var(--c4);--fc-bg:var(--c4-bg)">
+    <div class="need-head">
+      <span class="need-no">#15</span><span class="need-name">확인 욕구</span>
+      <span class="need-beh">핵심 행동 유형 | 불분명한 것을 명확히 하려는 검증 행동</span>
+    </div>
+    <div class="need-cell"><small>세포·면역계 비유</small>B세포 수용체(BCR)의 항원 특이적 결합 검증</div>
+    <div class="cols">
+      <div class="col"><span class="col-k">쉬운 비유</span><p>카톡 읽씹이다. 불분명한 상태다. 명확히 알고 싶은 욕구가 생긴다.</p><p>한 번 더 보내거나 다른 경로로 확인한다. 비슷한 것으로는 안 된다. 정확한 확인이 필요하다.</p><p>B세포 수용체도 정확히 일치하는 항원이 아니면 결합하지 않는다.</p></div>
+      <div class="col"><span class="col-k">세포 이야기</span><p>B세포 수용체(BCR)는 특정 항원의 특정 구조에만 딱 맞게 결합한다.</p><p>비슷하게 생긴 다른 항원이 와도 결합하지 않는다.</p><p>정확히 일치할 때만 B세포가 활성화된다. 비슷한 것 같다는 정도로는 반응하지 않는다. 명확히 일치할 때만 행동이 시작된다.</p></div>
+    </div>
+    <div class="need-why"><b>이 욕구와 같은 이유</b>불분명한 것을 명확히 확인한 뒤에야 행동한다 = BCR이 정확히 일치하는 항원만을 검증하고, 그것이 확인될 때만 B세포를 활성화하는 구조가 같다.</div>
+  </div>
+  </section>
+
+  <footer>
+    욕구별 세포·면역계 비유 사전 · 15가지 욕구 완전 해설<br>
+    앱은 이 사전에서 세포를 고른 뒤, 모든 설명이 그 세포로 돌아오도록 씁니다.
+  </footer>
+</div>
