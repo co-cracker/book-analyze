@@ -524,10 +524,16 @@ def main():
     a = write('거짓말-도감.html', lie_page(lies))
     b = write('세포-비유-사전.html', cell_page(cells))
     c = write('책분석-앱.html', app_artifact())
+    # GitHub Pages는 저장소 루트의 index.html을 연다. 앱 원본을 그대로 복사한다.
+    with open(APP, encoding='utf-8') as f:
+        idx = f.read()
+    d = os.path.join(HERE, 'index.html')
+    with open(d, 'w', encoding='utf-8') as f:
+        f.write(idx)
     total = sum(len(f['types']) for f in lies['families'])
     print('거짓말 %d종 / %d군, 욕구 %d개' % (total, len(lies['families']), len(cells['needs'])))
     print('앱 데이터 블록 %d자' % n)
-    for p in (a, b, c):
+    for p in (a, b, c, d):
         print('  ', os.path.relpath(p, HERE), os.path.getsize(p), 'bytes')
 
 
